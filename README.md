@@ -1,4 +1,4 @@
-# Flask React Project
+# Flask React Projectt
 
 This is the starter for the Flask React project.
 
