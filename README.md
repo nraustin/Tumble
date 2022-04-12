@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Flask React Project
 
 This is the starter for the Flask React project.
@@ -128,6 +127,3 @@ In order for the Github action to work effectively, it must have a configured do
    ```bash
    heroku authorizations:create 
    ```
-=======
-# Tumble
->>>>>>> d0808cd54e3c064daa7bebda138e49b73a59c4d5
