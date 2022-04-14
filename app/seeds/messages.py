@@ -33,6 +33,12 @@ def seed_messages():
         created_at=today.strftime("%B %d, %Y") 
     )
 
+    db.session.add(message1)
+    db.session.add(message2)
+    db.session.add(message3)
+
+    db.session.commit()
+
 def undo_messages():
     db.session.execute('TRUNCATE messages RESTART IDENTITY CASCADE;')
     db.session.commit()

@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 
 function UsersList() {
   
   const [users, setUsers] = useState([]);
-  const [imageURL, setImageURL] = useState('')
+  const [image, setImage] = useState(null)
+  const [imageLoading, setImageLoading] = useState(false)
+  
+  const history = useHistory()
 
   const user = useSelector(state => state.session.user)
 
@@ -20,15 +23,32 @@ function UsersList() {
 
   const handleImageSubmit = async(e) => {
     e.preventDefault();
-    const image = { imageURL, user_id: user.id}
+    const new_image = { image, user_id: user.id}
+
+    setImageLoading(true)
 
     const res = await fetch('/api/users', {
       method: "POST",
-      headers: { "Content-Type": "application/json"},
-      body: JSON.stringify(image)
+      body: JSON.stringify(new_image),
     })
 
-    const newImage = await res.json()
+    if (res.ok) {
+      await res.json();
+      setImageLoading(false);
+      history.push('/')
+    }
+
+    else {
+      setImageLoading(false)
+      console.log("error")
+    }
+  }
+
+    const update = (e) => {
+      const file = e.target.files[0];
+      setImage(file)
+    }
+
 
 
   const userComponents = users.map((user) => {
@@ -46,16 +66,20 @@ function UsersList() {
       <form onSubmit={handleImageSubmit}>
         <div>
           <label>Profile Images</label>
-          <input 
-            value={imageURL}
-            type='text'
-            onChange={(e) => setImageURL(e.target.value)}
-          ></input>
+          <input
+            type="file"
+            directory=""
+            webkitdirectory=""
+            accept="image/*"
+            onChange={update}
+          />
         </div>
         <button type='Submit'>Submit</button>
+        {(imageLoading)&& <p>Patience, bro</p>}
       </form>
      </>
-  )}
-  }
+  )
+
+}
 
 export default UsersList;

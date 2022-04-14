@@ -77,7 +77,7 @@ def seed_users():
         password='password',
         biography=
     '''
-    Hi! I'm a purebred, fully vaccinated, purebred Border Collie with all my paperwork!
+    Hi! I'm a purebred, fully vaccinated Border Collie with all my paperwork!
     ''',
         dog=True,
         location='Oxford, MS',
