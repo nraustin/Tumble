@@ -26,7 +26,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      <NavBar pageWrapId={'page-wrap'} outerContainerId={'outer-container'}/>
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />

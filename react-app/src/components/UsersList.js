@@ -23,13 +23,13 @@ function UsersList() {
 
   const handleImageSubmit = async(e) => {
     e.preventDefault();
-    const new_image = { image, user_id: user.id}
+    const new_image = { image, user_id: user.id }
 
     setImageLoading(true)
 
-    const res = await fetch('/api/users', {
+    const res = await fetch('/api/users/', {
       method: "POST",
-      body: JSON.stringify(new_image),
+      body: new_image
     })
 
     if (res.ok) {
@@ -68,8 +68,8 @@ function UsersList() {
           <label>Profile Images</label>
           <input
             type="file"
-            directory=""
-            webkitdirectory=""
+            // directory=""
+            // webkitdirectory=""
             accept="image/*"
             onChange={update}
           />
