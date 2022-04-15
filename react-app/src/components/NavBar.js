@@ -4,8 +4,9 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LogoutButton from './auth/LogoutButton';
 import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarFooter, SidebarContent} from "react-pro-sidebar"
-import { FiHome, FiLogOut, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
+import { FiHome, FiLogIn, FiLogOut, FiHeart, FiUserPlus, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 
+import "react-pro-sidebar/dist/css/styles.css";
 import './NavBar.css'
 
 const NavBar = () => {
@@ -28,21 +29,27 @@ const NavBar = () => {
               <p>{user?.name}</p>
             </div>
             <div className='closeMenu' onClick={menuClick}>
-              {menuCollapse ?  <FiArrowRightCircle/> : <FiArrowLeftCircle/>}
+              {menuCollapse ? 
+              <div className='closeMenuArrows'> 
+              <FiArrowRightCircle/>
+              </div> : 
+              <div className='closeMenuArrows'> 
+              <FiArrowLeftCircle/> 
+              </div>}
             </div>
             </SidebarHeader>
             <SidebarContent>
               <Menu iconShape='circle'>
-                <MenuItem icon={<FiHome/>} >
+                <MenuItem icon={<FiHome/>}>
                   <NavLink to='/' exact={true} active={true} activeClassName='active'>Home</NavLink>
                 </MenuItem>
-                <MenuItem>
+                <MenuItem icon={<FiLogIn/>}>
                   <NavLink to='/login' exact={true} activeClassName='active'>Login</NavLink>
                 </MenuItem>
-                <MenuItem>
+                <MenuItem icon={<FiUserPlus/>}>
                   <NavLink to='/sign-up' exact={true} activeClassName='active'>Sign Up</NavLink>
                 </MenuItem>
-                <MenuItem>
+                <MenuItem icon={<FiHeart/>}>
                   <NavLink to='/users' exact={true} activeClassName='active'>Users</NavLink>
                 </MenuItem>
                 
