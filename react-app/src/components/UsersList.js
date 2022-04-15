@@ -24,7 +24,8 @@ function UsersList() {
   const handleImageSubmit = async(e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("image", image);
+    formData.append("image", image)
+    formData.append("user_id", user.id)
     // const new_image = { image, user_id: user.id }
 
     setImageLoading(true)
@@ -53,7 +54,7 @@ function UsersList() {
 
 
 
-  const userComponents = users.map((user) => {
+  const userComponents = users?.map((user) => {
     return (
       <li key={user.id}>
         <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
