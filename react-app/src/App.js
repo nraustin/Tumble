@@ -25,8 +25,9 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <NavBar pageWrapId={'page-wrap'} outerContainerId={'outer-container'}/>
+      <BrowserRouter>
+      <div className='App'>
+        <NavBar/>
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -43,8 +44,10 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
-      </Switch>
-    </BrowserRouter>
+          </Switch>
+        </div>
+
+        </BrowserRouter>
   );
 }
 
