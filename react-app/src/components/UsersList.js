@@ -23,13 +23,15 @@ function UsersList() {
 
   const handleImageSubmit = async(e) => {
     e.preventDefault();
-    const new_image = { image, user_id: user.id }
+    const formData = new FormData();
+    formData.append("image", image);
+    // const new_image = { image, user_id: user.id }
 
     setImageLoading(true)
 
     const res = await fetch('/api/users/', {
       method: "POST",
-      body: new_image
+      body: formData
     })
 
     if (res.ok) {
