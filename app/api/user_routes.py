@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import User, Image
 from app.s3_helpers import upload_file_to_s3, get_unique_filename, allowed_file
+from app.models import db
 
 user_routes = Blueprint('users', __name__)
 
@@ -17,6 +18,7 @@ def users():
 def upload_image():
 
     if "image" not in request.files:
+        print("\n\n\n----YO-----\n\n\n")
         return {"errors": "image required"}, 400
     
     image = request.files["image"]
@@ -25,6 +27,8 @@ def upload_image():
         return {"errors": "file type not permitted"}
 
     image.filename = get_unique_filename(image.filename)
+
+    print("\n\n\n----", image, "-----\n\n\n")
 
     upload = upload_file_to_s3(image)
 
@@ -35,19 +39,20 @@ def upload_image():
 
     url = upload["url"]
 
+    print("\n\n\n----", url, "----\n\n\n")
 
-    user_id=request.json["user_id"]
-    userImage=request.json["imageURL"]
+
+    user_id=request.form["user_id"]
 
     new_image = Image(
         user_id=user_id,
-        userImage=userImage
+        userImage=url
     )
 
     db.session.add(new_image)
     db.session.commit()
 
-    return image.to_dict()
+    return {"url": url}
 
 
 @user_routes.route('/<int:id>')
