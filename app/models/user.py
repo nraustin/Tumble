@@ -11,11 +11,15 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String(40), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    biography = db.Column(db.Text, nullable=False)
+    biography = db.Column(db.Text)
+    age = db.Column(db.Integer, nullable=False)
     dog = db.Column(db.Boolean, default=False, nullable=False)
     location = db.Column(db.String(255))
     created_at = db.Column(db.DateTime, default=datetime.now(), nullable=False)
     updated_at = db.Column(db.DateTime, default=datetime.now(), nullable=False)
+
+    images = db.relationship("Image", backref="users", cascade="all, delete")
+    likes = db.relationship("Like", primaryjoin="User.id==Like.liked_id", backref="users", cascade="all, delete")
 
     @property
     def password(self):
@@ -32,5 +36,10 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'name': self.name,
-            'email': self.email
+            'email': self.email,
+            'biography': self.biography,
+            'dog': self.dog,
+            'location': self.location,
+            'images': [i.to_dict() for i in self.images],
+            'likes': [l.to_dict() for l in self.likes]
         }

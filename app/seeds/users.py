@@ -12,6 +12,7 @@ def seed_users():
     '''
     Not looking for anything serious! 
     ''',
+        age=22,
         dog=False,
         location='San Francisco, CA',
         created_at=today.strftime("%B %d, %Y"),
@@ -26,6 +27,7 @@ def seed_users():
     '''
     Leaning more towards larger dogs. My last Chihuahua gave me PTSD. Must be at least 6.2 lbs.
     ''',
+        age=31,
         dog=False,
         location='Seattle, WA',
         created_at=today.strftime("%B %d, %Y"),
@@ -39,6 +41,7 @@ def seed_users():
     '''
     My Georgia bloodhound needs a friend. She's a playmate to anyone, just a little lonelier these days with the work load I've been under.  
     ''',
+        age=15,
         dog=False,
         location='Arlen, TX',
         created_at=today.strftime("%B %d, %Y"),
@@ -52,6 +55,7 @@ def seed_users():
     '''
     WOOF (Spot's own words. He loves squirrels, leftover ribs, dog parks and new smells. Owner must be present, attentive, and loving.)
     ''',
+        age=4,
         dog=True,
         location='San Francisco, CA',
         created_at=today.strftime("%B %d, %Y"),
@@ -66,6 +70,7 @@ def seed_users():
     '''
     My owner and I are taking a break ever since he ate my last Scooby Snack. Yes, I made this profile myself. 
     ''',
+        age=7,
         dog=True,
         location='Seattle, WA',
         created_at=today.strftime("%B %d, %Y"),
@@ -79,6 +84,7 @@ def seed_users():
     '''
     Hi! I'm a purebred, fully vaccinated Border Collie with all my paperwork!
     ''',
+        age=1,
         dog=True,
         location='Oxford, MS',
         created_at=today.strftime("%B %d, %Y"),

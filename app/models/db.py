@@ -62,6 +62,9 @@ class Like(db.Model):
     liker_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     liked_id = db.Column(db. Integer, db.ForeignKey("users.id"))
 
+    # liker = db.relationship("User", foreign_keys=[liker_id])
+    # liked = db.relationship("User", foreign_keys=[liked_id])
+
 def like_to_dict(self):
     return{
         'id': self.id,

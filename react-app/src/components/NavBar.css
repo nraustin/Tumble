@@ -19,7 +19,7 @@
 
 .closeMenuArrows{
   display: flex;
-  justify-content: center;
+  justify-content: end;
 }
 
 #sidebar .pro-sidebar {

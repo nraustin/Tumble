@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LogoutButton from './auth/LogoutButton';
 import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarFooter, SidebarContent} from "react-pro-sidebar"
-import { FiHome, FiLogIn, FiLogOut, FiHeart, FiUserPlus, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
+import { FiHome, FiLogIn, FiLogOut, FiHeart, FiUserPlus, FiUser, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 
 import "react-pro-sidebar/dist/css/styles.css";
 import './NavBar.css'
@@ -43,15 +43,25 @@ const NavBar = () => {
                 <MenuItem icon={<FiHome/>}>
                   <NavLink to='/' exact={true} active={true} activeClassName='active'>Home</NavLink>
                 </MenuItem>
-                <MenuItem icon={<FiLogIn/>}>
-                  <NavLink to='/login' exact={true} activeClassName='active'>Login</NavLink>
-                </MenuItem>
-                <MenuItem icon={<FiUserPlus/>}>
-                  <NavLink to='/sign-up' exact={true} activeClassName='active'>Sign Up</NavLink>
-                </MenuItem>
+                
+                {user ?
+                <MenuItem icon={<FiUser/>}>
+                  <NavLink to={`/users/${user.id}`} exact={true} activeClassName='active'>My Profile</NavLink>
+                </MenuItem> : null}
+
+                {user ? null :
+                <>
+                    <MenuItem icon={<FiLogIn/>}>
+                      <NavLink to='/login' exact={true} activeClassName='active'>Login</NavLink>
+                    </MenuItem>
+                    <MenuItem icon={<FiUserPlus/>}>
+                      <NavLink to='/sign-up' exact={true} activeClassName='active'>Sign Up</NavLink>
+                    </MenuItem>
+                </> }
                 <MenuItem icon={<FiHeart/>}>
                   <NavLink to='/users' exact={true} activeClassName='active'>Users</NavLink>
                 </MenuItem>
+                
                 
               </Menu>
             </SidebarContent>
