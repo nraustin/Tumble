@@ -21,17 +21,17 @@ class matchedRoom(db.Model):
     __tablename__ = "matchedRooms"
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
-    firstUser = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    secondUser = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-
-
+    # firstUser = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    # secondUser = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     messages = db.relationship("Message", backref="matchedRooms", cascade="all, delete")
+
+    matchedUsers = db.relationship("User", secondary="matched_Users", backref="matchedRooms", cascade="all, delete")
+
 
 def matchedRoom_to_dict(self):
     return{
         'id': self.id,
-        'firstUser': self.firstUser,
-        'secondMatch': self.secondUser,
+        'matched': [ma.info() in ma in self.matchedUsers], 
         'messages': [m.to_dict() for m in self.messages]
     }
 

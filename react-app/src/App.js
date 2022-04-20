@@ -6,9 +6,9 @@ import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
-import User from './components/User';
 import { authenticate } from './store/session';
 import ProfilePage from './components/ProfilePage/ProfilePage';
+import ProfileCard from './components/ProfileCard/ProfileCard';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -41,11 +41,11 @@ function App() {
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
-        <ProtectedRoute path={`/users/${user.id}`} exact={true} >
+        <ProtectedRoute path='/users/profile' exact={true} >
           <ProfilePage />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
+          <ProfileCard />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
         </ProtectedRoute>

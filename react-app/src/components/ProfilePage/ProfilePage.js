@@ -2,8 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory, useParams} from 'react-router-dom';
 
+import './ProfilePage.css'
+
 
 const ProfilePage = () => {
+
+  
     
     const [profilePhoto, setProfilePhoto] = useState('')
     const [bio, setBio] = useState('')
@@ -41,7 +45,7 @@ const ProfilePage = () => {
     
         setImageLoading(true)
     
-        const res = await fetch('/api/users/', {
+        const res = await fetch(`/api/users/${user.id}`, {
           method: "POST",
           body: formData
         })
@@ -64,17 +68,18 @@ const ProfilePage = () => {
         }
   
     return (
-            <>
-                <ul>
+          <>
+            <div className='profileContainerRoot'>
+                  <div className='profileContainer'>
                     <strong>User Id</strong> {user.id}
-                    <strong>Username</strong> {user.name}
+                    <strong>Name</strong> {user.name}
                     <strong>Email</strong> {user.email}
-                </ul>
-                <ul>
+               
                     <strong>Biography</strong> {user.biography}
                     <strong>Location</strong> {user.location}
                     <strong>Age</strong> {user.age}
-                </ul>
+                    <strong>Likes</strong> {user.likes}
+                  </div>
                 <form onSubmit={handleImageSubmit}>
                 <div>
                     <label>Profile Images</label>
@@ -89,6 +94,7 @@ const ProfilePage = () => {
                 <button type='Submit'>Submit</button>
                 {(imageLoading)&& <p>Patience, bro</p>}
                 </form>
+              </div>
             </>
     );
   }

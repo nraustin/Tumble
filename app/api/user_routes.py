@@ -23,10 +23,8 @@ def user(id):
 
 
 
-@user_routes.route('/<int:id>', methods=['POST', 'PUT', 'DELETE'])
-def upload_image():
-
-    if request.method == 'POST':
+@user_routes.route('/<int:id>', methods=['POST'])
+def upload_image(id):
 
         if "image" not in request.files:
             print("\n\n\n----YO-----\n\n\n")
@@ -66,7 +64,8 @@ def upload_image():
         return {"url": url}
         
     
-    elif request.method == 'PUT':
+@user_routes.route('/edit', methods=['PUT'])
+def edit_user():
 
         id = request.json['user_id']
 
@@ -85,8 +84,8 @@ def upload_image():
 
         return user.to_dict()
 
-
-    elif request.method == 'DELETE':
+@user_routes.route('/delete', methods=['DELETE'])
+def delete_image():
 
         image_id=request.json['imageId']
 

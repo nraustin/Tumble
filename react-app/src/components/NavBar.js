@@ -46,7 +46,7 @@ const NavBar = () => {
                 
                 {user ?
                 <MenuItem icon={<FiUser/>}>
-                  <NavLink to={`/users/${user.id}`} exact={true} activeClassName='active'>My Profile</NavLink>
+                  <NavLink to={`/users/profile`} exact={true} activeClassName='active'>My Profile</NavLink>
                 </MenuItem> : null}
 
                 {user ? null :
@@ -59,7 +59,7 @@ const NavBar = () => {
                     </MenuItem>
                 </> }
                 <MenuItem icon={<FiHeart/>}>
-                  <NavLink to='/users' exact={true} activeClassName='active'>Users</NavLink>
+                  <NavLink to='/users' exact={true} activeClassName='active'>Browse</NavLink>
                 </MenuItem>
                 
                 
