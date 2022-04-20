@@ -74,11 +74,19 @@ const ProfilePage = () => {
                     <strong>User Id</strong> {user.id}
                     <strong>Name</strong> {user.name}
                     <strong>Email</strong> {user.email}
-               
-                    <strong>Biography</strong> {user.biography}
-                    <strong>Location</strong> {user.location}
+                    <strong>Dog</strong> {user.dog}
+                    <strong>Biography</strong> {user.biography ? user.biography : 'Tell everyone about yourself'}
+                    <strong>Location</strong> {user.location ? user.location : 'Add your location'}
                     <strong>Age</strong> {user.age}
-                    <strong>Likes</strong> {user.likes}
+                    <strong>Likes</strong> {user.likes[0] ? user.likes[0].id : null}
+                    <strong>Profile Pictures
+                      {user.images[0] ? 
+                        user.images?.map((image) => {
+                         return (
+                         <img className='profilePageImg' src={image.userImage}/>
+                         )}) : null}
+          
+                    </strong>
                   </div>
                 <form onSubmit={handleImageSubmit}>
                 <div>

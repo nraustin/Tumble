@@ -25,9 +25,14 @@ const NavBar = () => {
         <div id="sidebar">
           <ProSidebar collapsed={menuCollapse}>
             <SidebarHeader>
-            <div className='logoText'>
-              <p>{user?.name}</p>
+            {user ? 
+            <div className='userBox'>
+              {user.images[0] ? <img className='userIcon' src={user.images[0].userImage}/> : <img className= 'userIcon' src='https://www.pinclipart.com/picdir/middle/190-1902439_dog-daycare-twitter-round-logo-png-transparent-background.png'/>}
+              <div className='logoText'>
+                <p>{user?.name}</p>
+              </div>
             </div>
+            : null }
             <div className='closeMenu' onClick={menuClick}>
               {menuCollapse ? 
               <div className='closeMenuArrows'> 

@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import { authenticate } from './store/session';
 import ProfilePage from './components/ProfilePage/ProfilePage';
 import ProfileCard from './components/ProfileCard/ProfileCard';
+import ProfileCardSlider from './components/ProfileCardSlider/ProfileCardSlider';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -38,15 +39,15 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
+        <Route path='/users' exact={true} >
+          <ProfileCardSlider/>
+        </Route>
         <ProtectedRoute path='/users/profile' exact={true} >
           <ProfilePage />
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
+        <Route path='/users/:userId' exact={true} >
           <ProfileCard />
-        </ProtectedRoute>
+        </Route>
         <ProtectedRoute path='/' exact={true} >
         </ProtectedRoute>
         </Switch>

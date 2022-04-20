@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-function ProfileCard() {
+function ProfileCard(profile) {
   const [user, setUser] = useState({});
   const { userId }  = useParams();
 
@@ -22,17 +22,18 @@ function ProfileCard() {
 
   return (
     <div className='swipeCardContainer'>
-      <ul>
-        <li>
-          <strong>User Id</strong> {userId}
-        </li>
-        <li>
-          <strong>Username</strong> {user.username}
-        </li>
-        <li>
-          <strong>Email</strong> {user.email}
-        </li>
-      </ul>
+    
+          <strong>User Id</strong> {profile.profile.id}
+        
+          <strong>Username</strong> {profile.profile.name}
+        
+          <strong>Email</strong> {profile.profile.email}
+
+          <strong>Age</strong> {profile.profile.age}
+          <div className='swipeCardProfilePicsContainer'>
+            {profile.profile.images[0] ? <img className='swipeCardProfilePics' src={profile.profile.images[0].userImage}/> : null} 
+          </div>
+       
     </div>
   );
 }

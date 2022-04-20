@@ -10,12 +10,12 @@ class Image(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     userImage = db.Column(db.String, nullable=False)
 
-def image_to_dict(self):
-    return {
-        'id': self.id,
-        'user_id': self.user_id,
-        'userImage': self.userImage
-    }
+    def image_to_dict(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'userImage': self.userImage
+        }
 
 class matchedRoom(db.Model):
     __tablename__ = "matchedRooms"
@@ -28,12 +28,12 @@ class matchedRoom(db.Model):
     matchedUsers = db.relationship("User", secondary="matched_Users", backref="matchedRooms", cascade="all, delete")
 
 
-def matchedRoom_to_dict(self):
-    return{
-        'id': self.id,
-        'matched': [ma.info() in ma in self.matchedUsers], 
-        'messages': [m.to_dict() for m in self.messages]
-    }
+    def matchedRoom_to_dict(self):
+        return{
+            'id': self.id,
+            'matched': [ma.info() in ma in self.matchedUsers], 
+            'messages': [m.to_dict() for m in self.messages]
+        }
 
 class Message(db.Model):
     __tablename__ = "messages"
@@ -44,14 +44,14 @@ class Message(db.Model):
     match_id = db.Column(db.Integer, db.ForeignKey("matchedRooms.id"), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now(), nullable=False)
 
-def message_to_dict(self):
-    return{
-        'id': self.id,
-        'user_id': self.user_id,
-        'content': self.content,
-        'match_id': self.match_id,
-        'created_at': self.created_at
-    }
+    def message_to_dict(self):
+        return{
+            'id': self.id,
+            'user_id': self.user_id,
+            'content': self.content,
+            'match_id': self.match_id,
+            'created_at': self.created_at
+        }
 
 
 
@@ -65,10 +65,10 @@ class Like(db.Model):
     # liker = db.relationship("User", foreign_keys=[liker_id])
     # liked = db.relationship("User", foreign_keys=[liked_id])
 
-def like_to_dict(self):
-    return{
-        'id': self.id,
-        'liker_id': self.liker_id,
-        'liked_id': self.liked_id
-    }
+    def like_to_dict(self):
+        return{
+            'id': self.id,
+            'liker_id': self.liker_id,
+            'liked_id': self.liked_id
+        }
     

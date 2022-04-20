@@ -2,6 +2,8 @@
 
 body{
     margin:0px;
+    background-color: whitesmoke;
+    font-family: Circular20,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Ubuntu,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
 }
 
 h1{
@@ -10,6 +12,7 @@ h1{
 
 .App {
     text-align: center;
+    height: 100vh;
   }
   
 .App-logo {
@@ -45,5 +48,13 @@ h1{
     to {
       transform: rotate(360deg);
     }
+  }
+
+  .logoutText{
+    color: #adadad
+  }
+
+  .logoutText :hover{
+    color: white;
   }
   
