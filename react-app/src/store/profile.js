@@ -1,7 +1,7 @@
 const GET_USER = 'profile/GET_USER';
 const GET_USERS = 'profile/GET_USERS';
 const UPDATE_USER = 'profile/UPDATE_USER'
-const DEACTIVATE_USER = 'profile/DEACTIVATE_USER'
+// const DEACTIVATE_USER = 'profile/DEACTIVATE_USER'
 
 const getUser = (user) => ({
     type: GET_USER,

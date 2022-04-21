@@ -31,7 +31,8 @@ function ProfileCard(profile) {
 
           <strong>Age</strong> {profile.profile.age}
           <div className='swipeCardProfilePicsContainer'>
-            {profile.profile.images[0] ? <img className='swipeCardProfilePics' src={profile.profile.images[0].userImage}/> : null} 
+            {profile.profile.images[0] ? <img className='swipeCardProfilePics' src={profile.profile.images[0].userImage} alt='https://www.pinclipart.com/picdir/middle/190-1902439_dog-daycare-twitter-round-logo-png-transparent-background.png'/>
+               : null} 
           </div>
        
     </div>

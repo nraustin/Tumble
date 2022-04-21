@@ -40,9 +40,9 @@ function ProfileCardSlider() {
         }
     }
     
-    const move = index => {
-        setSlideIndex(index)
-    }
+    // const move = index => {
+    //     setSlideIndex(index)
+    // }
 
     return (
         <div className="cardSliderContainer">

@@ -27,8 +27,8 @@ const NavBar = () => {
             <SidebarHeader>
             {user ? 
             <div className='userBox'>
-              {user.images[0] ? <img className='userIcon' src={user.images[0].userImage}/> : <img className= 'userIcon' src='https://www.pinclipart.com/picdir/middle/190-1902439_dog-daycare-twitter-round-logo-png-transparent-background.png'/>}
-              <div className='logoText'>
+              {user.images[0] ? <img className='userIcon' src={user.images[0].userImage} alt='https://www.pinclipart.com/picdir/middle/190-1902439_dog-daycare-twitter-round-logo-png-transparent-background.png'/> : <img className= 'userIcon' src='https://www.pinclipart.com/picdir/middle/190-1902439_dog-daycare-twitter-round-logo-png-transparent-background.png'/>}
+              <div className='userText'>
                 <p>{user?.name}</p>
               </div>
             </div>

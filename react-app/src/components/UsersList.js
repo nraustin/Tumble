@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector} from 'react-redux';
+// import { useSelector} from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 
 function UsersList() {
   
   const [users, setUsers] = useState([]);
-  const [image, setImage] = useState(null)
+  // const [image, setImage] = useState(null)
   // const [imageLoading, setImageLoading] = useState(false)
   
   const history = useHistory()
 
-  const user = useSelector(state => state.session.user)
+  // const user = useSelector(state => state.session.user)
 
   useEffect(() => {
     async function fetchData() {
