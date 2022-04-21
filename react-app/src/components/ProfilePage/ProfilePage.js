@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector} from 'react-redux'
-import { useHistory, useParams} from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 
 import './ProfilePage.css'
 
@@ -17,24 +17,24 @@ const ProfilePage = () => {
     const user = useSelector(state => state.session.user)
 
     const history = useHistory()
-    const { userId }  = useParams();
+    // const { userId }  = useParams();
 
     const [image, setImage] = useState(null)
     const [imageLoading, setImageLoading] = useState(false)
   
-    useEffect(() => {
-      if (!userId) {
-        return;
-      }
-      (async () => {
-        const response = await fetch(`/api/users/${userId}`);
-        // const user = await response.json()
-      })();
-    }, [userId]);
+    // useEffect(() => {
+    //   if (!userId) {
+    //     return;
+    //   }
+    //   (async () => {
+    //     const response = await fetch(`/api/users/${userId}`);
+    //     const user = await response.json()
+    //   })();
+    // }, [userId]);
   
-    if (!user) {
-      return null;
-    }
+    // if (!user) {
+    //   return null;
+    // }
 
     const handleImageSubmit = async(e) => {
         e.preventDefault();
@@ -83,7 +83,7 @@ const ProfilePage = () => {
                       {user.images[0] ? 
                         user.images?.map((image) => {
                          return (
-                         <img className='profilePageImg' src={image.userImage}/>
+                         <img className='profilePageImg' src={image.userImage} alt=''/>
                          )}) : null}
           
                     </strong>
