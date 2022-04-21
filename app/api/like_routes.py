@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 from app.models import Like, matchedRoom, User
+from app.models import db
 
 like_routes = Blueprint('likes', __name__)
 

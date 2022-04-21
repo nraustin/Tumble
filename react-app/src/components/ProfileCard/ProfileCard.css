@@ -11,3 +11,8 @@
     height: 100px;
     width: 100px;
 }
+
+.likeButtons{
+    display: flex;
+    justify-content: center;
+  }

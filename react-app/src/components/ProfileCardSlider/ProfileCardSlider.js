@@ -11,6 +11,8 @@ function ProfileCardSlider() {
 
     const dispatch = useDispatch()
 
+    const user = useSelector(state => state.session.user)
+
     useEffect(() => {
         dispatch(profileActions.getUsersThunk())
     }, [dispatch])
@@ -44,15 +46,32 @@ function ProfileCardSlider() {
     //     setSlideIndex(index)
     // }
 
+    // const likeUser = e => {
+    //     e.preventDefault()
+    //     const newLike = { userId: user.id, profileId: profiles.profile.id}
+    //     dispatch(profileActions.createLikeThunk(newLike))
+
+    // }
+
+    const noThanks = e => {
+
+    }
+
     return (
         <div className="cardSliderContainer">
         <div className="cardSlider">
             {profiles?.map((profile, index) => {
                 return (
+                    <>
                     <div key={profile.id} className={slideIndex === index + 1 ? "slide active-anim" : "slide"}>
-                        
-                        <ProfileCard profile={profile}/>
+                        <ProfileCard profile={profile}/> 
                     </div>
+                    {/* <div className="likeButtons">
+                        <button type='submit' onSubmit={likeUser}>Like</button>
+                        <button type='submit' onSubmit={noThanks}>No Thanks</button>
+                    </div> */}
+                    
+                    </>
                 )
             })}
             <SlideButton moveSlide={nextSlide} direction={"next"} />
