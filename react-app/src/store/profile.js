@@ -1,3 +1,5 @@
+import { createElement } from "react";
+
 const GET_USER = 'profile/GET_USER';
 const GET_USERS = 'profile/GET_USERS';
 const UPDATE_USER = 'profile/UPDATE_USER'
@@ -53,6 +55,47 @@ export const updateUserThunk = (user) => async(dispatch) => {
     }
 
 }
+
+
+const CREATE_LIKE = 'profile/CREATE_LIKE'
+const GET_LIKES = 'profile/GET_LIKE'
+
+const createLike = (like) => ({
+    type: CREATE_LIKE,
+    payload: like
+})
+
+const getLikes = (likes) => ({
+    type: GET_LIKES,
+    payload: likes
+})
+
+export const createLikeThunk = (like) => async(dispatch) => {
+
+    const res = await fetch('api/likes/create', {
+        method: 'POST',
+        headers:{"Content-Type":"application/json"},
+        body: JSON.stringify(like)
+    })
+
+    if (res.ok) {
+        const newLike = await res.json()
+        dispatch(createLike(newLike))
+    }
+}
+
+
+export const getLikesThunk = () => async(dispatch) => {
+
+    const res = await fetch('api/likes')
+
+    if (res.ok) {
+       const likes = await res.json()
+       dispatch(getLikes(likes))
+    }
+}
+
+
 
 let initialState = {}
 

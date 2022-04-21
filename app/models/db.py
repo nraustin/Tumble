@@ -25,6 +25,8 @@ class matchedRoom(db.Model):
     # secondUser = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     messages = db.relationship("Message", backref="matchedRooms", cascade="all, delete")
 
+    # likes = db.relationship("Like", backref="matchedRooms", cascade="all, delete")
+
     matchedUsers = db.relationship("User", secondary="matched_Users", backref="matchedRooms", cascade="all, delete")
 
 
