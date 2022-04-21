@@ -19,7 +19,7 @@ function UsersList() {
       setUsers(responseData.users);
     }
     fetchData();
-  }, []);
+  }, []); 
 
   // const handleImageSubmit = async(e) => {
   //   e.preventDefault();
