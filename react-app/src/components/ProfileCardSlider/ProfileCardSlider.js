@@ -11,7 +11,7 @@ function ProfileCardSlider() {
 
     const dispatch = useDispatch()
 
-    const user = useSelector(state => state.session.user)
+    // const user = useSelector(state => state.session.user)
 
     useEffect(() => {
         dispatch(profileActions.getUsersThunk())
@@ -53,9 +53,9 @@ function ProfileCardSlider() {
 
     // }
 
-    const noThanks = e => {
+    // const noThanks = e => {
 
-    }
+    // }
 
     return (
         <div className="cardSliderContainer">
