@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+// import * as profileActions from '../../store/profile'
 
 function ProfileCard(profile) {
   const [user, setUser] = useState({});
   const { userId }  = useParams();
+  // const dispatch = useDispatch()
 
   useEffect(() => {
     if (!userId) {
@@ -20,6 +23,17 @@ function ProfileCard(profile) {
     return null;
   }
 
+  // const handleLike = e => {
+  //   e.preventDefault()
+  //   const newLike = { userId, profileId: profile.profile.id}
+  //   dispatch(profileActions.createLikeThunk(newLike))
+
+  // }
+
+  // const handleNoThanks = e => {
+
+  // }
+
   return (
     <div className='swipeCardContainer'>
     
@@ -34,6 +48,7 @@ function ProfileCard(profile) {
             {profile.profile.images[0] ? <img className='swipeCardProfilePics' src={profile.profile.images[0].userImage} alt='https://www.pinclipart.com/picdir/middle/190-1902439_dog-daycare-twitter-round-logo-png-transparent-background.png'/>
                : null} 
           </div>
+
        
     </div>
   );
