@@ -27,13 +27,13 @@ class matchedRoom(db.Model):
 
     # likes = db.relationship("Like", backref="matchedRooms", cascade="all, delete")
 
-    matchedUsers = db.relationship("User", secondary="matched_Users", backref="matchedRooms", cascade="all, delete")
+    matchedUsers = db.relationship("User", secondary="matched_Users", backref="matchedRooms")
 
 
     def matchedRoom_to_dict(self):
         return{
             'id': self.id,
-            'matched': [ma.info() in ma in self.matchedUsers], 
+            'matched': [maU.info() for maU in self.matchedUsers], 
             'messages': [m.to_dict() for m in self.messages]
         }
 

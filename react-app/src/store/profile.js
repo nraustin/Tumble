@@ -80,7 +80,7 @@ export const createLikeThunk = (like) => async(dispatch) => {
 
     if (res.ok) {
         const newLike = await res.json()
-        dispatch(createLike(newLike))
+        return newLike
     }
 }
 
@@ -91,7 +91,7 @@ export const getLikesThunk = () => async(dispatch) => {
 
     if (res.ok) {
        const likes = await res.json()
-       dispatch(getLikes(likes))
+       return likes
     }
 }
 

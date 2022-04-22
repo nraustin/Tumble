@@ -1,10 +1,11 @@
 from flask import Blueprint, jsonify, request
 from app.models import Like, matchedRoom, User
+from flask_login import login_required, current_user
 from app.models import db
 
 like_routes = Blueprint('likes', __name__)
 
-@like_routes.route('/create')
+@like_routes.route('/create', methods=['POST'])
 def create_like():
 
     liker_id=request.json['userId']
@@ -22,10 +23,19 @@ def create_like():
 
     for like in likes:
         if like.liked_id == liker_id and like.liker_id == liked_id:
-            db.session.add(matchedRoom())
-            db.session.commmit()
+            new_match = matchedRoom()
 
-    return like.to_dict()
+            db.session.add(new_match)
+
+            current_user.matches.append(new_match)
+
+            # likedUser = User.query.get(liked_id)
+
+            # likedUser.matches.append(new_match)
+
+            db.session.commit()
+
+    return like.like_to_dict()
 
 
 

@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from app.models import matchedRoom
 
-matchedRoom_routes = Blueprint('matchedRoom', __name__)
+matchedRoom_routes = Blueprint('matches', __name__)
 
 @matchedRoom_routes.route('/<int:id>')
 def one_room(id): 
@@ -12,7 +12,7 @@ def one_room(id):
 
 
 @matchedRoom_routes.route('/<int:id>', methods=['DELETE'])
-def one_room(id): 
+def delete_room(id): 
 
     match = matchedRoom.query.get(id)
 

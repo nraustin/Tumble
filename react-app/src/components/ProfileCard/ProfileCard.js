@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import * as profileActions from '../../store/profile'
 
-function ProfileCard(profile) {
+function ProfileCard(currentProf) {
   const [user, setUser] = useState({});
   const { userId }  = useParams();
   const dispatch = useDispatch()
+
+  const userS = useSelector(state => state.session.user)
 
   useEffect(() => {
     if (!userId) {
@@ -23,9 +25,12 @@ function ProfileCard(profile) {
     return null;
   }
 
+  
+
   const likeUser = e => {
     e.preventDefault()
-    const newLike = { userId, profileId: profile.profile.id}
+   
+    const newLike = { userId: userS.id, profileId: currentProf.profile?.id }
     dispatch(profileActions.createLikeThunk(newLike))
 
   }
@@ -34,29 +39,31 @@ function ProfileCard(profile) {
     e.preventDefault()
   }
 
+  console.log(currentProf)
+
   return (
     <>
-    <div className='swipeCardContainer'>
+    {/* <div className='swipeCardContainer'> */}
     
-          <strong>User Id</strong> {profile.profile.id}
+          <strong>User Id</strong> {currentProf.profile?.id}
         
-          <strong>Username</strong> {profile.profile.name}
+          <strong>Username</strong> {currentProf.profile?.name}
         
-          <strong>Email</strong> {profile.profile.email}
+          <strong>Email</strong> {currentProf.profile?.email}
 
-          <strong>Age</strong> {profile.profile.age}
-          <strong>About Me</strong> {profile.profile.biography}
+          <strong>Age</strong> {currentProf.profile?.age}
+          <strong>About Me</strong> {currentProf.profile?.biography}
           <div className="likeButtons">
-            <button type='submit' onSubmit={likeUser}>Like</button>
-            <button type='submit' onSubmit={noThanks}>No Thanks</button>
+            <button onClick={likeUser}>Like</button>
+            <button onClick={noThanks}>No Thanks</button>
           </div>
           <div className='swipeCardProfilePicsContainer'>
-            {profile.profile.images[0] ? <img className='swipeCardProfilePics' src={profile.profile.images[0].userImage} alt='https://www.pinclipart.com/picdir/middle/190-1902439_dog-daycare-twitter-round-logo-png-transparent-background.png'/>
+            {currentProf.images ? <img className='swipeCardProfilePics' src={currentProf.images[0].userImage} alt='https://www.pinclipart.com/picdir/middle/190-1902439_dog-daycare-twitter-round-logo-png-transparent-background.png'/>
                : null} 
           </div>
           
  
-    </div>
+    {/* </div> */}
     
     </>
   );

@@ -56,7 +56,7 @@ class User(db.Model, UserMixin):
             'age': self.age,
             'dog': self.dog,
             'location': self.location,
-            'matches': [ma.to_dict() for ma in self.matches],
+            'matches': [ma.matchedRoom_to_dict() for ma in self.matches],
             'images': [i.image_to_dict() for i in self.images],
             'likes': [l.like_to_dict() for l in self.likes]
         }
