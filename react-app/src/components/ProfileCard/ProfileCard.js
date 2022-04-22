@@ -59,7 +59,7 @@ function ProfileCard(currentProf) {
           </div>
           <div className='swipeCardProfilePicsContainer'>
             {currentProf.images ? <img className='swipeCardProfilePics' src={currentProf.images[0].userImage} alt='https://www.pinclipart.com/picdir/middle/190-1902439_dog-daycare-twitter-round-logo-png-transparent-background.png'/>
-               : null} 
+               : <img src='https://www.pinclipart.com/picdir/middle/190-1902439_dog-daycare-twitter-round-logo-png-transparent-background.png'/>} 
           </div>
           
  

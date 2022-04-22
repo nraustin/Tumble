@@ -9,6 +9,7 @@ import { authenticate } from './store/session';
 import ProfilePage from './components/ProfilePage/ProfilePage';
 import ProfileCard from './components/ProfileCard/ProfileCard';
 import ProfileCardSlider from './components/ProfileCardSlider/ProfileCardSlider';
+import UserMatches from './components/UserMatches/UserMatches';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -36,6 +37,9 @@ function App() {
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path='/matches' exact={true}>
+          <UserMatches/>
         </Route>
         <Route path='/users' exact={true} >
           <ProfileCardSlider/>

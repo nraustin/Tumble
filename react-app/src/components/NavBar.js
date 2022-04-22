@@ -66,8 +66,9 @@ const NavBar = () => {
                 <MenuItem icon={<FiHeart/>}>
                   <NavLink to='/users' exact={true} activeClassName='active'>Browse</NavLink>
                 </MenuItem>
-                
-                
+                <MenuItem icon={<FiHeart/>}>
+                  <NavLink to='/matches' exact={true} activeClassName='active'>Matches</NavLink>
+                </MenuItem>
               </Menu>
             </SidebarContent>
             <SidebarFooter>

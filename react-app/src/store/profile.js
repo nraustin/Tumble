@@ -95,6 +95,18 @@ export const getLikesThunk = () => async(dispatch) => {
     }
 }
 
+// --------------------------------------------------------------MATCHES
+
+export const getMatchesThunk = () => async(dispatch) => {
+
+    const res = await fetch(`api/matches`)
+
+    if (res.ok) {
+        const matches = await res.json()
+        return matches
+    }
+}
+
 
 
 let initialState = {}

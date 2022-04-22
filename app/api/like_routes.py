@@ -29,9 +29,9 @@ def create_like():
 
             current_user.matches.append(new_match)
 
-            # likedUser = User.query.get(liked_id)
+            likedUser = User.query.get(liked_id)
 
-            # likedUser.matches.append(new_match)
+            likedUser.matches.append(new_match)
 
             db.session.commit()
 
