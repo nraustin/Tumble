@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
@@ -11,10 +11,13 @@ import ProfileCard from './components/ProfileCard/ProfileCard';
 import ProfileCardSlider from './components/ProfileCardSlider/ProfileCardSlider';
 import UserMatches from './components/UserMatches/UserMatches';
 import MatchRoom from './components/MatchRoom/MatchRoom';
+import SplashPage from './components/SplashPage/SplashPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+
+  const user = useSelector(state => state.session.user)
 
 
   useEffect(() => {
@@ -29,9 +32,14 @@ function App() {
   }
 
   return (
+    <>
     <div className='App'>
       <BrowserRouter>
-        <NavBar/>
+         {loaded && user ? 
+        <NavBar/> :
+        <Route path='/' exact={true} >
+          <SplashPage/>
+        </Route>}
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -39,27 +47,28 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <Route path='/matches' exact={true}>
+        <ProtectedRoute path='/matches' exact={true}>
           <UserMatches/>
-        </Route>
-        <Route path='/matches/:matchId' exact={true}>
+        </ProtectedRoute>
+        <ProtectedRoute path='/matches/:matchId' exact={true}>
           <MatchRoom/>
-        </Route>
-        <Route path='/users' exact={true} >
+        </ProtectedRoute>
+        <ProtectedRoute path='/users' exact={true} >
           <ProfileCardSlider/>
-        </Route>
+        </ProtectedRoute>
         <ProtectedRoute path='/users/profile' exact={true} >
           <ProfilePage />
         </ProtectedRoute>
-        <Route path='/users/:userId' exact={true} >
+        <ProtectedRoute path='/users/:userId' exact={true} >
           <ProfileCard />
-        </Route>
-        <ProtectedRoute path='/' exact={true} >
         </ProtectedRoute>
-        </Switch>
+        <Route path='/' exact={true} >
+        </Route>
+      </Switch>
         </BrowserRouter>
-      </div>
-  );
+        </div>
+      </>
+      );
 }
 
 export default App;

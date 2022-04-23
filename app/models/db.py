@@ -73,4 +73,20 @@ class Like(db.Model):
             'liker_id': self.liker_id,
             'liked_id': self.liked_id
         }
+
+class Unlike(db.Model):
+    __tablename__ = "unlikes"
+
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
+    unliker_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    unliked_id = db.Column(db. Integer, db.ForeignKey("users.id"))
+
+    def unlike_to_dict(self):
+        return{
+            'id': self.id,
+            'unliker_id': self.unliker_id,
+            'unliked_id': self.unliked_id
+        }
+
+    
     

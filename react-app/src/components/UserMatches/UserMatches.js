@@ -15,7 +15,6 @@ const UserMatches = () => {
         dispatch(profileActions.getUserThunk(user.id))
     }, [dispatch])
 
-    console.log(user.matches[0].matched)
     
     return (
         <>

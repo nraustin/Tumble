@@ -1,19 +1,25 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LogoutButton from './auth/LogoutButton';
 import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarFooter, SidebarContent} from "react-pro-sidebar"
 import { FiHome, FiLogIn, FiLogOut, FiHeart, FiThumbsUp, FiUserPlus, FiUser, FiUsers, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 
+import * as profileActions from '.././store/profile'
 import "react-pro-sidebar/dist/css/styles.css";
 import './NavBar.css'
 
 const NavBar = () => {
 
   const user = useSelector(state => state.session.user)
+  const dispatch = useDispatch()
 
   const [menuCollapse, setMenuCollapse] = useState(false)
+
+  useEffect(() =>{
+    dispatch(profileActions.getUserThunk(user?.id))
+  }, [dispatch, user?.id, user?.matches])
 
   const menuClick = () => {
     menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true)
@@ -72,6 +78,16 @@ const NavBar = () => {
                 <MenuItem icon={<FiThumbsUp/>}>
                   <NavLink to='likes/profile' exact={true} activeClassName='active'>Likes</NavLink>
                 </MenuItem>
+                {user?.matches[0] ?
+                  user.matches?.map((match) => (
+                    match.matched.map((matchedUser) => {
+                      return (matchedUser.id !== user.id && (
+                    <MenuItem className='matchedUserIconContainer'icon={matchedUser?.images ? <img src={matchedUser?.images[0].userImage} className='sidebarMatchedUserIcon' alt=''/> : <img src='https://cdn-icons-png.flaticon.com/512/616/616408.png' className='sidebarMatchedUserIcon' alt=''/>}>
+                       <NavLink to={`/matches/${match.id}`} exact={true} className='sidebarMatchUsername' activeClassName='active'>{matchedUser?.name}</NavLink>
+                    </MenuItem>
+
+                    ))}))) : null}
+                
               </Menu>
             </SidebarContent>
             <SidebarFooter>

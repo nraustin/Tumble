@@ -19,7 +19,9 @@ class User(db.Model, UserMixin):
     updated_at = db.Column(db.DateTime, default=datetime.now(), nullable=False)
 
     images = db.relationship("Image", backref="users", cascade="all, delete")
+
     likes = db.relationship("Like", primaryjoin="User.id==Like.liked_id", backref="users", cascade="all, delete")
+    unlikes = db.relationship("Unlike", primaryjoin="User.id==Unlike.unliked_id", backref="users", cascade="all, delete")
 
     matches = db.relationship("matchedRoom", secondary="matched_Users", backref="users")
 
@@ -44,7 +46,8 @@ class User(db.Model, UserMixin):
             'biography': self.biography,
             'age': self.age,
             'dog': self.dog,
-            'location': self.location
+            'location': self.location,
+            'images': [im.image_to_dict() for im in self.images]
         }
 
     def to_dict(self):
@@ -58,5 +61,6 @@ class User(db.Model, UserMixin):
             'location': self.location,
             'matches': [ma.matchedRoom_to_dict() for ma in self.matches],
             'images': [i.image_to_dict() for i in self.images],
-            'likes': [l.like_to_dict() for l in self.likes]
+            'likes': [l.like_to_dict() for l in self.likes],
+            'unlikes': [ul.unlike_to_dict() for ul in self.unlikes]
         }

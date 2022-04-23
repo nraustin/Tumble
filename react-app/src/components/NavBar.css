@@ -85,6 +85,21 @@
   border-radius: 100%;
 }
 
+.sidebarMatchedUserIcon {
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+
+}
+
+.matchedUserIconContainer .pro-inner-item .pro-icon-wrapper{
+  background-color: none;
+}
+
+.sidebarMatchUsername{
+  padding-left: 7px;
+}
+
 .userText{
   padding-top: 18px;
   padding-left: 20px;

@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
+import SignUpForm from './SignUpForm';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const [signUpForm, showSignUpForm] = useState(false)
+
+  const history = useHistory()
+
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
@@ -26,11 +32,18 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
+  const goBack = () => {
+    showSignUpForm(true)
+  }
+
   if (user) {
     return <Redirect to='/' />;
   }
 
   return (
+    <>
+    {!signUpForm ?
+    <>
     <form onSubmit={onLogin}>
       <div>
         {errors.map((error, ind) => (
@@ -59,6 +72,10 @@ const LoginForm = () => {
         <button type='submit'>Login</button>
       </div>
     </form>
+    <button onClick={goBack}>Don't have an account? Sign up!</button>
+    </>
+    : <SignUpForm/> }
+    </>
   );
 };
 
