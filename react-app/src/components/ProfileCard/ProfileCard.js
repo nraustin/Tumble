@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import * as profileActions from '../../store/profile'
 
-function ProfileCard(currentProf) {
+function ProfileCard({...allProfProps}) {
   const [user, setUser] = useState({});
   const { userId }  = useParams();
   const dispatch = useDispatch()
 
   const userS = useSelector(state => state.session.user)
+
+  console.log(allProfProps.dog?.id)
 
   useEffect(() => {
     if (!userId) {
@@ -27,10 +29,18 @@ function ProfileCard(currentProf) {
 
   
 
-  const likeUser = e => {
+  const likePersonUser = e => {
     e.preventDefault()
    
-    const newLike = { userId: userS.id, profileId: currentProf.profile?.id }
+    const newLike = { userId: userS.id, profileId: allProfProps.person?.id }
+    dispatch(profileActions.createLikeThunk(newLike))
+
+  }
+
+  const likeDogUser = e => {
+    e.preventDefault()
+   
+    const newLike = { userId: userS.id, profileId: allProfProps.dog?.id }
     dispatch(profileActions.createLikeThunk(newLike))
 
   }
@@ -39,28 +49,49 @@ function ProfileCard(currentProf) {
     e.preventDefault()
   }
 
-  console.log(currentProf)
 
   return (
     <>
     {/* <div className='swipeCardContainer'> */}
-    
-          <strong>User Id</strong> {currentProf.profile?.id}
+      {userS && userS.dog === true?
+          <>
+          <strong>User Id</strong> {allProfProps.person?.id}
         
-          <strong>Username</strong> {currentProf.profile?.name}
+          <strong>Username</strong> {allProfProps.person?.name}
         
-          <strong>Email</strong> {currentProf.profile?.email}
+          <strong>Email</strong> {allProfProps.person?.email}
 
-          <strong>Age</strong> {currentProf.profile?.age}
-          <strong>About Me</strong> {currentProf.profile?.biography}
+          <strong>Age</strong> {allProfProps.person?.age}
+          <strong>About Me</strong> {allProfProps.person?.biography}
           <div className="likeButtons">
-            <button onClick={likeUser}>Like</button>
+            <button onClick={likePersonUser}>Like</button>
             <button onClick={noThanks}>No Thanks</button>
           </div>
           <div className='swipeCardProfilePicsContainer'>
-            {currentProf.images ? <img className='swipeCardProfilePics' src={currentProf.images[0].userImage} alt='https://www.pinclipart.com/picdir/middle/190-1902439_dog-daycare-twitter-round-logo-png-transparent-background.png'/>
-               : <img src='https://www.pinclipart.com/picdir/middle/190-1902439_dog-daycare-twitter-round-logo-png-transparent-background.png'/>} 
+            {allProfProps.person?.images ? <img className='swipeCardProfilePics' src={allProfProps.person.images[0]?.userImage} alt='https://cdn-icons-png.flaticon.com/512/616/616408.png'/>
+               : <img src='https://cdn-icons-png.flaticon.com/512/616/616408.png'/>} 
           </div>
+          </>
+          :
+          <>
+          <strong>User Id</strong> {allProfProps.dog?.id}
+        
+          <strong>Username</strong> {allProfProps.dog?.name}
+        
+          <strong>Email</strong> {allProfProps.dog?.email}
+
+          <strong>Age</strong> {allProfProps.dog?.age}
+          <strong>About Me</strong> {allProfProps.dog?.biography}
+          <div className="likeButtons">
+            <button onClick={likeDogUser}>Like</button>
+            <button onClick={noThanks}>No Thanks</button>
+          </div>
+          <div className='swipeCardProfilePicsContainer'>
+            {allProfProps.dog?.images ? <img className='swipeCardProfilePics' src={allProfProps.dog?.images[0]?.userImage} alt='https://cdn-icons-png.flaticon.com/512/616/616408.png'/>
+               : <img src='https://cdn-icons-png.flaticon.com/512/616/616408.png'/>} 
+          </div>
+          </>}
+
           
  
     {/* </div> */}

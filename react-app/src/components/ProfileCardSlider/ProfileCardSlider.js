@@ -22,59 +22,97 @@ function ProfileCardSlider() {
     const profilesObj = useSelector(state => state.profile)
     const profiles = Object.values(profilesObj)
 
+
     const currentProf = profiles[profileIndex]
+
+    const dogProfiles = profiles.filter(profile => profile.dog === true)
+    const peopleProfiles = profiles.filter(profile => profile.dog === false)
+
+
+    const currentDogProf = dogProfiles[profileIndex]
+    const currentPeopleProf = peopleProfiles[profileIndex]
+
+    const allProfProps = {
+        dog: currentDogProf,
+        person: currentPeopleProf
+    }
 
 
     console.log(currentProf)
 
-    const nextSlide = () => {
-        if (slideIndex !== profiles.length){
+    // Only way I could get it functioning on a time crunch. Needs to be refactored
+
+    const nextDogSlide = () => {
+        if (slideIndex !== dogProfiles.length){
             setSlideIndex(slideIndex + 1)
             setProfileIndex(profileIndex + 1)
         }
-        else if (slideIndex === profiles.length){
+        else if (slideIndex === dogProfiles.length){
             setSlideIndex(1)
             setProfileIndex(0)
         }
     }
 
-    const prevSlide = () => {
+    const prevDogSlide = () => {
         if (slideIndex !== 1){
             setSlideIndex(slideIndex - 1)
             setProfileIndex(profileIndex - 1)
         }
         else if (slideIndex === 1){
-            setSlideIndex(profiles.length)
-            setProfileIndex(profiles.length - 1)
+            setSlideIndex(dogProfiles.length)
+            setProfileIndex(dogProfiles.length - 1)
         }
     }
-    
-    // const move = index => {
-    //     setSlideIndex(index)
-    // }
 
-    // const likeUser = e => {
-    //     e.preventDefault()
-    //     const newLike = { userId: user.id, profileId: profiles.profile.id}
-    //     dispatch(profileActions.createLikeThunk(newLike))
+    const nextPeopleSlide = () => {
+        if (slideIndex !== peopleProfiles.length){
+            setSlideIndex(slideIndex + 1)
+            setProfileIndex(profileIndex + 1)
+        }
+        else if (slideIndex === peopleProfiles.length){
+            setSlideIndex(1)
+            setProfileIndex(0)
+        }
+    }
 
-    // }
+    const prevPeopleSlide = () => {
+        if (slideIndex !== 1){
+            setSlideIndex(slideIndex - 1)
+            setProfileIndex(profileIndex - 1)
+        }
+        else if (slideIndex === 1){
+            setSlideIndex(peopleProfiles.length)
+            setProfileIndex(peopleProfiles.length - 1)
+        }
+    }
 
     // const noThanks = e => {
 
     // }
 
     return (
+        
         <div className="cardSliderContainer">
         <div className="cardSlider">
-            <div key={currentProf} className={slideIndex === profileIndex + 1 ? "slide active-anim" : "slide"}>
-                <ProfileCard profile={currentProf}/>   
+            {user && user.dog === true ?
+            <>
+            <div key={currentPeopleProf} className={slideIndex === profileIndex + 1 ? "slide active-anim" : "slide"}>
+                <ProfileCard {...allProfProps}/>   
             </div>
                     
-            <SlideButton moveSlide={nextSlide} direction={"next"} />
-            <SlideButton moveSlide={prevSlide} direction={"prev"}/>
-
-            
+            <SlideButton moveSlide={nextPeopleSlide} direction={"next"} />
+            <SlideButton moveSlide={prevPeopleSlide} direction={"prev"}/> 
+            </> 
+            :
+            <>
+            <div key={currentDogProf} className={slideIndex === profileIndex + 1 ? "slide active-anim" : "slide"}>
+            <ProfileCard {...allProfProps}/>   
+            </div>
+                    
+            <SlideButton moveSlide={nextDogSlide} direction={"next"} />
+            <SlideButton moveSlide={prevDogSlide} direction={"prev"}/>
+            </> }
+  
           </div>
         </div>
     )

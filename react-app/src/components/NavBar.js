@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LogoutButton from './auth/LogoutButton';
 import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarFooter, SidebarContent} from "react-pro-sidebar"
-import { FiHome, FiLogIn, FiLogOut, FiHeart, FiUserPlus, FiUser, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
+import { FiHome, FiLogIn, FiLogOut, FiHeart, FiThumbsUp, FiUserPlus, FiUser, FiUsers, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 
 import "react-pro-sidebar/dist/css/styles.css";
 import './NavBar.css'
@@ -27,7 +27,7 @@ const NavBar = () => {
             <SidebarHeader>
             {user ? 
             <div className='userBox'>
-              {user.images[0] ? <img className='userIcon' src={user.images[0].userImage} alt='https://www.pinclipart.com/picdir/middle/190-1902439_dog-daycare-twitter-round-logo-png-transparent-background.png'/> : <img className= 'userIcon' src='https://www.pinclipart.com/picdir/middle/190-1902439_dog-daycare-twitter-round-logo-png-transparent-background.png' alt=''/>}
+              {user.images[0] ? <img className='userIcon' src={user.images[0].userImage} alt='https://cdn-icons-png.flaticon.com/512/616/616408.png'/> : <img className= 'userIcon' src='https://cdn-icons-png.flaticon.com/512/616/616408.png' alt=''/>}
               <div className='userText'>
                 <p>{user?.name}</p>
               </div>
@@ -63,11 +63,14 @@ const NavBar = () => {
                       <NavLink to='/sign-up' exact={true} activeClassName='active'>Sign Up</NavLink>
                     </MenuItem>
                 </> }
-                <MenuItem icon={<FiHeart/>}>
+                <MenuItem icon={<FiUsers/>}>
                   <NavLink to='/users' exact={true} activeClassName='active'>Browse</NavLink>
                 </MenuItem>
                 <MenuItem icon={<FiHeart/>}>
                   <NavLink to='/matches' exact={true} activeClassName='active'>Matches</NavLink>
+                </MenuItem>
+                <MenuItem icon={<FiThumbsUp/>}>
+                  <NavLink to='likes/profile' exact={true} activeClassName='active'>Likes</NavLink>
                 </MenuItem>
               </Menu>
             </SidebarContent>

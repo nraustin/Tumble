@@ -10,6 +10,7 @@ import ProfilePage from './components/ProfilePage/ProfilePage';
 import ProfileCard from './components/ProfileCard/ProfileCard';
 import ProfileCardSlider from './components/ProfileCardSlider/ProfileCardSlider';
 import UserMatches from './components/UserMatches/UserMatches';
+import MatchRoom from './components/MatchRoom/MatchRoom';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -40,6 +41,9 @@ function App() {
         </Route>
         <Route path='/matches' exact={true}>
           <UserMatches/>
+        </Route>
+        <Route path='/matches/:matchId' exact={true}>
+          <MatchRoom/>
         </Route>
         <Route path='/users' exact={true} >
           <ProfileCardSlider/>

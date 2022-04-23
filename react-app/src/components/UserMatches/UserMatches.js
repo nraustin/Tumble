@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector} from 'react-redux'
-import { useHistory} from 'react-router-dom';
+import { NavLink, useHistory} from 'react-router-dom';
 import * as profileActions from '../../store/profile'
 
 import './UserMatches.css'
@@ -15,7 +15,7 @@ const UserMatches = () => {
         dispatch(profileActions.getUserThunk(user.id))
     }, [dispatch])
 
-    console.log(user.matches[0].matched[0].name)
+    console.log(user.matches[0].matched)
     
     return (
         <>
@@ -24,19 +24,22 @@ const UserMatches = () => {
         
         <div className='allMatchesContainer'>
         <div className='matchesContainer'>
-            {user.matches?.map((match) => {
-                return (
-                <div className='matchCard'>
-                    {match?.matched[0].images ? <img src={match?.matched[0].images[0]} className='matchCardImg'/> 
-                    : <img src='https://www.pinclipart.com/picdir/middle/190-1902439_dog-daycare-twitter-round-logo-png-transparent-background.png' className='matchCardImg'/>}
-                        <div className='matchCardName'>
-                            {match?.matched[0].name}
-                            </div>
-                        <div className='matchCardLocation'>
-                            {match?.matched[0].location ? match?.matched[0].location : <p>Somewhere anonymous</p>}
-                        </div>
-                    </div>
-            )})}
+        
+            {user.matches?.map((match) => (
+                match.matched.map((matchedUser) => {
+                        return (matchedUser.id !== user.id && ( 
+                        <NavLink to={`/matches/${match.id}`} className='matchCard'>
+                            {matchedUser?.images ? <img src={matchedUser?.images[0]} className='matchCardImg'/> 
+                            : <img src='https://cdn-icons-png.flaticon.com/512/616/616408.png' className='matchCardImg'/>}
+                                <div className='matchCardName'>
+                                    {matchedUser?.name}
+                                    </div>
+                                <div className='matchCardLocation'>
+                                    {matchedUser?.location ? matchedUser?.location : <p>Somewhere anonymous</p>}
+                                </div>
+                            </NavLink>)
+                )})
+            ))}
         </div>
         </div>
         </>

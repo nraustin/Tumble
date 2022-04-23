@@ -54,7 +54,7 @@ h1{
     color: #adadad
   }
 
-  .logoutText :hover{
-    color: white;
+  .logoutText:hover{
+    color: rgb(215, 76, 76)
   }
   
