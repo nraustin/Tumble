@@ -27,7 +27,7 @@ class matchedRoom(db.Model):
 
     # likes = db.relationship("Like", backref="matchedRooms", cascade="all, delete")
 
-    matchedUsers = db.relationship("User", secondary="matched_Users", backref="matches")
+    matchedUsers = db.relationship("User", secondary="matched_Users", back_populates="matches")
 
 
     def matchedRoom_to_dict(self):

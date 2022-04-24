@@ -27,6 +27,6 @@ def delete_room():
     db.session.delete(match)
     db.session.commit()
 
-    return deleted_match.matchRoom_to_dict()
+    return deleted.match.matchRoom_to_dict()
 
 
