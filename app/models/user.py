@@ -19,11 +19,12 @@ class User(db.Model, UserMixin):
     updated_at = db.Column(db.DateTime, default=datetime.now(), nullable=False)
 
     images = db.relationship("Image", backref="users", cascade="all, delete")
+    messages = db.relationship("Message", backref="users", cascade="all, delete")
 
     likes = db.relationship("Like", primaryjoin="User.id==Like.liked_id", backref="users", cascade="all, delete")
     unlikes = db.relationship("Unlike", primaryjoin="User.id==Unlike.unliked_id", backref="users", cascade="all, delete")
 
-    matches = db.relationship("matchedRoom", secondary="matched_Users", backref="users")
+    matches = db.relationship("matchedRoom", secondary="matched_Users", back_populates="matchedUsers")
 
 
     @property
@@ -59,6 +60,7 @@ class User(db.Model, UserMixin):
             'age': self.age,
             'dog': self.dog,
             'location': self.location,
+            'messages': [me.message_to_dict() for me in self.messages],
             'matches': [ma.matchedRoom_to_dict() for ma in self.matches],
             'images': [i.image_to_dict() for i in self.images],
             'likes': [l.like_to_dict() for l in self.likes],

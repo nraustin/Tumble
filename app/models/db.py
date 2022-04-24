@@ -23,11 +23,11 @@ class matchedRoom(db.Model):
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     # firstUser = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     # secondUser = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    messages = db.relationship("Message", backref="matchedRooms", cascade="all, delete")
+    messages = db.relationship("Message", back_populates="match", cascade="all, delete")
 
     # likes = db.relationship("Like", backref="matchedRooms", cascade="all, delete")
 
-    matchedUsers = db.relationship("User", secondary="matched_Users", backref="matchedRooms")
+    matchedUsers = db.relationship("User", secondary="matched_Users", backref="matches")
 
 
     def matchedRoom_to_dict(self):
@@ -45,6 +45,8 @@ class Message(db.Model):
     content = db.Column(db.Text, nullable=False)
     match_id = db.Column(db.Integer, db.ForeignKey("matchedRooms.id"), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now(), nullable=False)
+
+    match = db.relationship('matchedRoom', back_populates='messages')
 
     def message_to_dict(self):
         return{

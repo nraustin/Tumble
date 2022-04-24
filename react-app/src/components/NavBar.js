@@ -51,9 +51,9 @@ const NavBar = () => {
             </SidebarHeader>
             <SidebarContent>
               <Menu iconShape='circle'>
-                <MenuItem icon={<FiHome/>}>
+                {/* <MenuItem icon={<FiHome/>}>
                   <NavLink to='/' exact={true} active={true} activeClassName='active'>Home</NavLink>
-                </MenuItem>
+                </MenuItem> */}
                 
                 {user ?
                 <MenuItem icon={<FiUser/>}>
@@ -82,7 +82,7 @@ const NavBar = () => {
                   user.matches?.map((match) => (
                     match.matched.map((matchedUser) => {
                       return (matchedUser.id !== user.id && (
-                    <MenuItem className='matchedUserIconContainer'icon={matchedUser?.images ? <img src={matchedUser?.images[0].userImage} className='sidebarMatchedUserIcon' alt=''/> : <img src='https://cdn-icons-png.flaticon.com/512/616/616408.png' className='sidebarMatchedUserIcon' alt=''/>}>
+                    <MenuItem className='matchedUserIconContainer'icon={matchedUser?.images ? <img src={matchedUser?.images[0]?.userImage} className='sidebarMatchedUserIcon' alt=''/> : <img src='https://cdn-icons-png.flaticon.com/512/616/616408.png' className='sidebarMatchedUserIcon' alt=''/>}>
                        <NavLink to={`/matches/${match.id}`} exact={true} className='sidebarMatchUsername' activeClassName='active'>{matchedUser?.name}</NavLink>
                     </MenuItem>
 

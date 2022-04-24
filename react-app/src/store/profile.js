@@ -99,7 +99,22 @@ export const getLikesThunk = () => async(dispatch) => {
 
 export const getMatchesThunk = () => async(dispatch) => {
 
-    const res = await fetch(`api/matches`)
+    const res = await fetch('api/matches')
+
+    if (res.ok) {
+        const matches = await res.json()
+        return matches
+    }
+}
+
+export const deleteMatchThunk = (matchId) => async (dispatch) => {
+
+    const res = await fetch('/api/matches/delete', {
+        method: 'DELETE',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ matchId })
+    })
+
 
     if (res.ok) {
         const matches = await res.json()

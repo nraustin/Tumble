@@ -1,17 +1,8 @@
 from flask import Blueprint, jsonify, request
-from app.models import matchedRoom, User, matched_Users
+from app.models import db, matchedRoom, User, matched_Users
 
 
 matchedRoom_routes = Blueprint('matches', __name__)
-
-
-
-# @matchedRoom_routes.route('/')
-# def all_user_matches():
-
-#     return current_user.matches
-
-
 
 
 
@@ -23,14 +14,19 @@ def one_room(id):
     return match.to_dict()
 
 
-@matchedRoom_routes.route('/<int:id>', methods=['DELETE'])
-def delete_room(id): 
+@matchedRoom_routes.route('/delete', methods=['DELETE'])
+def delete_room(): 
 
-    match = matchedRoom.query.get(id)
+    print('\n\n\n', request.json['matchId'], '\n\n\n')
+    match_id=request.json['matchId']
+
+    match = matchedRoom.query.get(match_id)
+
+    deleted_match = match.matchedRoom_to_dict()
 
     db.session.delete(match)
     db.session.commit()
 
-    return match.to_dict()
+    return deleted_match.matchRoom_to_dict()
 
 
