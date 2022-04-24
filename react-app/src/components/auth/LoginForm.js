@@ -4,6 +4,8 @@ import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
 import SignUpForm from './SignUpForm';
 
+import './LoginForm.css'
+
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
@@ -41,16 +43,16 @@ const LoginForm = () => {
   }
 
   return (
-    <>
+    <div className='loginFormContainer'>
     {!signUpForm ?
     <>
-    <form onSubmit={onLogin}>
-      <div>
+    <form onSubmit={onLogin} className='loginForm'>
+      <div className='loginFormDiv'>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
+      <div className='loginFormDiv'>
         <label htmlFor='email'>Email</label>
         <input
           name='email'
@@ -60,7 +62,7 @@ const LoginForm = () => {
           onChange={updateEmail}
         />
       </div>
-      <div>
+      <div className='loginFormDiv'>
         <label htmlFor='password'>Password</label>
         <input
           name='password'
@@ -69,13 +71,18 @@ const LoginForm = () => {
           value={password}
           onChange={updatePassword}
         />
-        <button type='submit'>Login</button>
+        <div className='loginButtonContainer'>
+          <button type='submit' className='loginButton'>Login</button>
+        </div>
       </div>
     </form>
-    <button onClick={goBack}>Don't have an account? Sign up!</button>
+    <div className='loginFormSignUpButtonContainer'>
+      <button onClick={goBack} className='loginFormSignUpButton'>Don't have an account? 
+      Sign up!</button>
+    </div>
     </>
     : <SignUpForm/> }
-    </>
+    </div>
   );
 };
 

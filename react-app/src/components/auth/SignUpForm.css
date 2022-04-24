@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=Alata&family=Chivo&family=Mitr:wght@300&family=Montserrat+Alternates:wght@600&family=Prompt:wght@600&display=swap');
+
+
+.signUpContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: rgb(68, 148, 246);
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0px 10px 20px black;
+}
+
+.signUpForm{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.signUpFormDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+    font-family:'Mitr', sans-serif;
+    color: rgb(223, 231, 233);
+}
+
+.signUpFormSignUpButton{
+    padding: 5px;
+    border: none;
+    background-color: rgb(46, 115, 251);
+    color: rgb(223, 231, 233);
+    width: 150px;
+    font-family: 'Mitr', sans-serif;
+    border-radius: 2px 2px 2px 2px;
+}
+
+.signUpFormLogInButton{
+    padding: 5px;
+    border: none;
+    background-color: rgb(0, 85, 255);
+    color: rgb(223, 231, 233);
+    width: 150px;
+    font-family: 'Mitr', sans-serif;
+    border-radius: 2px 2px 2px 2px;
+}
+.signUpFormSignUpButton:hover,
+.signUpFormLogInButton:hover{
+    cursor: pointer;
+    background-color: blue;
+}
+
+.signUpFormButtons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    padding-top: 10px;
+}
+
+
+input{
+    background-image:linear-gradient(to right,rgb(162, 216, 247), rgb(234, 234, 234));
+    border-radius: 2px 2px 2px 2px;
+    border-style: none;
+    height: 20px;
+    /* box-shadow: 5px 5px 10px; */
+    outline: none;
+}
+

@@ -6,7 +6,8 @@
 
 .splashBody{
     height: 100vh;
-    background-image: linear-gradient(rgb(254, 254, 254), rgb(175, 225, 254))
+    background-image: linear-gradient(rgb(254, 254, 254), rgb(175, 225, 254));
+    overflow-y: hidden;
 }
 
 .splashContainer{
@@ -46,6 +47,8 @@
    color: rgb(255, 249, 249);
    justify-items: center;
    border-radius: 4%;
+   -webkit-text-stroke-width: 1px;
+   -webkit-text-stroke-color: wheat;
    font-family: Circular20,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Ubuntu,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
 }
 
@@ -79,6 +82,7 @@
 
 .splashDog{
     padding-top: 100px;
+    padding-bottom: 50px;
     height: 100px;
     width: 100px;
 }

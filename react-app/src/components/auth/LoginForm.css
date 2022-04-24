@@ -1,0 +1,62 @@
+.loginFormContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: rgb(68, 148, 246);
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0px 10px 20px black;
+}
+
+.loginForm{
+    display: flex;
+    flex-direction: column;
+}
+
+.loginFormDiv{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    font-family:'Mitr', sans-serif;
+    color: rgb(223, 231, 233);
+}
+
+.loginButton{
+    padding: 5px;
+    border: none;
+    background-color: rgb(0, 85, 255);
+    color: rgb(223, 231, 233);
+    width: 150px;
+    font-family: 'Mitr', sans-serif;
+    border-radius: 2px 2px 2px 2px;
+}
+.loginButtonContainer{
+    padding-top: 25px;
+}
+
+.loginButton:hover{
+    cursor: pointer;
+    background-color: blue;
+    
+}
+
+.loginFormSignUpButton{
+    padding: 5px;
+    border: none;
+    background-color: rgb(46, 115, 251);
+    color: rgb(223, 231, 233);
+    width: 150px;
+    font-family: 'Mitr', sans-serif;
+    border-radius: 2px 2px 2px 2px;
+
+}
+.loginFormSignUpButtonContainer{
+    padding-top: 5px;
+}
+
+.loginFormSignUpButton:hover{
+    cursor: pointer;
+    background-color: blue;
+}

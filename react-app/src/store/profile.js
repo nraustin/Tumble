@@ -56,6 +56,8 @@ export const updateUserThunk = (user) => async(dispatch) => {
 
 }
 
+// ---------------------------------------------------------LIKES
+
 
 const CREATE_LIKE = 'profile/CREATE_LIKE'
 const GET_LIKES = 'profile/GET_LIKE'
@@ -122,6 +124,81 @@ export const deleteMatchThunk = (matchId) => async (dispatch) => {
     }
 }
 
+// --------------------------------------------------------------MESSAGES
+
+const CREATE_MESSAGE = "messages/CREATE_MESSAGE";
+const EDIT_MESSAGE = "messages/EDIT_MESSAGE";
+const DELETE_MESSAGE = "messages/DELETE_MESSAGE";
+
+const createMessage = (match_id, message) => ({
+  type: CREATE_MESSAGE,
+  newMessage: message, match_id,
+});
+
+const editMessage = (message) => ({
+  type: EDIT_MESSAGE,
+  updatedMessage: message,
+});
+
+const deleteMessage = (match_id, message) => ({
+  type: DELETE_MESSAGE,
+  deletedMessage: message, match_id,
+});
+
+
+export const createMessageThunk = (match_id, message) => async (dispatch) => {
+
+    const res= await fetch(`/api/messages/${match_id}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(message),
+    });
+
+    if (res.ok) {
+      const newMessage = await res.json();
+      dispatch(createMessage(match_id, newMessage));
+      return newMessage;
+
+    } 
+    
+    else {
+      const errors = await res.json();
+      return errors;
+    }
+  };
+  
+export const editMessageThunk = (updatedMessage) => async (dispatch) => {
+
+    const res = await fetch(`/api/messages/${updatedMessage.id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedMessage),
+    });
+  
+    if (!res.ok) {
+      return res.errors;
+    }
+
+    const updatedMessage = await res.json();
+    dispatch(editMessage(updatedMessage));
+    return updatedMessage;
+  };
+  
+export const deleteMessageThunk = (match_id, message_id) => async (dispatch) => {
+
+    const res = await fetch(`/api/messages/${message_id}`, {
+      method: "DELETE",
+    });
+    if (res.ok) {
+      const deletedMessage = await res.json();
+      dispatch(deleteMessage(match_id, deletedMessage));
+      return deletedMessage;
+
+    } else {
+      const errors = await res.json();
+      return errors;
+    }
+  };
 
 
 let initialState = {}
@@ -142,8 +219,20 @@ let initialState = {}
               newState = {...state}
               newState[action.payload.id] = action.payload
               return newState
-            default:
-                return state;
+          case CREATE_MESSAGE: 
+               newState = { ...state };
+               newState[action.match_id].messages[action.newMessage.id] = action.newMessage;
+               return newState;
+          case EDIT_MESSAGE: 
+               newState = { ...state };
+               newState[action.updatedMessage.match_id].messages[action.updatedMessage.id] = action.updatedMessage;
+               return newState;
+          case DELETE_MESSAGE:
+               newState = { ...state };
+               delete newState[action.match_id].messages[action.deletedMessage.id];
+               return newState;  
+          default:
+                return state;       
       }
   }
 

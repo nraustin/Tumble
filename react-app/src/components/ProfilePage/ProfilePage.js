@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector} from 'react-redux'
 import { useHistory} from 'react-router-dom';
+import { FiEdit } from "react-icons/fi";
 
 import './ProfilePage.css'
 
@@ -71,37 +72,55 @@ const ProfilePage = () => {
           <>
             <div className='profileContainerRoot'>
                   <div className='profileContainer'>
-                    <strong>User Id</strong> {user.id}
-                    <strong>Name</strong> {user.name}
-                    <strong>Email</strong> {user.email}
-                    <strong>Dog</strong> {user.dog}
-                    <strong>Biography</strong> {user.biography ? user.biography : 'Tell everyone about yourself'}
-                    <strong>Location</strong> {user.location ? user.location : 'Add your location'}
-                    <strong>Age</strong> {user.age}
-                    <strong>Likes</strong> {user.likes[0] ? user.likes[0].id : null}
-                    <strong>Profile Pictures
+                  <div>
+                      Profile Pictures
+                      <div className='profileImageGrid'>
                       {user.images[0] ? 
                         user.images?.map((image) => {
                          return (
                          <img className='profilePageImg' src={image.userImage} alt=''/>
                          )}) : null}
-          
-                    </strong>
+                       </div>
+                    <form onSubmit={handleImageSubmit} className='imageSubmitForm'>
+                      <div >
+                          <input
+                          type="file"
+                          className='uploadProfileImgButton'
+                          accept="image/*"
+                          onChange={update}
+                          />
+                      </div>
+                      <button type='Submit' className='submitProfileImgButton'>Add Profile Photo</button>
+                      {(imageLoading)&& <p>Patience, bro</p>}
+                    </form>
+                    </div>
+                    <div className='profileInfo'>
+                      UserId {user.id}
+                    </div> 
+                    <div className='profileInfo'>
+                      Name: {user.name} <div className='editProfileIcon'>{<FiEdit/>}</div>
+                      </div> 
+                    <div className='profileInfo'>
+                      Email: {user.email} <div className='editProfileIcon'>{<FiEdit/>}</div>
+                      </div> 
+                    <div className='profileInfo'> 
+                      I'm looking for: {user.dog? 'potential owners' : 'dogs'} <div className='editProfileIcon'>{<FiEdit/>}</div>
+                      </div> 
+                    <div className='profileInfo'>
+                      Biography: {user.biography ? user.biography : 'Tell everyone about yourself'} <div className='editProfileIcon'>{<FiEdit/>}</div>
+                      </div>
+                    <div className='profileInfo'>
+                      Location: {user.location ? user.location : 'Add your location'} <div className='editProfileIcon'>{<FiEdit/>}</div>
+                      </div> 
+                    <div className='profileInfo'>
+                      Age: {user.age} <div className='editProfileIcon'>{<FiEdit/>}</div>
+                      </div> 
+                    <div className='profileInfo'>
+                      Likes: {user.likes[0] ? user.likes[0].id : null}
+                      </div> 
+                    
                   </div>
-                <form onSubmit={handleImageSubmit}>
-                <div>
-                    <label>Profile Images</label>
-                    <input
-                    type="file"
-                    // directory=""
-                    // webkitdirectory=""
-                    accept="image/*"
-                    onChange={update}
-                    />
-                </div>
-                <button type='Submit'>Submit</button>
-                {(imageLoading)&& <p>Patience, bro</p>}
-                </form>
+                
               </div>
             </>
     );

@@ -12,7 +12,36 @@
     width: 100px;
 }
 
+.swipeCardContainer{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    height: 750px;
+}
+
+.swipeCardInfoContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    background-color: lightblue;
+}
+
+
+
+.swipeCardGeneralInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.swipeCardBio{
+    padding: 20px;
+}
 .likeButtons{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
   }

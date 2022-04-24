@@ -4,6 +4,8 @@ import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import LoginForm from './LoginForm';
 
+import './SignUpForm.css'
+
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState('');
@@ -63,15 +65,15 @@ const SignUpForm = () => {
   }
 
   return (
-    <>
+    <div className='signUpContainer'>
     {!loginForm ?
-    <form onSubmit={onSignUp}>
+    <form onSubmit={onSignUp} className='signUpForm'>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
+      <div className='signUpFormDiv'>
         <label>Name</label>
         <input
           type='text'
@@ -81,7 +83,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <div>
+      <div className='signUpFormDiv'>
         <label>Email</label>
         <input
           type='text'
@@ -91,7 +93,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <div>
+      <div className='signUpFormDiv'>
         <label>Password</label>
         <input
           type='password'
@@ -101,7 +103,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <div>
+      <div className='signUpFormDiv'>
         <label>Repeat Password</label>
         <input
           type='password'
@@ -111,7 +113,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <div>
+      <div className='signUpFormDiv'>
         <label>Are you a Dog Owner?</label>
           <input
             type='checkbox'
@@ -119,7 +121,7 @@ const SignUpForm = () => {
             onChange={updateDog}
           ></input>
         </div>
-        <div>
+        <div className='signUpFormDiv'>
         <label>Age</label>
           <input
             type='number'
@@ -131,11 +133,12 @@ const SignUpForm = () => {
           ></input>
         </div>
         
-
-      <button type='submit'>Sign Up</button>
-      <button onClick={login}>Already have an account? Log In</button>
+      <div className='signUpFormButtons'>
+        <button type='submit' className='signUpFormSignUpButton'>Sign Up</button>
+        <button className='signUpFormLogInButton' onClick={login}>Already have an account? Log In</button>
+      </div>
     </form> : <LoginForm/>}
-    </>
+    </div>
   );
 };
 

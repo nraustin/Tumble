@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import * as profileActions from '../../store/profile'
 
+import './ProfileCard.css'
+
 function ProfileCard({...allProfProps}) {
   const [user, setUser] = useState({});
   const { userId }  = useParams();
@@ -51,52 +53,49 @@ function ProfileCard({...allProfProps}) {
 
 
   return (
-    <>
-    {/* <div className='swipeCardContainer'> */}
-      {userS && userS.dog === true?
-          <>
-          <strong>User Id</strong> {allProfProps.person?.id}
-        
-          <strong>Username</strong> {allProfProps.person?.name}
-        
-          <strong>Email</strong> {allProfProps.person?.email}
-
-          <strong>Age</strong> {allProfProps.person?.age}
-          <strong>About Me</strong> {allProfProps.person?.biography}
-          <div className="likeButtons">
-            <button onClick={likePersonUser}>Like</button>
-            <button onClick={noThanks}>No Thanks</button>
-          </div>
-          <div className='swipeCardProfilePicsContainer'>
-            {allProfProps.person?.images ? <img className='swipeCardProfilePics' src={allProfProps.person.images[0]?.userImage} alt='https://cdn-icons-png.flaticon.com/512/616/616408.png'/>
-               : <img src='https://cdn-icons-png.flaticon.com/512/616/616408.png'/>} 
-          </div>
-          </>
-          :
-          <>
-          <strong>User Id</strong> {allProfProps.dog?.id}
-        
-          <strong>Username</strong> {allProfProps.dog?.name}
-        
-          <strong>Email</strong> {allProfProps.dog?.email}
-
-          <strong>Age</strong> {allProfProps.dog?.age}
-          <strong>About Me</strong> {allProfProps.dog?.biography}
-          <div className="likeButtons">
-            <button onClick={likeDogUser}>Like</button>
-            <button onClick={noThanks}>No Thanks</button>
-          </div>
-          <div className='swipeCardProfilePicsContainer'>
-            {allProfProps.dog?.images ? <img className='swipeCardProfilePics' src={allProfProps.dog?.images[0]?.userImage} alt='https://cdn-icons-png.flaticon.com/512/616/616408.png'/>
-               : <img src='https://cdn-icons-png.flaticon.com/512/616/616408.png'/>} 
-          </div>
-          </>}
-
-          
- 
-    {/* </div> */}
-    
-    </>
+      <>
+        {userS && userS.dog === true ?
+            <div className='swipeCardContainer'>
+            
+            <div className='swipeCardProfilePicsContainer'>
+              {allProfProps.person?.images ? <img className='swipeCardProfilePics' src={allProfProps.person.images[0]?.userImage} alt='https://cdn-icons-png.flaticon.com/512/616/616408.png'/>
+                : <img src='https://cdn-icons-png.flaticon.com/512/616/616408.png'/>}
+                </div>
+                <div className='swipeCardInfoContainer'>
+                  <strong className='swipeCardGeneralInfo'>
+                    <div>{allProfProps.person?.name}</div>
+                    <div>Age {allProfProps.person?.age}</div>
+                    <div>{allProfProps.person?.location}</div>
+                  </strong>
+                  <strong className='swipeCardBio'>{allProfProps.person?.biography}</strong>
+                  <div className="likeButtons">
+                    <button onClick={likePersonUser}>Like</button>
+                    <button onClick={noThanks}>No Thanks</button>
+                  </div>
+                </div>
+              </div>
+            :
+            <div className='swipeCardContainer'>
+            
+            <div className='swipeCardProfilePicsContainer'>
+              {allProfProps.dog?.images ? <img className='swipeCardProfilePics' src={allProfProps.dog?.images[0]?.userImage} alt={''}/>
+                : <img src={process.env.PUBLIC_URL + '/tumbleDefaultIcon.png'} alt="logo" />} 
+            </div>
+              <div className='swipeCardInfoContainer'>
+                <strong className='swipeCardGeneralInfo'>
+                  <div>{allProfProps.dog?.name}</div>
+                  <div>Age {allProfProps.dog?.age}</div>
+                  <div>{allProfProps.dog?.location}</div>
+                </strong>
+                <strong className='swipeCardBio'>{allProfProps.dog?.biography}</strong>
+                <div className="likeButtons">
+                  <button onClick={likeDogUser}>Like</button>
+                  <button onClick={noThanks}>No Thanks</button>
+                </div>
+            </div>
+          </div> }
+      </>
   );
 }
+
 export default ProfileCard;

@@ -39,14 +39,14 @@ const SplashPage = () => {
         <img className='tumbleSplashLogo' src={tumble}/>
         <h4 className='tumbleIntroText'>Meet your match.</h4>
         <div className='splashContainer'>
-        <div className='splashButtonsContainer'>
-            {!loginClick && !signUpClick && (
-            <>
-            <button className='splashButtonLogin' onClick={handleLogin}>Log in</button>
-            <button className='splashButtonSignUp' onClick={handleSignUp}>Sign Up</button>
-            <button className='splashButtonDog' onClick={() => setDogClick(true)}>Dog Demo</button>
-            <button className='splashButtonPerson' onClick={() => setPersonClick(true)}>Person Demo</button>
-            </>)}
+        {!loginClick && !signUpClick && (
+            <div className='splashButtonsContainer'>
+                <button className='splashButtonLogin' onClick={handleLogin}>Log in</button>
+                <button className='splashButtonSignUp' onClick={handleSignUp}>Sign Up</button>
+                <button className='splashButtonDog' onClick={() => setDogClick(true)}>Dog Demo</button>
+                <button className='splashButtonPerson' onClick={() => setPersonClick(true)}>Person Demo</button>
+            </div>)}
+            
             {loginClick && (
             <>
             <LoginForm/>
@@ -56,7 +56,7 @@ const SplashPage = () => {
             <SignUpForm/>
             </>
             )}
-        </div>
+        
         </div>
         <img className='splashDog' src='https://www.pngkit.com/png/full/2-22172_dog-png-white-dog-silhouette.png'/>
         </body>)}
