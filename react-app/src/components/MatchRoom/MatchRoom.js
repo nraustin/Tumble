@@ -12,7 +12,6 @@ import './MatchRoom.css'
 
 const MatchRoom = ({matchUpdate, setMatchUpdate}) => {
 
-    const [loaded, setLoaded] = useState(false)
     const [message, setMessage] = useState('');
 
 

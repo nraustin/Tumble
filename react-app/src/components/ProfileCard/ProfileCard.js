@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import * as profileActions from '../../store/profile'
 
-import SwipeLikeButton from '../SwipeLikeButtons/SwipeLikeButtons';
 
 import {FiHeart, FiMeh} from 'react-icons/fi'
 
@@ -106,7 +105,7 @@ function ProfileCard({...allProfProps}) {
             
             <div className='swipeCardProfilePicsContainer'>
               {allProfProps.person?.images ? <img className='swipeCardProfilePics' src={allProfProps.person.images[0]?.userImage} alt='https://cdn-icons-png.flaticon.com/512/616/616408.png'/>
-                : <img src='https://cdn-icons-png.flaticon.com/512/616/616408.png'/>}
+                : <img src='https://cdn-icons-png.flaticon.com/512/616/616408.png' alt=''/>}
                 </div>
                 <div className='swipeCardInfoContainer'>
                   <strong className='swipeCardGeneralInfo'>

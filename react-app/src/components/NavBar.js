@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import LogoutButton from './auth/LogoutButton';
 import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarFooter, SidebarContent} from "react-pro-sidebar"
-import { FiHome, FiLogIn, FiLogOut, FiHeart, FiThumbsUp, FiUserPlus, FiUser, FiUsers, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
+import { FiLogIn, FiLogOut, FiHeart, FiThumbsUp, FiUserPlus, FiUser, FiUsers, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 
 import * as profileActions from '.././store/profile'
 import * as matchActions from '.././store/match'
@@ -22,9 +22,13 @@ const NavBar = () => {
 
   const [menuCollapse, setMenuCollapse] = useState(false)
 
-  useEffect(async() =>{
+  useEffect(() => {
+    async function getData() {
     await dispatch(profileActions.getUserThunk(user.id))
     await dispatch(matchActions.getMatchesThunk())
+    }
+    getData()
+
   }, [dispatch])
 
   const menuClick = () => {

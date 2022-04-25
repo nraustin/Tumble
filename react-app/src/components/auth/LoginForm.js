@@ -13,7 +13,7 @@ const LoginForm = () => {
 
   const [signUpForm, showSignUpForm] = useState(false)
 
-  const history = useHistory()
+  // const history = useHistory()
 
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();

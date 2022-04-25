@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux'
-import { NavLink, useHistory} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import * as profileActions from '../../store/profile'
 import * as matchActions from '../../store/match'
 
@@ -15,9 +15,12 @@ const UserMatches = () => {
 
     const dispatch = useDispatch()
 
-    useEffect(async() => {
+    useEffect(() => {
+        async function getData() {
         await dispatch(matchActions.getMatchesThunk())
         await dispatch(profileActions.getUserThunk(user.id))
+        }
+        getData()
         
     }, [dispatch, user?.id])
 
@@ -34,8 +37,8 @@ const UserMatches = () => {
                 match.matched.map((matchedUser) => {
                         return (matchedUser.id !== user.id && ( 
                         <NavLink to={`/matches/${match.id}`} className='matchCard'>
-                            {matchedUser?.images ? <img src={matchedUser?.images[0]} className='matchCardImg'/> 
-                            : <img src='https://cdn-icons-png.flaticon.com/512/616/616408.png' className='matchCardImg'/>}
+                            {matchedUser?.images ? <img src={matchedUser?.images[0]} className='matchCardImg' alt=''/> 
+                            : <img src='https://cdn-icons-png.flaticon.com/512/616/616408.png' className='matchCardImg' alt=''/>}
                                 <div className='matchCardName'>
                                     {matchedUser?.name}
                                     </div>

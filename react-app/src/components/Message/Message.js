@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { List } from "@material-ui/core";
 import EditMessage from "../EditMessage/EditMessage";
 import * as profileActions from '../../store/profile'
 import * as matchActions from '../../store/match'
@@ -16,7 +15,6 @@ const Message = ({msg}) => {
     const history = useHistory()
     const { matchId } = useParams()
 
-    const [selectedMessage, setSelectedMessage] = useState('')
     const [editMessage, setEditMessage] = useState(false)
 
     const user = useSelector(state => state.session.user)

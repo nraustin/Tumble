@@ -60,18 +60,18 @@ export const updateUserThunk = (user) => async(dispatch) => {
 // ---------------------------------------------------------LIKES
 
 
-const CREATE_LIKE = 'profile/CREATE_LIKE'
-const GET_LIKES = 'profile/GET_LIKE'
+// const CREATE_LIKE = 'profile/CREATE_LIKE'
+// const GET_LIKES = 'profile/GET_LIKE'
 
-const createLike = (like) => ({
-    type: CREATE_LIKE,
-    payload: like
-})
+// const createLike = (like) => ({
+//     type: CREATE_LIKE,
+//     payload: like
+// })
 
-const getLikes = (likes) => ({
-    type: GET_LIKES,
-    payload: likes
-})
+// const getLikes = (likes) => ({
+//     type: GET_LIKES,
+//     payload: likes
+// })
 
 export const createLikeThunk = (like) => async(dispatch) => {
 
@@ -116,22 +116,6 @@ export const getLikesThunk = () => async(dispatch) => {
 // --------------------------------------------------------------MATCHES
 
 
-const GET_MATCHES = 'profle/GET_MATCHES'
-
-
-
-
-
-export const getMatchesThunk = () => async(dispatch) => {
-
-    const res = await fetch('api/matches')
-
-    if (res.ok) {
-        const matches = await res.json()
-        return matches
-    }
-}
-
 export const deleteMatchThunk = (matchId) => async (dispatch) => {
 
     const res = await fetch('/api/matches/delete', {
@@ -153,20 +137,20 @@ const CREATE_MESSAGE = "messages/CREATE_MESSAGE";
 const EDIT_MESSAGE = "messages/EDIT_MESSAGE";
 const DELETE_MESSAGE = "messages/DELETE_MESSAGE";
 
-const createMessage = (match_id, message) => ({
-  type: CREATE_MESSAGE,
-  newMessage: message, match_id,
-});
+// const createMessage = (match_id, message) => ({
+//   type: CREATE_MESSAGE,
+//   newMessage: message, match_id,
+// });
 
-const editMessage = (message) => ({
-  type: EDIT_MESSAGE,
-  updatedMessage: message,
-});
+// const editMessage = (message) => ({
+//   type: EDIT_MESSAGE,
+//   updatedMessage: message,
+// });
 
-const deleteMessage = (match_id, message) => ({
-  type: DELETE_MESSAGE,
-  deletedMessage: message, match_id,
-});
+// const deleteMessage = (match_id, message) => ({
+//   type: DELETE_MESSAGE,
+//   deletedMessage: message, match_id,
+// });
 
 
 export const createMessageThunk = (message) => async (dispatch) => {

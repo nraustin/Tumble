@@ -1,7 +1,5 @@
 import React from "react";
-import { FiArrowLeftCircle, FiArrowRightCircle} from 'react-icons/fi'
 
-import {FiHeart, FiMeh} from 'react-icons/fi'
 
 import './SwipeLikeButtons.css'
 

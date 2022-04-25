@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector} from 'react-redux'
-import { NavLink, useHistory} from 'react-router-dom';
-import * as profileActions from '../../store/profile'
 import * as sessionActions from '../../store/session'
 import LoginForm from '../auth/LoginForm';
 import SignUpForm from '../auth/SignUpForm';
@@ -71,7 +69,7 @@ const SplashPage = () => {
             )}
         
         </div>
-        <img className='splashDog' src='https://www.pngkit.com/png/full/2-22172_dog-png-white-dog-silhouette.png'/>
+        <img className='splashDog' src='https://www.pngkit.com/png/full/2-22172_dog-png-white-dog-silhouette.png' alt=''/>
         </body>)}
         </>
     )

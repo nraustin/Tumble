@@ -16,9 +16,12 @@ function ProfileCardSlider() {
     const [slideIndex, setSlideIndex] = useState(1)
     const [profileIndex, setProfileIndex] = useState(0)
 
-    useEffect(async() => {
+    useEffect(() => {
+        async function getData() {
         await dispatch(profileActions.getUsersThunk())
         await dispatch(matchActions.getMatchesThunk())
+        }
+        getData()
     }, [dispatch])
 
     const profilesObj = useSelector(state => state.profile)
