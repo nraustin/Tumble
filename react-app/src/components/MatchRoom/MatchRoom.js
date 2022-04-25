@@ -58,9 +58,10 @@ const MatchRoom = ({matchUpdate, setMatchUpdate}) => {
 
         if (res) {
         dispatch(profileActions.getUserThunk(user.id))
-        setMatchUpdate(false)
+        
             }
         history.push('/users')
+        window.location.reload(false);
     
       }
 

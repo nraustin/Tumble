@@ -4,7 +4,9 @@ import { useHistory, useParams } from "react-router-dom";
 import * as profileActions from '../../store/profile'
 import * as matchActions from '../../store/match'
 
-const EditMessage = () => {
+import './EditMessage.css'
+
+const EditMessage = ({msg, EditMessage, setEditMessage}) => {
 
     const dispatch = useDispatch();
 
@@ -22,7 +24,7 @@ const EditMessage = () => {
     const handleMessageEdit = async(e) => {
         e.preventDefault()
 
-        const newMessage = { content, matchId }
+        const newMessage = { content, messageId: msg.id }
 
         if(content){
             await dispatch(profileActions.editMessageThunk(newMessage))
@@ -30,15 +32,17 @@ const EditMessage = () => {
 
             history.push(`/matches/${matchId}`)
         }
+        setEditMessage(false);
     }
 
     const handleCancelEdit = () => {
         dispatch(matchActions.getMatchThunk(matchId))
+        setEditMessage(false)
     }
 
     return(
           <div className='editMessageForm'>
-            <form onSubmit={handleMessageEdit}>
+            <form onSubmit={handleMessageEdit} className='editMessageForm'>
                 <textarea
                 rows='2'
                 cols='30'

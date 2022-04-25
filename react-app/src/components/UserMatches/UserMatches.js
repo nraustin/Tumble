@@ -10,6 +10,10 @@ const UserMatches = () => {
 
     const user = useSelector(state => state.session.user)
     const matches = useSelector(state => state.match)
+    const profileObj = useSelector(state => state.profile)
+
+    const profile = Object.values(profileObj)[0]
+    console.log(profile?.id)
 
     console.log(matches)
 
@@ -18,11 +22,12 @@ const UserMatches = () => {
     useEffect(() => {
         async function getData() {
         await dispatch(matchActions.getMatchesThunk())
-        await dispatch(profileActions.getUserThunk(user.id))
+        await dispatch(profileActions.getUserThunk(profile?.id))
         }
         getData()
-        
-    }, [dispatch, user?.id])
+    }, [dispatch, profile?.id, ])
+
+    
 
     
     return (

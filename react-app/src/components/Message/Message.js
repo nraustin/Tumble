@@ -65,7 +65,7 @@ const Message = ({msg}) => {
                         {msg?.content}
                     </div>
                 </div>)
-            : <EditMessage msg={msg}/>} 
+            : <EditMessage msg={msg} editMessage={editMessage} setEditMessage={setEditMessage}/>} 
             </div> : 
             <div className="otherChatContainer">
             {!editMessage ?
@@ -91,7 +91,7 @@ const Message = ({msg}) => {
                         {msg?.content}
                     </div>
                 </div>)
-            : <EditMessage msg={msg}/>}
+            : <EditMessage msg={msg} editMessage={editMessage} setEditMessage={setEditMessage}/>}
             </div>
             }
         </>

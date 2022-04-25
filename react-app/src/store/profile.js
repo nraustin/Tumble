@@ -218,7 +218,7 @@ let initialState = {}
         let newState;
       switch(action.type) {
           case GET_USER:
-              let thisState = {};
+              let thisState = {...state};
               thisState[action.payload.id] = action.payload
               return thisState
           case GET_USERS:

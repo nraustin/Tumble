@@ -21,18 +21,6 @@ const UserLikes = () => {
 
     console.log(likingUsers)
 
-    // const filteredProfileLikes = profile.map((prof) => prof.likes)
-
-    // console.log(filteredProfileLikes)
-
-    // const extraFilteredProfileLikes = filteredProfileLikes.filter((likes) => (likes.length > 0))
-
-    // console.log(extraFilteredProfileLikes)
-
-    // const finallyGettingLikes = extraFilteredProfileLikes.filter((like) => like?.liked_id === user.id)
-
-    // console.log(finallyGettingLikes)
-
 
 
     const dispatch = useDispatch()
@@ -49,12 +37,12 @@ const UserLikes = () => {
 
     console.log(user?.likes)
 
-    const handleLikeMatch = (e) => {
-        e.preventDefault()
+    // const handleLikeMatch = (e) => {
+    //     e.preventDefault()
 
-        const newLike = { userId: user.id, profileId: e.target.value}
-        dispatch(profileActions.createLikeThunk(newLike))
-    }
+    //     const newLike = { userId: user.id, profileId: e.target.value}
+    //     dispatch(profileActions.createLikeThunk(newLike))
+    // }
 
     
     return (
@@ -62,14 +50,14 @@ const UserLikes = () => {
         
         <p className='likeSpace'> Hey, {user.name}. You have: {user.likes?.length === 1 ? <p>{user.likes?.length} like!</p> : <p>{user.likes?.length} likes!</p>}</p>
         
-        {user?.likes.map((like) => (
+        {/* {user?.likes.map((like) => (
             profiles.filter((profile) => (
                 profile.id === like.liker_id)
                 
                     
 
             ))
-        )}
+        )} */}
         
         </>
         )

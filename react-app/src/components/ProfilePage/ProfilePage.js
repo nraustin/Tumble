@@ -1,47 +1,42 @@
-import React, { useState } from 'react';
-import { useSelector} from 'react-redux'
-import { useHistory} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector} from 'react-redux'
+import * as profileActions from '../../store/profile'
 
 import './ProfilePage.css'
 
 
 const ProfilePage = () => {
 
-  
+    const dispatch = useDispatch()
     
-    // const [profilePhoto, setProfilePhoto] = useState('')
-    // const [bio, setBio] = useState('')
-    // const [age, setAge] = useState(0)
-    // const [location, setLocation] = useState('')
 
     const user = useSelector(state => state.session.user)
+    const profileObj = useSelector(state => state.profile)
+    const profile = Object.values(profileObj)[0]
 
-    const history = useHistory()
-    // const { userId }  = useParams();
+    console.log(profile)
+
 
     const [image, setImage] = useState(null)
     const [imageLoading, setImageLoading] = useState(false)
   
-    // useEffect(() => {
-    //   if (!userId) {
-    //     return;
-    //   }
-    //   (async () => {
-    //     const response = await fetch(`/api/users/${userId}`);
-    //     const user = await response.json()
-    //   })();
-    // }, [userId]);
+
+
+    useEffect(() => {
+       dispatch(profileActions.getUserThunk(user.id))
+       
+    }, [dispatch, user.id])
+
+    
   
-    // if (!user) {
-    //   return null;
-    // }
 
     const handleImageSubmit = async(e) => {
         e.preventDefault();
         const formData = new FormData();
         formData.append("image", image)
         formData.append("user_id", user.id)
-        // const new_image = { image, user_id: user.id }
+
+        
     
         setImageLoading(true)
     
@@ -53,7 +48,8 @@ const ProfilePage = () => {
         if (res.ok) {
           await res.json();
           setImageLoading(false);
-          history.push('/')
+          dispatch(profileActions.getUserThunk(user.id))
+          window.location.reload(false);
         }
     
         else {
