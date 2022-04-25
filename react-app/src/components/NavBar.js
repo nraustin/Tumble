@@ -29,7 +29,7 @@ const NavBar = () => {
     }
     getData()
 
-  }, [dispatch])
+  }, [dispatch, user.id])
 
   const menuClick = () => {
     menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true)

@@ -133,9 +133,9 @@ export const deleteMatchThunk = (matchId) => async (dispatch) => {
 
 // --------------------------------------------------------------MESSAGES
 
-const CREATE_MESSAGE = "messages/CREATE_MESSAGE";
-const EDIT_MESSAGE = "messages/EDIT_MESSAGE";
-const DELETE_MESSAGE = "messages/DELETE_MESSAGE";
+// const CREATE_MESSAGE = "messages/CREATE_MESSAGE";
+// const EDIT_MESSAGE = "messages/EDIT_MESSAGE";
+// const DELETE_MESSAGE = "messages/DELETE_MESSAGE";
 
 // const createMessage = (match_id, message) => ({
 //   type: CREATE_MESSAGE,

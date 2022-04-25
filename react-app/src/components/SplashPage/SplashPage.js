@@ -47,7 +47,7 @@ const SplashPage = () => {
         <>
         {!user && (
         <body className='splashBody'>
-        <img className='tumbleSplashLogo' src={tumble}/>
+        <img className='tumbleSplashLogo' src={tumble} alt=''/>
         <h4 className='tumbleIntroText'>Meet your match.</h4>
         <div className='splashContainer'>
         {!loginClick && !signUpClick && (
