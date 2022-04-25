@@ -10,13 +10,11 @@ import './MatchRoom.css'
 
 
 
-const MatchRoom = () => {
+const MatchRoom = ({matchUpdate, setMatchUpdate}) => {
 
     const [loaded, setLoaded] = useState(false)
     const [message, setMessage] = useState('');
 
-
-    
 
 
     const dispatch = useDispatch();
@@ -53,9 +51,16 @@ const MatchRoom = () => {
 
 
 
-    const handleUnmatch = () => {
+    const handleUnmatch = async() => {
+
         console.log(matchId)
-        dispatch(profileActions.deleteMatchThunk(matchId))
+        let res = dispatch(profileActions.deleteMatchThunk(matchId))
+        setMatchUpdate(true) 
+
+        if (res) {
+        dispatch(profileActions.getUserThunk(user.id))
+        setMatchUpdate(false)
+            }
         history.push('/users')
     
       }

@@ -2,18 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector} from 'react-redux'
 import { NavLink, useHistory} from 'react-router-dom';
 import * as profileActions from '../../store/profile'
+import * as matchActions from '../../store/match'
 
 import './UserMatches.css'
 
 const UserMatches = () => {
 
     const user = useSelector(state => state.session.user)
+    const matches = useSelector(state => state.match)
+
+    console.log(matches)
 
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        dispatch(profileActions.getUserThunk(user.id))
-    }, [dispatch])
+    useEffect(async() => {
+        await dispatch(matchActions.getMatchesThunk())
+        await dispatch(profileActions.getUserThunk(user.id))
+        
+    }, [dispatch, user?.id])
 
     
     return (

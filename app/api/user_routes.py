@@ -17,7 +17,9 @@ def users():
     
     for user in users:
         if len(user.likes) > 0:
-            users.remove(user)
+            for like in user.likes:
+                if like.liker_id == current_user.id:
+                    users.remove(user)
 
     if len(current_user.unlikes) == 0 and len(current_user.likes) == 0:
         return {'users': [user.to_dict() for user in users]}

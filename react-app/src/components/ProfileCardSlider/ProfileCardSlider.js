@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import * as profileActions from '../../store/profile'
+import * as matchActions from '../../store/match'
 import ProfileCard from "../ProfileCard/ProfileCard";
 import SlideButton from "../SlideButton/SlideButton";
 
@@ -15,8 +16,9 @@ function ProfileCardSlider() {
     const [slideIndex, setSlideIndex] = useState(1)
     const [profileIndex, setProfileIndex] = useState(0)
 
-    useEffect(() => {
-        dispatch(profileActions.getUsersThunk())
+    useEffect(async() => {
+        await dispatch(profileActions.getUsersThunk())
+        await dispatch(matchActions.getMatchesThunk())
     }, [dispatch])
 
     const profilesObj = useSelector(state => state.profile)

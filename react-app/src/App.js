@@ -15,6 +15,7 @@ import SplashPage from './components/SplashPage/SplashPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
+  const [matchUpdate, setMatchUpdate] = useState(false)
   const dispatch = useDispatch();
 
   const user = useSelector(state => state.session.user)
@@ -25,7 +26,7 @@ function App() {
       await dispatch(authenticate());
       setLoaded(true);
     })();
-  }, [dispatch]);
+  }, [dispatch, matchUpdate]);
 
   if (!loaded) {
     return null;
@@ -51,7 +52,7 @@ function App() {
           <UserMatches/>
         </ProtectedRoute>
         <ProtectedRoute path='/matches/:matchId' exact={true}>
-          <MatchRoom/>
+          <MatchRoom matchUpdate={matchUpdate} setMatchUpdate={setMatchUpdate}/>
         </ProtectedRoute>
         <ProtectedRoute path='/users' exact={true} >
           <ProfileCardSlider/>

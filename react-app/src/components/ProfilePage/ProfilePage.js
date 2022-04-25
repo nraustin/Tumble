@@ -95,9 +95,6 @@ const ProfilePage = () => {
                     </form>
                     </div>
                     <div className='profileInfo'>
-                      UserId {user.id}
-                    </div> 
-                    <div className='profileInfo'>
                       Name: {user.name} <div className='editProfileIcon'>{<FiEdit/>}</div>
                       </div> 
                     <div className='profileInfo'>

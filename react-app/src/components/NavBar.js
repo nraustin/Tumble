@@ -7,19 +7,25 @@ import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarFooter, SidebarConten
 import { FiHome, FiLogIn, FiLogOut, FiHeart, FiThumbsUp, FiUserPlus, FiUser, FiUsers, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 
 import * as profileActions from '.././store/profile'
+import * as matchActions from '.././store/match'
 import "react-pro-sidebar/dist/css/styles.css";
 import './NavBar.css'
 
 const NavBar = () => {
 
   const user = useSelector(state => state.session.user)
+  const profile = useSelector(state => state.profile)
   const dispatch = useDispatch()
+
+  console.log(profile?.matches)
+ 
 
   const [menuCollapse, setMenuCollapse] = useState(false)
 
-  useEffect(() =>{
-    dispatch(profileActions.getUserThunk(user?.id))
-  }, [dispatch, user?.id, user?.matches])
+  useEffect(async() =>{
+    await dispatch(profileActions.getUserThunk(user.id))
+    await dispatch(matchActions.getMatchesThunk())
+  }, [dispatch])
 
   const menuClick = () => {
     menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true)

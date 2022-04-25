@@ -4,7 +4,6 @@ import { FiArrowLeftCircle, FiArrowRightCircle} from 'react-icons/fi'
 import './SlideButton.css'
 
 function SlideButton({ direction, moveSlide }) {
-  console.log(direction, moveSlide);
   return (
     <button
       onClick={moveSlide}

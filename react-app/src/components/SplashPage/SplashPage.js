@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector} from 'react-redux'
 import { NavLink, useHistory} from 'react-router-dom';
 import * as profileActions from '../../store/profile'
+import * as sessionActions from '../../store/session'
 import LoginForm from '../auth/LoginForm';
 import SignUpForm from '../auth/SignUpForm';
 
@@ -12,11 +13,10 @@ import tumble from './tumble.png'
 
 const SplashPage = () => {
 
+    const dispatch = useDispatch()
 
     const [loginClick, setLoginClick] = useState(false)
     const [signUpClick, setSignUpClick] = useState(false)
-    const [dogClick, setDogClick] = useState(false)
-    const [personClick, setPersonClick] = useState(false)
 
     const user = useSelector(state => state.session.user)
 
@@ -32,6 +32,19 @@ const SplashPage = () => {
         setSignUpClick(true)
     }
 
+    const handleDogLogin = (e) => {
+        e.preventDefault()
+        const email = "spot@aa.io"
+        const password = "password" 
+        return dispatch(sessionActions.login(email, password))
+    }
+
+    const handlePersonLogin = (e) => {
+        e.preventDefault()
+        const email = "demo@aa.io"
+        const password = "password" 
+        return dispatch(sessionActions.login(email, password))
+    }
     return(
         <>
         {!user && (
@@ -43,8 +56,8 @@ const SplashPage = () => {
             <div className='splashButtonsContainer'>
                 <button className='splashButtonLogin' onClick={handleLogin}>Log in</button>
                 <button className='splashButtonSignUp' onClick={handleSignUp}>Sign Up</button>
-                <button className='splashButtonDog' onClick={() => setDogClick(true)}>Dog Demo</button>
-                <button className='splashButtonPerson' onClick={() => setPersonClick(true)}>Person Demo</button>
+                <button className='splashButtonDog' onClick={handleDogLogin}>Dog Demo</button>
+                <button className='splashButtonPerson' onClick={handlePersonLogin}>Person Demo</button>
             </div>)}
             
             {loginClick && (
