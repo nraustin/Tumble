@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
-from flask_login import login_required
-from app.models import User, Image
+from flask_login import login_required, current_user
+from app.models import User, Image, Unlike, Like
 from app.s3_helpers import upload_file_to_s3, get_unique_filename, allowed_file
 from app.models import db
 
@@ -10,8 +10,38 @@ user_routes = Blueprint('users', __name__)
 @user_routes.route('')
 @login_required
 def users():
+
+    print('\n\n\n Just supposed to work, ok \n\n\n')
+
     users = User.query.all()
-    return {'users': [user.to_dict() for user in users]}
+    
+    for user in users:
+        if len(user.likes) > 0:
+            users.remove(user)
+
+    if len(current_user.unlikes) == 0 and len(current_user.likes) == 0:
+        return {'users': [user.to_dict() for user in users]}
+    else:
+        unwantedUsers = []
+        if len(current_user.unlikes) > 0 and len(current_user.likes) == 0:
+            for unlike in current_user.unlikes:
+                unwantedUsers.append(unlike.unliked_id)
+        if len(current_user.unlikes) == 0 and len(current_user.likes) > 0:
+            for like in current_user.likes:
+                unwantedUsers.append(like.liked_id)
+        else:
+            for unlike in current_user.unlikes:
+                unwantedUsers.append(unlike.unliked_id)
+            for like in current_user.likes:
+                unwantedUsers.append(like.liked_id)
+
+        returnedUsers = []
+        for user in users:
+            if user.id not in unwantedUsers:
+                returnedUsers.append(user)
+        return {'users': [user.to_dict() for user in returnedUsers]}
+            
+    
 
 @user_routes.route('/<int:id>')
 @login_required

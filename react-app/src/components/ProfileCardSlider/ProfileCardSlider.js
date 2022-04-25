@@ -34,7 +34,13 @@ function ProfileCardSlider() {
 
     const allProfProps = {
         dog: currentDogProf,
-        person: currentPeopleProf
+        person: currentPeopleProf,
+        slideIndex: slideIndex,
+        profileIndex: profileIndex,
+        dogProfiles: dogProfiles,
+        peopleProfiles: peopleProfiles,
+        setSlideIndex,
+        setProfileIndex,
     }
 
 

@@ -3,7 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import * as profileActions from '../../store/profile'
 
+import SwipeLikeButton from '../SwipeLikeButtons/SwipeLikeButtons';
+
+import {FiHeart, FiMeh} from 'react-icons/fi'
+
 import './ProfileCard.css'
+
 
 function ProfileCard({...allProfProps}) {
   const [user, setUser] = useState({});
@@ -12,7 +17,7 @@ function ProfileCard({...allProfProps}) {
 
   const userS = useSelector(state => state.session.user)
 
-  console.log(allProfProps.dog?.id)
+  console.log(allProfProps?.slideIndex)
 
   useEffect(() => {
     if (!userId) {
@@ -37,6 +42,14 @@ function ProfileCard({...allProfProps}) {
     const newLike = { userId: userS.id, profileId: allProfProps.person?.id }
     dispatch(profileActions.createLikeThunk(newLike))
 
+    if(allProfProps?.slideIndex !== allProfProps?.peopleProfiles.length){
+      allProfProps?.setSlideIndex(allProfProps?.slideIndex + 1)
+      allProfProps?.setProfileIndex(allProfProps?.profileIndex + 1)
+    } else if (allProfProps?.slideIndex === allProfProps?.peopleProfiles.length){
+      allProfProps?.setSlideIndex(1)
+      allProfProps?.setProfileIndex(0)
+    }
+
   }
 
   const likeDogUser = e => {
@@ -45,10 +58,44 @@ function ProfileCard({...allProfProps}) {
     const newLike = { userId: userS.id, profileId: allProfProps.dog?.id }
     dispatch(profileActions.createLikeThunk(newLike))
 
+      if(allProfProps?.slideIndex !== allProfProps?.dogProfiles.length){
+        allProfProps?.setSlideIndex(allProfProps?.slideIndex + 1)
+        allProfProps?.setProfileIndex(allProfProps?.profileIndex + 1)
+      } else if (allProfProps?.slideIndex === allProfProps?.dogProfiles.length){
+        allProfProps?.setSlideIndex(1)
+        allProfProps?.setProfileIndex(0)
+      }
+
   }
 
-  const noThanks = e => {
+  const noThanksPerson = e => {
     e.preventDefault()
+
+    const newUnlike = { userId: userS.id, profileId: allProfProps.person?.id }
+    dispatch(profileActions.createUnlikeThunk(newUnlike))
+
+    if(allProfProps?.slideIndex !== allProfProps?.peopleProfiles.length){
+      allProfProps?.setSlideIndex(allProfProps?.slideIndex + 1)
+      allProfProps?.setProfileIndex(allProfProps?.profileIndex + 1)
+    } else if (allProfProps?.slideIndex === allProfProps?.peopleProfiles.length){
+      allProfProps?.setSlideIndex(1)
+      allProfProps?.setProfileIndex(0)
+    }
+  }
+
+  const noThanksDog = e => {
+    e.preventDefault()
+
+    const newUnlike = { userId: userS.id, profileId: allProfProps.dog?.id }
+    dispatch(profileActions.createUnlikeThunk(newUnlike))
+
+    if(allProfProps?.slideIndex !== allProfProps?.dogProfiles.length){
+      allProfProps?.setSlideIndex(allProfProps?.slideIndex + 1)
+      allProfProps?.setProfileIndex(allProfProps?.profileIndex + 1)
+    } else if (allProfProps?.slideIndex === allProfProps?.dogProfiles.length){
+      allProfProps?.setSlideIndex(1)
+      allProfProps?.setProfileIndex(0)
+    }
   }
 
 
@@ -68,8 +115,8 @@ function ProfileCard({...allProfProps}) {
                   </strong>
                   <strong className='swipeCardBio'>{allProfProps.person?.biography}</strong>
                   <div className="likeButtons">
-                    <button onClick={likePersonUser}>Like</button>
-                    <button onClick={noThanks}>No Thanks</button>
+                    <button onClick={likePersonUser} className='swipeCardLikeButton'><FiHeart/></button>
+                    <button onClick={noThanksPerson} className='swipeCardUnlikeButton'><FiMeh/></button>
                   </div>
                 </div>
               </div>
@@ -87,8 +134,8 @@ function ProfileCard({...allProfProps}) {
                 </strong>
                 <strong className='swipeCardBio'>{allProfProps.dog?.biography}</strong>
                 <div className="likeButtons">
-                  <button onClick={likeDogUser}>Like</button>
-                  <button onClick={noThanks}>No Thanks</button>
+                  <button onClick={likeDogUser} className='swipeCardLikeButton'><FiHeart/></button>
+                  <button onClick={noThanksDog} className='swipeCardUnlikeButton'><FiMeh/></button>
                 </div>
             </div>
           </div> }

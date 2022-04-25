@@ -22,7 +22,7 @@ class User(db.Model, UserMixin):
     messages = db.relationship("Message", backref="users", cascade="all, delete")
 
     likes = db.relationship("Like", primaryjoin="User.id==Like.liked_id", backref="users", cascade="all, delete")
-    unlikes = db.relationship("Unlike", primaryjoin="User.id==Unlike.unliked_id", backref="users", cascade="all, delete")
+    unlikes = db.relationship("Unlike", primaryjoin="User.id==Unlike.unliker_id", backref="users", cascade="all, delete")
 
     matches = db.relationship("matchedRoom", secondary="matched_Users", back_populates="matchedUsers")
 

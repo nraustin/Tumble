@@ -26,7 +26,7 @@
     flex-direction: column;
     justify-content: center;
     gap: 10px;
-    background-color: lightblue;
+    background-image:linear-gradient(rgb(85, 102, 179), rgb(105, 179, 208));
 }
 
 
@@ -35,13 +35,76 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 200px;
+    font-size: larger;
     gap: 10px;
+    color:whitesmoke
 }
 
 .swipeCardBio{
     padding: 20px;
+    color: whitesmoke
 }
 .likeButtons{
     display: flex;
     justify-content: space-evenly;
   }
+
+
+
+.swipeCardLikeButton{
+        position: relative;
+        background-color: #ff585b;
+        border: none;
+        font-size: 28px;
+        color: #FFFFFF;
+        padding: 18px;
+        padding-top: 23px;
+        width: 70px;
+        border-radius: 100%;
+        text-align: center;
+        -webkit-transition-duration: 0.4s;
+        transition-duration: 0.4s;
+        text-decoration: none;
+        overflow: hidden;
+        cursor: pointer;
+}
+      
+.swipeCardLikeButton:after{
+        content: "";
+        background: #ff88a2;
+        opacity: 0;
+        transition: all 0.8s
+}
+
+.swipeCardUnlikeButton:active:after,
+.swipeCardLikeButton:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s
+}
+
+.swipeCardUnlikeButton{
+    position: relative;
+    background-color: #40756f;
+    border: none;
+    font-size: 28px;
+    color: #FFFFFF;
+    padding: 20px;
+    width: 70px;
+    border-radius: 100%;
+    text-align: center;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+  
+.swipeCardUnlikeButton:after{
+    content: "";
+    background: #ff88a2;
+    opacity: 0;
+    transition: all 0.8s
+}

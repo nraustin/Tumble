@@ -116,7 +116,7 @@ const ProfilePage = () => {
                       Age: {user.age} <div className='editProfileIcon'>{<FiEdit/>}</div>
                       </div> 
                     <div className='profileInfo'>
-                      Likes: {user.likes[0] ? user.likes[0].id : null}
+                      Likes: {user.likes[0] ? user.likes.length : null}
                       </div> 
                     
                   </div>
