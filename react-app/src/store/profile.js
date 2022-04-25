@@ -60,18 +60,24 @@ export const updateUserThunk = (user) => async(dispatch) => {
 // ---------------------------------------------------------LIKES
 
 
-// const CREATE_LIKE = 'profile/CREATE_LIKE'
-// const GET_LIKES = 'profile/GET_LIKE'
+const CREATE_LIKE = 'profile/CREATE_LIKE'
+const GET_LIKES = 'profile/GET_LIKE'
+const CREATE_UNLIKE = 'profile/CREATE_UNLIKE'
 
-// const createLike = (like) => ({
-//     type: CREATE_LIKE,
-//     payload: like
-// })
+const createLike = (like) => ({
+    type: CREATE_LIKE,
+    payload: like
+})
 
-// const getLikes = (likes) => ({
-//     type: GET_LIKES,
-//     payload: likes
-// })
+const createUnlike = (unlike) => ({
+      type: CREATE_UNLIKE,
+      payload: unlike
+})
+
+const getLikes = (likes) => ({
+    type: GET_LIKES,
+    payload: likes
+})
 
 export const createLikeThunk = (like) => async(dispatch) => {
 
@@ -83,6 +89,7 @@ export const createLikeThunk = (like) => async(dispatch) => {
 
     if (res.ok) {
         const newLike = await res.json()
+        dispatch(createLike)
         return newLike
     }
 }
@@ -98,6 +105,7 @@ export const createUnlikeThunk = (unlike) => async(dispatch) => {
 
     if (res.ok) {
         const newUnlike = await res.json()
+        dispatch(createUnlike)
         return newUnlike
     }
 }
@@ -109,6 +117,7 @@ export const getLikesThunk = () => async(dispatch) => {
 
     if (res.ok) {
        const likes = await res.json()
+       dispatch(getLikes)
        return likes
     }
 }
@@ -116,20 +125,7 @@ export const getLikesThunk = () => async(dispatch) => {
 // --------------------------------------------------------------MATCHES
 
 
-export const deleteMatchThunk = (matchId) => async (dispatch) => {
 
-    const res = await fetch('/api/matches/delete', {
-        method: 'DELETE',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ matchId })
-    })
-
-
-    if (res.ok) {
-        const matches = await res.json()
-        return matches
-    }
-}
 
 // --------------------------------------------------------------MESSAGES
 
@@ -229,21 +225,16 @@ let initialState = {}
               newState = {...state}
               newState[action.payload.id] = action.payload
               return newState
-          
-          // case CREATE_MESSAGE: 
-          //      newState = { ...state };
-          //      newState[action.match_id].messages[action.newMessage.id] = action.newMessage;
-          //      return newState;
-          // case EDIT_MESSAGE: 
-          //      newState = { ...state };
-          //      newState[action.updatedMessage.match_id].messages[action.updatedMessage.id] = action.updatedMessage;
-          //      return newState;
-          // case DELETE_MESSAGE:
-          //      newState = { ...state };
-          //      delete newState[action.match_id].messages[action.deletedMessage.id];
-          //      return newState;  
+          case CREATE_LIKE:
+               newState = {...state}
+               newState[action.payload.id] = action.payload
+               return newState
+          case CREATE_UNLIKE:
+               newState = {...state}
+               newState[action.payload.id] = action.payload
+               return newState
           default:
-                return state;       
+               return state;       
       }
   }
 

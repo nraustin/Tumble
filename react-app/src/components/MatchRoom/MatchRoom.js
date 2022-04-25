@@ -41,7 +41,7 @@ const MatchRoom = ({matchUpdate, setMatchUpdate}) => {
         const newMessage = { userId: user?.id, matchId, content: message }
 
         await dispatch(profileActions.createMessageThunk(newMessage))
-        await dispatch(matchActions.getMatchThunk(matchId))
+        await dispatch(matchActions.deleteMatchThunk(matchId))
 
         setMessage('')
 
@@ -53,13 +53,10 @@ const MatchRoom = ({matchUpdate, setMatchUpdate}) => {
     const handleUnmatch = async() => {
 
         console.log(matchId)
-        let res = dispatch(profileActions.deleteMatchThunk(matchId))
         setMatchUpdate(true) 
 
-        if (res) {
         dispatch(profileActions.getUserThunk(user.id))
         
-            }
         history.push('/users')
     
       }

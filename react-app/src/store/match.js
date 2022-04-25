@@ -1,5 +1,6 @@
 const GET_MATCH = 'profile/GET_MATCH'
 const GET_MATCHES = 'profle/GET_MATCHES'
+const DEL_MATCH = 'profile/DEL_MATCH'
 
 
 const getMatch = (match) => ({
@@ -10,6 +11,11 @@ const getMatch = (match) => ({
 const getMatches = (matches) => ({
     type: GET_MATCHES,
     payload: matches
+})
+
+const deleteMatch = (match) => ({
+    type: DEL_MATCH,
+    payload: match
 })
 
 export const getMatchThunk = (matchId) => async (dispatch) => {
@@ -34,19 +40,40 @@ export const getMatchesThunk = () => async(dispatch) => {
 }
 
 
+export const deleteMatchThunk = (matchId) => async (dispatch) => {
+
+    const res = await fetch('/api/matches/delete', {
+        method: 'DELETE',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ matchId })
+    })
+
+
+    if (res.ok) {
+        const deleted= await res.json()
+        dispatch(deleteMatch)
+        return deleted
+    }
+}
+
+
 let initialState = {}
 
  const matchReducer = (state = initialState, action) => {
-    let newState;
+    let matchState;
     switch(action.type) {
         case GET_MATCH:
-              let matchState = {};
-              matchState[action.payload.id] = action.payload
-              return matchState
+              let thisState = {...state};
+              matchState[action.payload?.id] = action.payload
+              return thisState
         case GET_MATCHES:
-              newState = {...state};
-              action.payload.matches?.forEach((match) => newState[match.id] = match)
-              return newState;
+              matchState = {...state};
+              action.payload.matches?.forEach((match) => matchState[match.id] = match)
+              return matchState
+        case DEL_MATCH:
+              matchState = {...state}
+              delete matchState[action.payload?.id]
+              return matchState
         default:
               return state;
     }

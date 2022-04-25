@@ -22,10 +22,11 @@ const UserMatches = () => {
 
     const dispatch = useDispatch()
 
+
     useEffect(() => {
         async function getData() {
         await dispatch(matchActions.getMatchesThunk())
-        await dispatch(profileActions.getUserThunk(profile?.id))
+        await dispatch(profileActions.getUsersThunk())
         }
         getData()
     }, [dispatch, profile?.id, match?.id])
