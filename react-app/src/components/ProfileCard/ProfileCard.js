@@ -63,8 +63,7 @@ function ProfileCard({...allProfProps}) {
                 </div>
                 <div className='swipeCardInfoContainer'>
                   <strong className='swipeCardGeneralInfo'>
-                    <div>{allProfProps.person?.name}</div>
-                    <div>Age {allProfProps.person?.age}</div>
+                    <div>{allProfProps.person?.name}, {allProfProps.person?.age}</div>
                     <div>{allProfProps.person?.location}</div>
                   </strong>
                   <strong className='swipeCardBio'>{allProfProps.person?.biography}</strong>
@@ -83,8 +82,7 @@ function ProfileCard({...allProfProps}) {
             </div>
               <div className='swipeCardInfoContainer'>
                 <strong className='swipeCardGeneralInfo'>
-                  <div>{allProfProps.dog?.name}</div>
-                  <div>Age {allProfProps.dog?.age}</div>
+                  <div>{allProfProps.dog?.name}, {allProfProps.dog?.age}</div>
                   <div>{allProfProps.dog?.location}</div>
                 </strong>
                 <strong className='swipeCardBio'>{allProfProps.dog?.biography}</strong>

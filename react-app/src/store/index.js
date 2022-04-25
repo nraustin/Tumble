@@ -3,10 +3,12 @@ import thunk from 'redux-thunk';
 import session from './session'
 
 import profileReducer from './profile'
+import matchReducer from './match';
 
 const rootReducer = combineReducers({
   session,
-  profile: profileReducer
+  profile: profileReducer,
+  match: matchReducer
 });
 
 

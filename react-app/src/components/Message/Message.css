@@ -1,0 +1,18 @@
+.messageContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+}
+
+.messageEditIcon:hover{
+    cursor: pointer;
+
+}
+
+.messageContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

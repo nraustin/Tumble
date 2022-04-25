@@ -34,7 +34,7 @@ class matchedRoom(db.Model):
         return{
             'id': self.id,
             'matched': [maU.info() for maU in self.matchedUsers], 
-            'messages': [m.to_dict() for m in self.messages]
+            'messages': [m.message_to_dict() for m in self.messages]
         }
 
 class Message(db.Model):

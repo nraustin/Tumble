@@ -99,6 +99,13 @@ export const getLikesThunk = () => async(dispatch) => {
 
 // --------------------------------------------------------------MATCHES
 
+
+const GET_MATCHES = 'profle/GET_MATCHES'
+
+
+
+
+
 export const getMatchesThunk = () => async(dispatch) => {
 
     const res = await fetch('api/matches')
@@ -146,9 +153,9 @@ const deleteMessage = (match_id, message) => ({
 });
 
 
-export const createMessageThunk = (match_id, message) => async (dispatch) => {
+export const createMessageThunk = (message) => async (dispatch) => {
 
-    const res= await fetch(`/api/messages/${match_id}`, {
+    const res= await fetch('/api/messages/new', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(message),
@@ -156,7 +163,7 @@ export const createMessageThunk = (match_id, message) => async (dispatch) => {
 
     if (res.ok) {
       const newMessage = await res.json();
-      dispatch(createMessage(match_id, newMessage));
+      
       return newMessage;
 
     } 
@@ -167,12 +174,12 @@ export const createMessageThunk = (match_id, message) => async (dispatch) => {
     }
   };
   
-export const editMessageThunk = (updatedMessage) => async (dispatch) => {
+export const editMessageThunk = (message) => async (dispatch) => {
 
-    const res = await fetch(`/api/messages/${updatedMessage.id}`, {
+    const res = await fetch('/api/messages/edit', {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updatedMessage),
+      body: JSON.stringify(message),
     });
   
     if (!res.ok) {
@@ -180,18 +187,21 @@ export const editMessageThunk = (updatedMessage) => async (dispatch) => {
     }
 
     const updatedMessage = await res.json();
-    dispatch(editMessage(updatedMessage));
+    // dispatch(editMessage(updatedMessage));
     return updatedMessage;
   };
   
-export const deleteMessageThunk = (match_id, message_id) => async (dispatch) => {
+export const deleteMessageThunk = (message) => async (dispatch) => {
 
-    const res = await fetch(`/api/messages/${message_id}`, {
+    const res = await fetch(`/api/messages/delete`, {
       method: "DELETE",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify(message)
+      
     });
     if (res.ok) {
       const deletedMessage = await res.json();
-      dispatch(deleteMessage(match_id, deletedMessage));
+      // dispatch(deleteMessage(match_id, deletedMessage));
       return deletedMessage;
 
     } else {
@@ -219,18 +229,19 @@ let initialState = {}
               newState = {...state}
               newState[action.payload.id] = action.payload
               return newState
-          case CREATE_MESSAGE: 
-               newState = { ...state };
-               newState[action.match_id].messages[action.newMessage.id] = action.newMessage;
-               return newState;
-          case EDIT_MESSAGE: 
-               newState = { ...state };
-               newState[action.updatedMessage.match_id].messages[action.updatedMessage.id] = action.updatedMessage;
-               return newState;
-          case DELETE_MESSAGE:
-               newState = { ...state };
-               delete newState[action.match_id].messages[action.deletedMessage.id];
-               return newState;  
+          
+          // case CREATE_MESSAGE: 
+          //      newState = { ...state };
+          //      newState[action.match_id].messages[action.newMessage.id] = action.newMessage;
+          //      return newState;
+          // case EDIT_MESSAGE: 
+          //      newState = { ...state };
+          //      newState[action.updatedMessage.match_id].messages[action.updatedMessage.id] = action.updatedMessage;
+          //      return newState;
+          // case DELETE_MESSAGE:
+          //      newState = { ...state };
+          //      delete newState[action.match_id].messages[action.deletedMessage.id];
+          //      return newState;  
           default:
                 return state;       
       }

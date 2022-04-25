@@ -69,3 +69,8 @@ input{
     outline: none;
 }
 
+.ageCheckbox{
+    display: flex;
+    justify-content: center;
+}
+

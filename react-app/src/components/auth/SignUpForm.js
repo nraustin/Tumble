@@ -114,12 +114,14 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div className='signUpFormDiv'>
-        <label>Are you a Dog Owner?</label>
+        <label>Are you a dog owner?</label>
+        <div className='ageCheckbox'>
           <input
             type='checkbox'
             value={dog}
             onChange={updateDog}
           ></input>
+          </div>
         </div>
         <div className='signUpFormDiv'>
         <label>Age</label>
