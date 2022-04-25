@@ -12,6 +12,7 @@ import ProfileCardSlider from './components/ProfileCardSlider/ProfileCardSlider'
 import UserMatches from './components/UserMatches/UserMatches';
 import MatchRoom from './components/MatchRoom/MatchRoom';
 import SplashPage from './components/SplashPage/SplashPage';
+import UserLikes from './components/LikesPage/LikesPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -62,6 +63,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <ProfileCard />
+        </ProtectedRoute>
+        <ProtectedRoute path='/likes' exact={true} >
+          <UserLikes/>
         </ProtectedRoute>
         <Route path='/' exact={true} >
         </Route>

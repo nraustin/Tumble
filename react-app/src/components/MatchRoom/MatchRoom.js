@@ -68,31 +68,38 @@ const MatchRoom = ({matchUpdate, setMatchUpdate}) => {
     return (user && (
         <>
         <div className="chatContainer">
-            <div className="chatMessages">
+            
                 <List className="messageList">
-                    {match?.messages.map(msg => (
-                        <Message msg={msg}/>
-                            
+                    {match?.messages?.map(msg => (
+                        <>
+                        {user?.id === msg?.id ? 
+                        <div className="chatMessages"> 
+                            <Message msg={msg}/>
+                        </div> :
+                        <div className="otherUserMessages">
+                            <Message msg={msg}/>
+                        </div>}
+                        </>
                         ))}
                 </List>
-            </div>
 
         </div>
-        <div className='messageForm'>
-            <form onSubmit={handleMessage}>
+        <div>
+            <form onSubmit={handleMessage} className='messageForm'>
                 <textarea
                 rows='2'
                 cols='30'
-                placeholder='Say something...'
+                placeholder='Send a message'
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 required
                 ></textarea>
 
-                <button type='Submit'><i className="fa-regular fa-circle-check"></i>Send</button>
+                <button type='Submit' className="messageSubmitB">Send</button>
+                <button onClick={handleUnmatch} className="unmatchB">Unmatch</button>
               </form>
-            </div>
-        <button onClick={handleUnmatch}>Unmatch</button>
+            
+        </div>
         </>
         )
     )

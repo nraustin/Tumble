@@ -1,5 +1,51 @@
 .chatMessages{
     display: flex;
+    justify-content: right;
+    bottom: 150px;
+    padding-top: 50px;
+}
+
+.otherUserMessages{
+    display: flex;
+    justify-content: left;
+    bottom: 150px;
+    padding-left: 200px;
+    padding-top: 50px;
+}
+
+.messageForm{
+    display: flex;
+    position: fixed;
     justify-content: center;
+    bottom: 50px;
+    width: 100%;
+}
+
+.messageList{
+    
+}
+
+.messageSubmitB{
+    border: none;
+    background-color: rgb(49, 135, 94);
+    color: white;
+    border-radius: 4px 4px 4px 4px;
+}
+
+.messageSubmitB:hover{
+    cursor: pointer;
+    background-color: rgb(15, 184, 54);
+}
+
+.unmatchB{
+    border: none;
+    background-color: rgb(157, 50, 50);
+    color: rgb(121, 121, 121);
+    border-radius: 4px 4px 4px 4px;
+}
+
+.unmatchB:hover{
+    cursor: pointer;
+    background-color: rgb(212, 47, 47);
 }
 

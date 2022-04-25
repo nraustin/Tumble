@@ -86,7 +86,7 @@ const NavBar = () => {
                   <NavLink to='/matches' exact={true} activeClassName='active'>Matches</NavLink>
                 </MenuItem>
                 <MenuItem icon={<FiThumbsUp/>}>
-                  <NavLink to='likes/profile' exact={true} activeClassName='active'>Likes</NavLink>
+                  <NavLink to='/likes' exact={true} activeClassName='active'>Likes</NavLink>
                 </MenuItem>
                 {user?.matches[0] ?
                   user.matches?.map((match) => (
@@ -106,6 +106,9 @@ const NavBar = () => {
               </Menu>
             </SidebarFooter>
           </ProSidebar>
+          <div className='footer'>
+            
+          </div>
         </div>
       </>
   );

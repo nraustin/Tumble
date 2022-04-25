@@ -41,23 +41,59 @@ const Message = ({msg}) => {
 
     return (
         <>
+        {user?.id === msg?.user_id ? <div className="sessionChatContainer"> 
           {!editMessage ?
-          <div className="messageContainer">
-            <div className="messageContent">
-                {msg?.content}
-            </div>
+            (user?.id === msg?.user_id ? 
+              <div className="userMsgContainer">
+            
+                    <div className="messageContentUser">
+                        {msg?.content}
+                    </div>
 
-            {user?.id === msg?.user_id && (
-                <>
-                    <div className="messageEditIcon" onClick={handleMessageEdit}>
-                        <FiEdit2/>
+                    <div className="messageIcons">
+                        <div className="messageEditIcon" onClick={handleMessageEdit} id={msg.id}>
+                            <FiEdit2/>
+                        </div>
+                        <div className="messageTrashIcon" onClick={handleMessageDelete} id={msg.id}>
+                            <FiTrash2/>
+                        </div>
                     </div>
-                    <div className="messageTrashIcon" onClick={handleMessageDelete} id={msg.id}>
-                        <FiTrash2/>
+                </div>
+                :
+                <div className="otherMsgContainer">
+                    <div className="messageContent">
+                        {msg?.content}
                     </div>
-                </>)}
+                </div>)
+            : <EditMessage msg={msg}/>} 
+            </div> : 
+            <div className="otherChatContainer">
+            {!editMessage ?
+            (user?.id === msg?.user_id ? 
+              <div className="userMsgContainer">
+            
+                    <div className="messageContent">
+                        {msg?.content}
+                    </div>
+
+                    <div>
+                        <div className="messageEditIcon" onClick={handleMessageEdit} id={msg.id}>
+                            <FiEdit2/>
+                        </div>
+                        <div className="messageTrashIcon" onClick={handleMessageDelete} id={msg.id}>
+                            <FiTrash2/>
+                        </div>
+                    </div>
+                </div>
+                :
+                <div className="otherMsgContainer">
+                    <div className="messageContent">
+                        {msg?.content}
+                    </div>
+                </div>)
+            : <EditMessage msg={msg}/>}
             </div>
-            : <EditMessage msg={msg}/> }
+            }
         </>
     )
 }

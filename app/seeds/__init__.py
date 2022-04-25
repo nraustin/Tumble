@@ -2,6 +2,7 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .messages import seed_messages, undo_messages
 from .matches import seed_matchedRooms, undo_matchedRooms
+from .images import seed_images, undo_images
 from .likes import seed_likes, undo_likes
 
 # Creates a seed group to hold our commands
@@ -13,6 +14,7 @@ seed_commands = AppGroup('seed')
 @seed_commands.command('all')
 def seed():
     seed_users()
+    seed_images()
     seed_likes()
     seed_matchedRooms()
     seed_messages()
@@ -23,6 +25,7 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_users()
+    undo_images()
     undo_likes()
     undo_matchedRooms()
     undo_messages()

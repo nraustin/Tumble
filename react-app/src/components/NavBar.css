@@ -110,3 +110,10 @@
     overflow: hidden;
   }
 }
+
+
+.footer{
+  background-color: #000;
+  height: 30px;
+  width: 100vh;
+}

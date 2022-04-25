@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector} from 'react-redux'
 import { useHistory} from 'react-router-dom';
-import { FiEdit } from "react-icons/fi";
 
 import './ProfilePage.css'
 
@@ -72,7 +71,7 @@ const ProfilePage = () => {
           <>
             <div className='profileContainerRoot'>
                   <div className='profileContainer'>
-                  <div>
+                  <div className='profilePicContainer'>
                       Profile Pictures
                       <div className='profileImageGrid'>
                       {user.images[0] ? 
@@ -95,22 +94,22 @@ const ProfilePage = () => {
                     </form>
                     </div>
                     <div className='profileInfo'>
-                      Name: {user.name} <div className='editProfileIcon'>{<FiEdit/>}</div>
+                      Name: {user.name} <div className='editProfileIcon'></div>
                       </div> 
                     <div className='profileInfo'>
-                      Email: {user.email} <div className='editProfileIcon'>{<FiEdit/>}</div>
+                      Email: {user.email} <div className='editProfileIcon'></div>
                       </div> 
                     <div className='profileInfo'> 
-                      I'm looking for: {user.dog? 'potential owners' : 'dogs'} <div className='editProfileIcon'>{<FiEdit/>}</div>
+                      I'm looking for: {user.dog? 'potential owners' : 'dogs'} <div className='editProfileIcon'></div>
                       </div> 
                     <div className='profileInfo'>
-                      Biography: {user.biography ? user.biography : 'Tell everyone about yourself'} <div className='editProfileIcon'>{<FiEdit/>}</div>
+                      Biography: {user.biography ? user.biography : 'Tell everyone about yourself'} <div className='editProfileIcon'></div>
                       </div>
                     <div className='profileInfo'>
-                      Location: {user.location ? user.location : 'Add your location'} <div className='editProfileIcon'>{<FiEdit/>}</div>
+                      Location: {user.location ? user.location : 'Add your location'} <div className='editProfileIcon'></div>
                       </div> 
                     <div className='profileInfo'>
-                      Age: {user.age} <div className='editProfileIcon'>{<FiEdit/>}</div>
+                      Age: {user.age} <div className='editProfileIcon'></div>
                       </div> 
                     <div className='profileInfo'>
                       Likes: {user.likes[0] ? user.likes.length : null}

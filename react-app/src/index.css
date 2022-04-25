@@ -58,3 +58,30 @@ h1{
     color: rgb(215, 76, 76)
   }
   
+
+#footer{
+    display: flex;
+    position: fixed;
+    height: 30px;
+    background-color: rgb(21, 111, 237);
+    bottom: 0;
+    width: 100%;
+    justify-content: space-evenly;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+.linkedInContainer{
+  display: flex;
+  justify-content: center;
+}
+
+.gitIconContainer{
+  display: flex;
+  justify-content: center;
+}
+
+.aboutIconGit{
+  height: 30px;
+  width: 30px;
+}

@@ -28,7 +28,7 @@ const UserMatches = () => {
     return (
         <>
         
-        <p> Hey, {user.name}. You have: {user.matches?.length === 1 ? <p>{user.matches?.length} match!</p> : <p>{user.matches?.length} matches!</p>}</p>
+        <p className='space'> Hey, {user.name}. You have: {user.matches?.length === 1 ? <p>{user.matches?.length} match!</p> : <p>{user.matches?.length} matches!</p>}</p>
         
         <div className='allMatchesContainer'>
         <div className='matchesContainer'>
