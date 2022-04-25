@@ -61,7 +61,6 @@ const MatchRoom = ({matchUpdate, setMatchUpdate}) => {
         
             }
         history.push('/users')
-        window.location.reload(false);
     
       }
 

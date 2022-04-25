@@ -15,6 +15,9 @@ const UserMatches = () => {
     const profile = Object.values(profileObj)[0]
     console.log(profile?.id)
 
+    const match = Object.values(matches)
+    console.log(match)
+
     console.log(matches)
 
     const dispatch = useDispatch()
@@ -25,7 +28,7 @@ const UserMatches = () => {
         await dispatch(profileActions.getUserThunk(profile?.id))
         }
         getData()
-    }, [dispatch, profile?.id, ])
+    }, [dispatch, profile?.id, match?.id])
 
     
 
