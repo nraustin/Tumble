@@ -62,7 +62,7 @@ const ProfilePage = () => {
           const file = e.target.files[0];
           setImage(file)
         }
-  
+   
     return (
           <>
             <div className='profileContainerRoot'>
