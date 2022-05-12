@@ -28,6 +28,7 @@ const MatchRoom = ({matchUpdate, setMatchUpdate}) => {
     console.log(match?.matched)
 
 
+
     useEffect(() => {
 
         dispatch(matchActions.getMatchThunk(matchId));
@@ -41,7 +42,8 @@ const MatchRoom = ({matchUpdate, setMatchUpdate}) => {
         const newMessage = { userId: user?.id, matchId, content: message }
 
         await dispatch(profileActions.createMessageThunk(newMessage))
-        await dispatch(matchActions.deleteMatchThunk(matchId))
+        await dispatch(matchActions.getMatchThunk(matchId))
+        
 
         setMessage('')
 
@@ -56,6 +58,7 @@ const MatchRoom = ({matchUpdate, setMatchUpdate}) => {
         setMatchUpdate(true) 
 
         dispatch(profileActions.getUserThunk(user.id))
+        await dispatch(matchActions.deleteMatchThunk(matchId))
         
         history.push('/users')
     

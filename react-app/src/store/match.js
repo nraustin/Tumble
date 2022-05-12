@@ -63,15 +63,15 @@ let initialState = {}
     let matchState;
     switch(action.type) {
         case GET_MATCH:
-              let thisState = {...state};
-              matchState[action.payload?.id] = action.payload
-              return thisState
+              let newState = {};
+              newState[action.payload?.id] = action.payload
+              return newState
         case GET_MATCHES:
               matchState = {...state};
               action.payload.matches?.forEach((match) => matchState[match.id] = match)
               return matchState
         case DEL_MATCH:
-              matchState = {...state}
+              matchState = {...state};
               delete matchState[action.payload?.id]
               return matchState
         default:

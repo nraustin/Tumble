@@ -77,14 +77,16 @@ const ProfilePage = () => {
                          )}) : null}
                        </div>
                     <form onSubmit={handleImageSubmit} className='imageSubmitForm'>
-                      <div >
-                          <input
-                          type="file"
-                          className='uploadProfileImgButton'
-                          accept="image/*"
-                          onChange={update}
-                          />
-                      </div>
+                          <div className='uploadProfileImgButton'>
+                            <label for='picInput'>Upload Picture</label>
+                            <input
+                            type="file"
+                            id='picInput'
+                            accept="image/*"
+                            onChange={update}
+                            hidden
+                            />
+                          </div>
                       <button type='Submit' className='submitProfileImgButton'>Add Profile Photo</button>
                       {(imageLoading)&& <p>Patience, bro</p>}
                     </form>

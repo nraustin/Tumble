@@ -226,13 +226,13 @@ let initialState = {}
               newState[action.payload.id] = action.payload
               return newState
           case CREATE_LIKE:
-               newState = {...state}
-               newState[action.payload.id] = action.payload
-               return newState
+               let likeState = {...state}
+               likeState[action.payload.id] = action.payload
+               return likeState
           case CREATE_UNLIKE:
-               newState = {...state}
-               newState[action.payload.id] = action.payload
-               return newState
+               likeState = {...state}
+               likeState[action.payload.id] = action.payload
+               return likeState
           default:
                return state;       
       }
