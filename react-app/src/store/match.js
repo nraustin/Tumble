@@ -1,5 +1,5 @@
 const GET_MATCH = 'profile/GET_MATCH'
-const GET_MATCHES = 'profle/GET_MATCHES'
+const GET_MATCHES = 'profile/GET_MATCHES'
 const DEL_MATCH = 'profile/DEL_MATCH'
 
 
@@ -50,8 +50,8 @@ export const deleteMatchThunk = (matchId) => async (dispatch) => {
 
 
     if (res.ok) {
-        const deleted= await res.json()
-        dispatch(deleteMatch)
+        const deleted = await res.json()
+        dispatch(deleteMatch(deleted))
         return deleted
     }
 }
@@ -68,7 +68,8 @@ let initialState = {}
               return newState
         case GET_MATCHES:
               matchState = {...state};
-              action.payload.matches?.forEach((match) => matchState[match.id] = match)
+              action.payload.matched?.forEach((match) => matchState[match.id] = match)
+              console.log(action.payload)
               return matchState
         case DEL_MATCH:
               matchState = {...state};

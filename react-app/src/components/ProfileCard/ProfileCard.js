@@ -35,11 +35,16 @@ function ProfileCard({...allProfProps}) {
 
   
 
-  const likePersonUser = e => {
+  const likePersonUser = async(e) => {
     e.preventDefault()
    
     const newLike = { userId: userS.id, profileId: allProfProps.person?.id }
-    dispatch(profileActions.createLikeThunk(newLike))
+    let res = dispatch(profileActions.createLikeThunk(newLike))
+
+    if(res){
+      dispatch(profileActions.getUserThunk(userS?.id))
+    }
+     
 
     if(allProfProps?.slideIndex !== allProfProps?.peopleProfiles.length){
       allProfProps?.setSlideIndex(allProfProps?.slideIndex + 1)

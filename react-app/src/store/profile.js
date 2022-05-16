@@ -89,7 +89,7 @@ export const createLikeThunk = (like) => async(dispatch) => {
 
     if (res.ok) {
         const newLike = await res.json()
-        dispatch(createLike)
+        dispatch(createLike(newLike))
         return newLike
     }
 }
@@ -105,7 +105,7 @@ export const createUnlikeThunk = (unlike) => async(dispatch) => {
 
     if (res.ok) {
         const newUnlike = await res.json()
-        dispatch(createUnlike)
+        dispatch(createUnlike(newUnlike))
         return newUnlike
     }
 }
@@ -117,7 +117,7 @@ export const getLikesThunk = () => async(dispatch) => {
 
     if (res.ok) {
        const likes = await res.json()
-       dispatch(getLikes)
+       dispatch(getLikes(likes))
        return likes
     }
 }
@@ -228,6 +228,7 @@ let initialState = {}
           case CREATE_LIKE:
                let likeState = {...state}
                likeState[action.payload.id] = action.payload
+               console.log(likeState[action])
                return likeState
           case CREATE_UNLIKE:
                likeState = {...state}

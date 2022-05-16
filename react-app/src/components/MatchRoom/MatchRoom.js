@@ -57,8 +57,13 @@ const MatchRoom = ({matchUpdate, setMatchUpdate}) => {
         console.log(matchId)
         setMatchUpdate(true) 
 
-        dispatch(profileActions.getUserThunk(user.id))
-        await dispatch(matchActions.deleteMatchThunk(matchId))
+        
+        let res = dispatch(matchActions.deleteMatchThunk(matchId))
+
+        if(res){
+            dispatch(profileActions.getUserThunk(user?.id))
+        }
+        
         
         history.push('/users')
     
