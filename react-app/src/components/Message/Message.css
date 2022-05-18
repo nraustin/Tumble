@@ -42,16 +42,15 @@
 .otherMsgContainer{
         display: flex;
         padding: 3px;
-        background-color: rgb(186, 214, 251);
+        background-color: rgb(156, 196, 250);
         color: white;
-        border-radius: 3px 3px 3px 3px;
+        border-radius: 10px 10px 10px 10px;
         flex-direction: row;
         justify-content: center;
         width: 200px;
-        box-shadow: 0px 4px 8px black;
 
 }
 
 .sessionChatContainer{
-    padding-left: 1000px;
+    
 }

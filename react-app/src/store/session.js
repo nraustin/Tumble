@@ -210,6 +210,7 @@ export default function reducer(state = initialState, action) {
         return unlikeState
     case GET_MATCHES:
         console.log(action.payload)
+        // let newMatches = action.payload.matched?.forEach((match) => matches)
         let matchState = {
           ...state,
             user: {

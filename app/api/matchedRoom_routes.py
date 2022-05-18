@@ -13,7 +13,7 @@ def all_matches():
         userMatches = []
         for match in current_user.matches:
             userMatches.append(match)
-            return {'matched':[match.matchedRoom_to_dict() for match in userMatches]}
+        return {'matched':[match.matchedRoom_to_dict() for match in userMatches]}
     
     return None
 

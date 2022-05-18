@@ -1,3 +1,12 @@
+.chatContainer{
+    display: flex;
+    flex-direction: right;
+    width: 100vh;
+    float: right;
+    
+}
+
+
 .chatMessages{
     display: flex;
     justify-content: right;
@@ -6,8 +15,8 @@
 }
 
 .otherUserMessages{
-    display: flex;
-    justify-content: left;
+    /* display: flex;
+    justify-content: left; */
     bottom: 150px;
     padding-left: 200px;
     padding-top: 50px;

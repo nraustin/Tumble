@@ -1,9 +1,11 @@
 #sidebar {
   position: absolute;
   width: 220px;
+  float: left;
 }
 #sidebar .pro-sidebar {
   height: 100vh;
+  float: left;
 }
 #sidebar .closemenu {
   color: #000;
@@ -38,6 +40,7 @@
 #sidebar .pro-sidebar.collapsed {
   width: 80px;
   min-width: 80px;
+  float: left;
 }
 #sidebar .pro-sidebar-inner {
   box-shadow: 0.5px 0.866px 2px 0px rgba(0, 0, 0, 0.15);
@@ -113,7 +116,7 @@
 
 
 .footer{
-  background-color: #000;
+  /* background-color: #000;
   height: 30px;
-  width: 100vh;
+  width: 100vh; */
 }
