@@ -9,25 +9,53 @@
 
 .profilePicContainer{
     height:200px;
-    padding-bottom: 100px;
+    padding-bottom: 50px;
+    width: 350px;
 }
 
 
 
 .profileImageGrid{
-
-    
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
 }
 
 .imageSubmitForm{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    font-family: 'Chivo', sans-serif;
+    font-family: 'ABeeZee', sans-serif;
+    color: whitesmoke;
+    font-size: 12px ;
+    border-radius: 2px 2px 2px 2px;
+    padding-top: 20px;
+}
+.imageSubmitForm:hover{
 }
 
 .uploadProfileImgButton{
-    background-image:linear-gradient(to right,rgb(162, 216, 247), rgb(234, 234, 234));
+    background-color: rgb(3, 135, 250);
+    display: flex;
+    justify-content: center;
+    width: 110px;
+    font-size: 13px;
+    text-align: center;
+    border-radius: 2px 2px 2px 2px;
+}
+
+.uploadProfileImgButton:hover{
+    cursor: pointer;
+    background-color: rgb(82, 167, 252);
+}
+
+.uploadProfileImgButtonLabel{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 5px;
+    padding-top: 9px;
+    font-family: 'Chivo';
 }
 
 
@@ -41,8 +69,9 @@
 }
 
 .submitProfileImgButton:hover{
-    background-color: rgb(7, 96, 250);
     cursor: pointer;
+    background-color: rgb(7, 96, 250);
+   
 }
 
 
@@ -63,6 +92,8 @@
     height: 100px;
     width: 100px;
     border-radius: 5px 5px 5px 5px;
+    padding: 4px;
+    box-shadow: 0px 3px 6px rgb(176, 176, 176);
 }
 
 .profileInfo{

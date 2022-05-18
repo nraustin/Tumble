@@ -78,7 +78,7 @@ const ProfilePage = () => {
                        </div>
                     <form onSubmit={handleImageSubmit} className='imageSubmitForm'>
                           <div className='uploadProfileImgButton'>
-                            <label for='picInput'>Upload Picture</label>
+                              <label className='uploadProfileImgButtonLabel' for='picInput'>Upload Picture</label>
                             <input
                             type="file"
                             id='picInput'
