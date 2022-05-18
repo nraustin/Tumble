@@ -104,9 +104,9 @@ export const signUp = (name, email, password, dog, age) => async (dispatch) => {
 
 // -------------------------------------------------LIKES
 
-const CREATE_LIKE = 'profile/CREATE_LIKE'
-const GET_LIKES = 'profile/GET_LIKE'
-const CREATE_UNLIKE = 'profile/CREATE_UNLIKE'
+const CREATE_LIKE = 'session/CREATE_LIKE'
+const GET_LIKES = 'session/GET_LIKES'
+const CREATE_UNLIKE = 'session/CREATE_UNLIKE'
 
 const createLike = (like) => ({
     type: CREATE_LIKE,
@@ -169,7 +169,7 @@ export const getLikesThunk = () => async(dispatch) => {
 
 //--------------------------------------------------------------MATCHES
 
-const GET_MATCHES = 'profile/GET_MATCHES'
+const GET_MATCHES = 'session/GET_MATCHES'
 
 const getMatches = (matches) => ({
   type: GET_MATCHES,

@@ -21,7 +21,7 @@ function ProfileCard({...allProfProps}) {
 
   useEffect(() => {
     dispatch(profileActions.getUserThunk(userS?.id))
-  }, [dispatch])
+  }, [dispatch, userS?.id])
 
   useEffect(() => {
     if (!userId) {
@@ -62,7 +62,7 @@ function ProfileCard({...allProfProps}) {
     e.preventDefault()
    
     const newLike = { userId: userS.id, profileId: allProfProps.dog?.id }
-    dispatch(sessionActions.createLikeThunk(newLike))
+    dispatch(sessionActions.createLikeThunk(newLike)).then(() => dispatch(sessionActions.getMatchesThunk()))
 
       if(allProfProps?.slideIndex !== allProfProps?.dogProfiles.length){
         allProfProps?.setSlideIndex(allProfProps?.slideIndex + 1)

@@ -7,8 +7,8 @@ import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarFooter, SidebarConten
 import { FiLogIn, FiLogOut, FiHeart, FiThumbsUp, FiUserPlus, FiUser, FiUsers, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 
 import * as profileActions from '.././store/profile'
-import * as matchActions from '.././store/match'
-import * as sessionActions from '.././store/session'
+// import * as matchActions from '.././store/match'
+// import * as sessionActions from '.././store/session'
 import "react-pro-sidebar/dist/css/styles.css";
 import './NavBar.css'
 

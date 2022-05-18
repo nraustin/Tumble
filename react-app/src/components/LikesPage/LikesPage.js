@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux'
 import * as profileActions from '../../store/profile'
-import * as matchActions from '../../store/match'
-import * as sessionActions from '../../store/session'
+// import * as matchActions from '../../store/match'
+// import * as sessionActions from '../../store/session'
 
 import './LikesPage.css'
 

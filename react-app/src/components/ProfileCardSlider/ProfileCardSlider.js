@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import * as profileActions from '../../store/profile'
-import * as matchActions from '../../store/match'
+// import * as matchActions from '../../store/match'
 import * as sessionActions from '../../store/session'
 import ProfileCard from "../ProfileCard/ProfileCard";
 import SlideButton from "../SlideButton/SlideButton";

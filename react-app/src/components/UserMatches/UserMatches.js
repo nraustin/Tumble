@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux'
 import { NavLink } from 'react-router-dom';
 import * as profileActions from '../../store/profile'
-import * as matchActions from '../../store/match'
-import * as sessionActions from '../../store/session'
+// import * as matchActions from '../../store/match'
+// import * as sessionActions from '../../store/session'
 
 import './UserMatches.css'
 
@@ -27,7 +27,7 @@ const UserMatches = () => {
     useEffect(() => {
         async function getData() {
         // await dispatch(sessionActions.getMatchesThunk())
-        await dispatch(profileActions.getUsersThunk())
+        dispatch(profileActions.getUsersThunk())
         }
         getData()
     }, [dispatch, profile?.id, match?.id])
