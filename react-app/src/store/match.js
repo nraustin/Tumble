@@ -1,5 +1,5 @@
 const GET_MATCH = 'profile/GET_MATCH'
-const GET_MATCHES = 'profile/GET_MATCHES'
+
 const DEL_MATCH = 'profile/DEL_MATCH'
 
 
@@ -8,10 +8,7 @@ const getMatch = (match) => ({
     payload: match
 })
 
-const getMatches = (matches) => ({
-    type: GET_MATCHES,
-    payload: matches
-})
+
 
 const deleteMatch = (match) => ({
     type: DEL_MATCH,
@@ -28,16 +25,7 @@ if (res.ok) {
     return match
 }}
 
-export const getMatchesThunk = () => async(dispatch) => {
 
-    const res = await fetch('/api/matches')
-
-    if (res.ok) {
-        const matches = await res.json()
-        dispatch(getMatches(matches))
-        return matches
-    }
-}
 
 
 export const deleteMatchThunk = (matchId) => async (dispatch) => {
@@ -66,11 +54,11 @@ let initialState = {}
               let newState = {};
               newState[action.payload?.id] = action.payload
               return newState
-        case GET_MATCHES:
-              matchState = {...state};
-              action.payload.matched?.forEach((match) => matchState[match.id] = match)
-              console.log(action.payload)
-              return matchState
+        // case GET_MATCHES:
+        //       matchState = {...state};
+        //       action.payload.matched?.forEach((match) => matchState[match.id] = match)
+        //       console.log(action.payload)
+        //       return matchState
         case DEL_MATCH:
               matchState = {...state};
               delete matchState[action.payload?.id]

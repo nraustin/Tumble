@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import * as profileActions from '../../store/profile'
+import * as sessionActions from '../../store/session'
 
 
 import {FiHeart, FiMeh} from 'react-icons/fi'
@@ -17,6 +18,10 @@ function ProfileCard({...allProfProps}) {
   const userS = useSelector(state => state.session.user)
 
   console.log(allProfProps?.slideIndex)
+
+  useEffect(() => {
+    dispatch(profileActions.getUserThunk(userS?.id))
+  }, [dispatch])
 
   useEffect(() => {
     if (!userId) {
@@ -39,11 +44,8 @@ function ProfileCard({...allProfProps}) {
     e.preventDefault()
    
     const newLike = { userId: userS.id, profileId: allProfProps.person?.id }
-    let res = dispatch(profileActions.createLikeThunk(newLike))
-
-    if(res){
-      dispatch(profileActions.getUserThunk(userS?.id))
-    }
+    dispatch(sessionActions.createLikeThunk(newLike))
+    dispatch(sessionActions.getMatchesThunk())
      
 
     if(allProfProps?.slideIndex !== allProfProps?.peopleProfiles.length){
@@ -60,7 +62,7 @@ function ProfileCard({...allProfProps}) {
     e.preventDefault()
    
     const newLike = { userId: userS.id, profileId: allProfProps.dog?.id }
-    dispatch(profileActions.createLikeThunk(newLike))
+    dispatch(sessionActions.createLikeThunk(newLike))
 
       if(allProfProps?.slideIndex !== allProfProps?.dogProfiles.length){
         allProfProps?.setSlideIndex(allProfProps?.slideIndex + 1)
@@ -76,7 +78,7 @@ function ProfileCard({...allProfProps}) {
     e.preventDefault()
 
     const newUnlike = { userId: userS.id, profileId: allProfProps.person?.id }
-    dispatch(profileActions.createUnlikeThunk(newUnlike))
+    dispatch(sessionActions.createUnlikeThunk(newUnlike))
 
     if(allProfProps?.slideIndex !== allProfProps?.peopleProfiles.length){
       allProfProps?.setSlideIndex(allProfProps?.slideIndex + 1)
@@ -91,7 +93,7 @@ function ProfileCard({...allProfProps}) {
     e.preventDefault()
 
     const newUnlike = { userId: userS.id, profileId: allProfProps.dog?.id }
-    dispatch(profileActions.createUnlikeThunk(newUnlike))
+    dispatch(sessionActions.createUnlikeThunk(newUnlike))
 
     if(allProfProps?.slideIndex !== allProfProps?.dogProfiles.length){
       allProfProps?.setSlideIndex(allProfProps?.slideIndex + 1)

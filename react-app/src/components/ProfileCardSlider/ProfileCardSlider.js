@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import * as profileActions from '../../store/profile'
 import * as matchActions from '../../store/match'
+import * as sessionActions from '../../store/session'
 import ProfileCard from "../ProfileCard/ProfileCard";
 import SlideButton from "../SlideButton/SlideButton";
 
@@ -19,10 +20,10 @@ function ProfileCardSlider() {
     useEffect(() => {
         async function getData() {
         await dispatch(profileActions.getUsersThunk())
-        await dispatch(matchActions.getMatchesThunk())
+        await dispatch(sessionActions.getMatchesThunk())
         }
         getData()
-    }, [dispatch])
+    }, [dispatch, user?.matches])
 
     const profilesObj = useSelector(state => state.profile)
     const profiles = Object.values(profilesObj)

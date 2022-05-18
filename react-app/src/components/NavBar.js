@@ -8,6 +8,7 @@ import { FiLogIn, FiLogOut, FiHeart, FiThumbsUp, FiUserPlus, FiUser, FiUsers, Fi
 
 import * as profileActions from '.././store/profile'
 import * as matchActions from '.././store/match'
+import * as sessionActions from '.././store/session'
 import "react-pro-sidebar/dist/css/styles.css";
 import './NavBar.css'
 
@@ -25,7 +26,7 @@ const NavBar = () => {
   useEffect(() => {
     async function getData() {
     await dispatch(profileActions.getUserThunk(user.id))
-    await dispatch(matchActions.getMatchesThunk())
+    // await dispatch(sessionActions.getMatchesThunk())
     }
     getData()
 
@@ -88,7 +89,7 @@ const NavBar = () => {
                 <MenuItem icon={<FiThumbsUp/>}>
                   <NavLink to='/likes' exact={true} activeClassName='active'>Likes</NavLink>
                 </MenuItem>
-                {user?.matches[0] ?
+                {user?.matches?.length > 0 ?
                   user.matches?.map((match) => (
                     match.matched.map((matchedUser) => {
                       return (matchedUser.id !== user.id && (

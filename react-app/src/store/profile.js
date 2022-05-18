@@ -1,4 +1,4 @@
-
+import session from './session'
 
 const GET_USER = 'profile/GET_USER';
 const GET_USERS = 'profile/GET_USERS';
@@ -89,6 +89,7 @@ export const createLikeThunk = (like) => async(dispatch) => {
 
     if (res.ok) {
         const newLike = await res.json()
+        console.log(newLike)
         dispatch(createLike(newLike))
         return newLike
     }
@@ -121,8 +122,6 @@ export const getLikesThunk = () => async(dispatch) => {
        return likes
     }
 }
-
-// --------------------------------------------------------------MATCHES
 
 
 
@@ -183,7 +182,7 @@ export const editMessageThunk = (message) => async (dispatch) => {
     }
 
     const updatedMessage = await res.json();
-    // dispatch(editMessage(updatedMessage));
+  
     return updatedMessage;
   };
   
@@ -197,7 +196,7 @@ export const deleteMessageThunk = (message) => async (dispatch) => {
     });
     if (res.ok) {
       const deletedMessage = await res.json();
-      // dispatch(deleteMessage(match_id, deletedMessage));
+
       return deletedMessage;
 
     } else {
@@ -225,15 +224,7 @@ let initialState = {}
               newState = {...state}
               newState[action.payload.id] = action.payload
               return newState
-          case CREATE_LIKE:
-               let likeState = {...state}
-               likeState[action.payload.id] = action.payload
-               console.log(likeState[action])
-               return likeState
-          case CREATE_UNLIKE:
-               likeState = {...state}
-               likeState[action.payload.id] = action.payload
-               return likeState
+  
           default:
                return state;       
       }

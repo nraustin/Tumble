@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux'
 import * as profileActions from '../../store/profile'
 import * as matchActions from '../../store/match'
+import * as sessionActions from '../../store/session'
 
 import './LikesPage.css'
 
@@ -27,8 +28,8 @@ const UserLikes = () => {
 
     useEffect(() => {
         async function getData() {
-        await dispatch(matchActions.getMatchesThunk())
-        // await dispatch(profileActions.getUserThunk(user.id))
+        // await dispatch(sessionActions.getMatchesThunk())
+        // // await dispatch(profileActions.getUserThunk(user.id))
         await dispatch(profileActions.getUsersThunk())
         }
         getData()
