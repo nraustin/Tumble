@@ -44,8 +44,8 @@ function ProfileCard({...allProfProps}) {
     e.preventDefault()
    
     const newLike = { userId: userS.id, profileId: allProfProps.person?.id }
-    dispatch(sessionActions.createLikeThunk(newLike))
-    dispatch(sessionActions.getMatchesThunk())
+    dispatch(sessionActions.createLikeThunk(newLike)).then(() => dispatch(sessionActions.getMatchesThunk()))
+
      
 
     if(allProfProps?.slideIndex !== allProfProps?.peopleProfiles.length){

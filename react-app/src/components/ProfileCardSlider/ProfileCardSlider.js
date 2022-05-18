@@ -23,7 +23,7 @@ function ProfileCardSlider() {
         await dispatch(sessionActions.getMatchesThunk())
         }
         getData()
-    }, [dispatch, user?.matches])
+    }, [dispatch])
 
     const profilesObj = useSelector(state => state.profile)
     const profiles = Object.values(profilesObj)
