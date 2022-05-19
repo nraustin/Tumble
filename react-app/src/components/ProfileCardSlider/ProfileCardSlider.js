@@ -29,7 +29,7 @@ function ProfileCardSlider() {
     const profiles = Object.values(profilesObj)
 
 
-    const currentProf = profiles[profileIndex]
+    // const currentProf = profiles[profileIndex]
 
     const dogProfiles = profiles.filter(profile => profile.dog === true)
     const peopleProfiles = profiles.filter(profile => profile.dog === false)
