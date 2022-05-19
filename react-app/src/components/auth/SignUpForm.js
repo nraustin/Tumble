@@ -49,7 +49,7 @@ const SignUpForm = () => {
   };
 
   const updateDog = (e) => {
-    setDog(e.target.value)
+    setDog(true)
   }
 
   const updateAge = (e) => {
