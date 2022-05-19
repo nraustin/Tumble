@@ -111,8 +111,8 @@ function ProfileCard({...allProfProps}) {
             <div className='swipeCardContainer'>
             
             <div className='swipeCardProfilePicsContainer'>
-              {allProfProps.person?.images ? <img className='swipeCardProfilePics' src={allProfProps.person.images[0]?.userImage} alt='https://cdn-icons-png.flaticon.com/512/616/616408.png'/>
-                : <img src='https://cdn-icons-png.flaticon.com/512/616/616408.png' alt=''/>}
+              {allProfProps.person?.images.length > 0 ? <img className='swipeCardProfilePics' src={allProfProps.person.images[0]?.userImage} alt={''}/>
+                : <img src={process.env.PUBLIC_URL + '/tumbleDefaultIcon.png'} alt="logo" />} 
                 </div>
                 <div className='swipeCardInfoContainer'>
                   <strong className='swipeCardGeneralInfo'>
@@ -130,7 +130,7 @@ function ProfileCard({...allProfProps}) {
             <div className='swipeCardContainer'>
             
             <div className='swipeCardProfilePicsContainer'>
-              {allProfProps.dog?.images ? <img className='swipeCardProfilePics' src={allProfProps.dog?.images[0]?.userImage} alt={''}/>
+              {allProfProps.dog?.images.length > 0 ? <img className='swipeCardProfilePics' src={allProfProps.dog?.images[0]?.userImage} alt={''}/>
                 : <img src={process.env.PUBLIC_URL + '/tumbleDefaultIcon.png'} alt="logo" />} 
             </div>
               <div className='swipeCardInfoContainer'>

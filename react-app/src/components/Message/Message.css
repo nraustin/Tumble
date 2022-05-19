@@ -6,6 +6,11 @@
     width: 100px;
 }
 
+.messageTrashIcon,
+.messageEditIcon{
+    padding: 1px;
+}
+
 .messageTrashIcon:hover,
 .messageEditIcon:hover{
     cursor: pointer;
@@ -22,35 +27,44 @@
 .messageContentUser{
 }
 
-.messageIcons{
+.userMsgAndEditContainer .messageIcons{
+    display: none;
+}
+
+.userMsgAndEditContainer:hover .messageIcons{
+    display: inline;
     display: flex;
-    flex-direction: row;
+    justify-content: right;
+    cursor: pointer;
+    padding-left: 4px;
 }
 
 
 .userMsgContainer{
     display: flex;
-    padding: 3px;
+    padding: 6px;
     background-color: rgb(46, 128, 235);
     color: white;
     border-radius: 10px 10px 10px 10px;
     flex-direction: row;
     justify-content: space-evenly;
-    width: 200px;
 }
 
 .otherMsgContainer{
         display: flex;
-        padding: 3px;
+        padding: 6px;
         background-color: rgb(156, 196, 250);
         color: white;
         border-radius: 10px 10px 10px 10px;
         flex-direction: row;
         justify-content: center;
-        width: 200px;
 
 }
 
+.otherChatContainer{
+    padding-left: 5px;
+}
+
 .sessionChatContainer{
-    
+    padding-right: 5px;
 }

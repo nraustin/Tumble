@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,8 +8,10 @@ import { FiLogIn, FiLogOut, FiHeart, FiThumbsUp, FiUserPlus, FiUser, FiUsers, Fi
 import * as profileActions from '.././store/profile'
 // import * as matchActions from '.././store/match'
 // import * as sessionActions from '.././store/session'
+
 import "react-pro-sidebar/dist/css/styles.css";
 import './NavBar.css'
+import tumbleDefaultUser from './tumbleDefaultUser.png'
 
 const NavBar = () => {
 
@@ -39,12 +40,12 @@ const NavBar = () => {
 
   return (
       <>
-        <div id="sidebar">
+        <div className="sidebar">
           <ProSidebar collapsed={menuCollapse}>
             <SidebarHeader>
             {user ? 
             <div className='userBox'>
-              {user.images[0] ? <img className='userIcon' src={user.images[0].userImage} alt='https://cdn-icons-png.flaticon.com/512/616/616408.png'/> : <img className= 'userIcon' src='https://cdn-icons-png.flaticon.com/512/616/616408.png' alt=''/>}
+              {user.images[0] ? <img className='userIcon' src={user.images[0].userImage} alt='https://cdn-icons-png.flaticon.com/512/616/616408.png'/> : <img className= 'userIcon' src={process.env.PUBLIC_URL + '/tumbleDefaultIcon.png'} alt=''/>}
               <div className='userText'>
                 <p>{user?.name}</p>
               </div>
@@ -91,10 +92,10 @@ const NavBar = () => {
                 </MenuItem>
                 {user?.matches?.length > 0 ?
                   user.matches?.map((match) => (
-                    match.matched.map((matchedUser) => {
-                      return (matchedUser.id !== user.id && (
-                    <MenuItem className='matchedUserIconContainer'icon={matchedUser?.images ? <img src={matchedUser?.images[0]?.userImage} className='sidebarMatchedUserIcon' alt=''/> : <img src='https://cdn-icons-png.flaticon.com/512/616/616408.png' className='sidebarMatchedUserIcon' alt=''/>}>
-                       <NavLink to={`/matches/${match.id}`} exact={true} className='sidebarMatchUsername' activeClassName='active'>{matchedUser?.name}</NavLink>
+                    match?.matched?.map((matchedUser) => {
+                      return (matchedUser?.id !== user?.id && (
+                    <MenuItem className='matchedUserIconContainer'icon={matchedUser?.images.length > 0 ? <img className='sidebarMatchedUserIcon' src={matchedUser?.images[0]?.userImage}  alt={tumbleDefaultUser}/> : <img className='sidebarMatchedUserIcon' src={tumbleDefaultUser}  alt=''/>}>
+                       <NavLink to={`/matches/${match?.id}`} exact={true} className='sidebarMatchUsername' activeClassName='active'>{matchedUser?.name}</NavLink>
                     </MenuItem>
 
                     ))}))) : null}
@@ -107,9 +108,9 @@ const NavBar = () => {
               </Menu>
             </SidebarFooter>
           </ProSidebar>
-          <div className='footer'>
+          {/* <div className='footer'>
             
-          </div>
+          </div> */}
         </div>
       </>
   );

@@ -1,35 +1,30 @@
-.allMatchesContainer{
+.allLikesContainer{
     display: flex;
     justify-content: center;
 }
 
 
 
-.matchesContainer{
+.likesContainer{
     display: flex;
     justify-content: center;
     height: 800px;
     width: 800px;
 }
 
-.matchCard{
+.likeCard{
     height: 200px;
     box-shadow: 0px 8px 13px rgb(0, 0, 0, .3);
     border-radius: 5px 5px 5px 5px;
 }
 
 
-.matchCardImg{
+.likeCardImg{
     height: 100px;
     width: 100px;
     
 }
 
-.matchCardLocation{
-    display: flex;
-    justify-content: center;
-    padding: 7px
-}
 
 .likeSpace{
     margin: 0;

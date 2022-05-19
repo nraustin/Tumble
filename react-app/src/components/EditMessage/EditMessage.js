@@ -6,7 +6,9 @@ import * as matchActions from '../../store/match'
 
 import './EditMessage.css'
 
-const EditMessage = ({msg, EditMessage, setEditMessage}) => {
+import {HiCheck} from 'react-icons/hi'
+
+const EditMessage = ({msg, EditMessage, setEditMessage, userMsgClass}) => {
 
     const dispatch = useDispatch();
 
@@ -41,20 +43,19 @@ const EditMessage = ({msg, EditMessage, setEditMessage}) => {
     }
 
     return(
-          <div className='editMessageForm'>
+        //   <div className='editMessageForm'>
             <form onSubmit={handleMessageEdit} className='editMessageForm'>
-                <textarea
-                rows='2'
-                cols='30'
-                placeholder={content}
+                <textarea className="editMsgTextarea"
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 required
-                ></textarea>
-                <button type='Submit'><i className="fa-regular fa-circle-check"></i>Send</button>
-                <button onClick={handleCancelEdit}>Cancel</button>
+                >{msg?.content}</textarea>
+                <div className="editMessageButtons">
+                    <button type='Submit' className="editMsgSubmitButton"><HiCheck/></button>
+                    <button onClick={handleCancelEdit} className="cancelEditMsgButton">CANCEL</button>
+                </div>
               </form>
-            </div>
+            // </div>
 
     )
 }

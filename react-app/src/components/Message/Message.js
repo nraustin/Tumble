@@ -7,7 +7,7 @@ import * as matchActions from '../../store/match'
 
 import './Message.css'
 
-import { FiEdit2, FiTrash2 } from 'react-icons/fi'
+import { BsFillPencilFill, BsTrashFill} from 'react-icons/bs'
 
 const Message = ({msg}) => {
 
@@ -18,6 +18,7 @@ const Message = ({msg}) => {
     const [editMessage, setEditMessage] = useState(false)
 
     const user = useSelector(state => state.session.user)
+    // const match = useSelector(state => state.match)
 
     const handleMessageDelete = async(e) => {
         e.preventDefault()
@@ -43,32 +44,40 @@ const Message = ({msg}) => {
         <>
         {user?.id === msg?.user_id ? <div className="sessionChatContainer"> 
           {!editMessage ?
-            (user?.id === msg?.user_id ? 
-              <div className="userMsgContainer">
-            
-                    <div className="messageContentUser">
-                        {msg?.content}
+            // (user?.id === msg?.user_id ?
+              <div className="userMsgAndEditContainer">
+                    <div className="userMsgContainer">
+                    
+                            <div className="messageContentUser">
+                                {msg?.content}
+                            </div>
+                            <div className="messageIcons">
+                                <div className="messageEditIcon" onClick={handleMessageEdit} id={msg.id} userMsgClass={'userMsgContainer'}>
+                                    <BsFillPencilFill/>
+                                </div>
+                                <div className="messageTrashIcon" onClick={handleMessageDelete} id={msg.id}>
+                                    <BsTrashFill/>
+                                </div>
+                            </div>   
                     </div>
-
-                    <div className="messageIcons">
-                        <div className="messageEditIcon" onClick={handleMessageEdit} id={msg.id}>
-                            <FiEdit2/>
-                        </div>
-                        <div className="messageTrashIcon" onClick={handleMessageDelete} id={msg.id}>
-                            <FiTrash2/>
-                        </div>
-                    </div>
-                </div>
-                :
-                <div className="otherMsgContainer">
-                    <div className="messageContent">
-                        {msg?.content}
-                    </div>
-                </div>)
-            : <EditMessage msg={msg} editMessage={editMessage} setEditMessage={setEditMessage}/>} 
+                    
+                 </div>
+                //  <div className="userMsgImgContainer">
+                     
+                //      </div>
+                // :
+                // <div className="otherMsgContainer">
+                //     <div className="messageContent">
+                //         {msg?.content}
+                //     </div>
+                // </div>)
+            : 
+            <div className="userMsgContainer"> 
+                <EditMessage msg={msg} editMessage={editMessage} setEditMessage={setEditMessage}/>
+            </div>} 
             </div> : 
             <div className="otherChatContainer">
-            {!editMessage ?
+            {/* {!editMessage ?
             (user?.id === msg?.user_id ? 
               <div className="userMsgContainer">
             
@@ -85,15 +94,16 @@ const Message = ({msg}) => {
                         </div>
                     </div>
                 </div>
-                :
+                : */}
                 <div className="otherMsgContainer">
                     <div className="messageContent">
                         {msg?.content}
                     </div>
-                </div>)
-            : <EditMessage msg={msg} editMessage={editMessage} setEditMessage={setEditMessage}/>}
-            </div>
-            }
+                </div>
+                </div>}
+            {/* : <EditMessage msg={msg} editMessage={editMessage} setEditMessage={setEditMessage}/>}
+            </div> */}
+            
         </>
     )
 }

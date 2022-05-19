@@ -2,7 +2,7 @@
 
 body{
     margin:0px;
-    background-color: whitesmoke;
+    background-color: rgb(205, 188, 188);
     font-family: Circular20,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Ubuntu,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
 }
 
@@ -13,6 +13,11 @@ h1{
 .App {
     text-align: center;
     height: 100vh;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100vw;
+    background-color: #cecece;
+    
   }
   
 .App-logo {

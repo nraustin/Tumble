@@ -1,4 +1,53 @@
-.editmessageForm{
+.editMessageForm{
+   display: flex;
+}
+
+
+.editMessageButtons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+
+.editMsgSubmitButton{
+    border-radius: 5px 5px 5px 5px;
+    cursor: pointer;
+    border: none;
     display: flex;
     justify-content: center;
+    background-color: rgb(57, 146, 57);
+    color: white
 }
+
+.editMsgSubmitButton:hover{
+    background-color: rgb(132, 221, 132);
+
+}
+
+.editMsgTextarea{
+    border-radius: 3px 3px 3px 3px;
+    background-color:rgb(46, 128, 235);
+    width: auto;
+    height: auto;
+    outline: none;
+    font-size: 15px;
+    border: .5px solid rgb(245, 245, 245, .3);
+    resize: none;
+    color: white;
+    font-family: Circular20,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Ubuntu,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+}
+.cancelEditMsgButton{
+    border: none;
+    cursor: pointer;
+    background-color:grey;
+    color: rgb(255, 255, 255);
+    border-radius: 5px 5px 5px 5px;
+    font-size: 10px;
+}
+
+.cancelEditMsgButton:hover{
+    background-color: rgb(199, 204, 204);
+}
+
