@@ -35,28 +35,31 @@
 .imageSubmitForm:hover{
 }
 
-.uploadProfileImgButton{
+
+#picInput{
     
-    background-color: rgb(3, 135, 250);
     display: flex;
     justify-content: center;
-    width: 110px;
+    width: 200px;
     font-size: 13px;
     text-align: center;
     border-radius: 2px 2px 2px 2px;
+}
+
+.picInputButton{
+    background-color: blue;
 }
 
 .uploadProfileImgButton:hover{
     background-color: rgb(82, 167, 252);
 }
 
-.uploadProfileImgButtonLabel{
+::-webkit-file-upload-button{
     cursor: pointer;
     display: flex;
     justify-content: center;
     text-align: center;
-    padding: 5px;
-    padding-top: 9px;
+    display: none;
     font-family: 'Chivo';
 }
 

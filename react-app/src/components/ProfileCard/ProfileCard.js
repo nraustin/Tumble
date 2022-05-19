@@ -38,6 +38,7 @@ function ProfileCard({...allProfProps}) {
     return null;
   }
 
+  console.log(allProfProps.dog)
   
 
   const likePersonUser = async(e) => {
@@ -45,6 +46,7 @@ function ProfileCard({...allProfProps}) {
    
     const newLike = { userId: userS.id, profileId: allProfProps.person?.id }
     dispatch(sessionActions.createLikeThunk(newLike)).then(() => dispatch(sessionActions.getMatchesThunk()))
+    dispatch(profileActions.delUserProfileThunk(allProfProps.person?.id))
 
      
 
@@ -63,6 +65,7 @@ function ProfileCard({...allProfProps}) {
    
     const newLike = { userId: userS.id, profileId: allProfProps.dog?.id }
     dispatch(sessionActions.createLikeThunk(newLike)).then(() => dispatch(sessionActions.getMatchesThunk()))
+    dispatch(profileActions.delUserProfileThunk(allProfProps.dog?.id))
 
       if(allProfProps?.slideIndex !== allProfProps?.dogProfiles.length){
         allProfProps?.setSlideIndex(allProfProps?.slideIndex + 1)

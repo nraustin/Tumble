@@ -60,14 +60,13 @@
 }
 
 
-input{
+/* input{
     background-image:linear-gradient(to right,rgb(162, 216, 247), rgb(234, 234, 234));
     border-radius: 2px 2px 2px 2px;
     border-style: none;
     height: 20px;
-    /* box-shadow: 5px 5px 10px; */
     outline: none;
-}
+} */
 
 .ageCheckbox{
     display: flex;

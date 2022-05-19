@@ -18,6 +18,8 @@ const LoginForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  console.log(user)
+
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
@@ -38,8 +40,8 @@ const LoginForm = () => {
     showSignUpForm(true)
   }
 
-  if (user) {
-    return <Redirect to='/' />;
+  if (user !== null) {
+    return <Redirect to='/users/profile'/>;
   }
 
   return (
@@ -82,6 +84,11 @@ const LoginForm = () => {
     </div>
     </>
     : <SignUpForm/> }
+    {/* {user !== null && (
+      <>
+      <Redirect to='/users/profile'/>
+      </>
+    )} */}
     </div>
   );
 };

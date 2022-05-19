@@ -2,7 +2,7 @@
 const GET_USER = 'profile/GET_USER';
 const GET_USERS = 'profile/GET_USERS';
 const UPDATE_USER = 'profile/UPDATE_USER'
-// const DEACTIVATE_USER = 'profile/DEACTIVATE_USER'
+const REMOVE_USER = 'profile/REMOVE_USER'
 
 const getUser = (user) => ({
     type: GET_USER,
@@ -18,6 +18,10 @@ const updateUser = (user) => ({
     type: UPDATE_USER,
     payload: user
 })
+const removeProfile = (user) => ({
+    type: REMOVE_USER,
+    payload: user
+})
 
 
 export const getUserThunk = (userId) => async(dispatch) => {
@@ -29,6 +33,17 @@ export const getUserThunk = (userId) => async(dispatch) => {
         dispatch(getUser(user))
         
     }
+}
+
+export const delUserProfileThunk = (userId) => async(dispatch) => {
+
+  const res = await fetch(`/api/users/${userId}`);
+
+  if (res.ok) {
+      const user = await res.json()
+      dispatch(removeProfile(user))
+      
+  }
 }
 
 export const getUsersThunk = () => async(dispatch) => {
@@ -218,6 +233,10 @@ let initialState = {}
           case GET_USERS:
               newState = {...state};
               action.payload.users?.forEach((user) => newState[user.id] = user)
+              return newState;
+          case REMOVE_USER:
+              newState = {...state};
+              delete newState[action.payload?.id]
               return newState;
           case UPDATE_USER:
               newState = {...state}

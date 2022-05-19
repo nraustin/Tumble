@@ -50,7 +50,7 @@ function ProfileCardSlider() {
     }
 
 
-    console.log(currentProf)
+    console.log(currentDogProf)
 
     // Only way I could get it functioning on a time crunch. Needs to be refactored
 
