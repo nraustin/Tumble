@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import db, matchedRoom, User, matched_Users
+from app.models import db, matchedRoom, User, matched_Users, Unlike
 
 
 matchedRoom_routes = Blueprint('matches', __name__)
@@ -13,6 +13,7 @@ def all_matches():
         userMatches = []
         for match in current_user.matches:
             userMatches.append(match)
+            print('\n\n\n', match.matchedUsers, '\n\n\n')
         return {'matched':[match.matchedRoom_to_dict() for match in userMatches]}
     
     return None
@@ -37,6 +38,16 @@ def delete_room():
     match = matchedRoom.query.get(match_id)
 
     print('\n\n\n', match, '\n\n\n')
+    
+    for user in match.matchedUsers:
+        if user.id != current_user.id:
+
+            unliked = Unlike(
+                unliker_id=current_user.id,
+                unliked_id=user.id
+            )
+            
+            db.session.add(unliked)
 
     deleted_match = match.matchedRoom_to_dict()
 

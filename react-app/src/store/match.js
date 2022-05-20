@@ -31,7 +31,7 @@ if (res.ok) {
 let initialState = {}
 
  const matchReducer = (state = initialState, action) => {
-    let matchState;
+    // let matchState;
     switch(action.type) {
         case GET_MATCH:
               let newState = {};

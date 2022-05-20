@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import * as profileActions from '../../store/profile'
 import * as sessionActions from '../../store/session'
 
@@ -11,8 +11,8 @@ import './ProfileCard.css'
 
 
 function ProfileCard({...allProfProps}) {
-  const [user, setUser] = useState({});
-  const { userId }  = useParams();
+  // const [user, setUser] = useState({});
+  // const { userId }  = useParams();
   const dispatch = useDispatch()
 
   const userS = useSelector(state => state.session.user)
@@ -81,7 +81,8 @@ function ProfileCard({...allProfProps}) {
     e.preventDefault()
 
     const newUnlike = { userId: userS.id, profileId: allProfProps.person?.id }
-    dispatch(sessionActions.createUnlikeThunk(newUnlike))
+    dispatch(sessionActions.createUnlikeThunk(newUnlike)).then(() => dispatch(sessionActions.getMatchesThunk()))
+    dispatch(profileActions.delUserProfileThunk(allProfProps.person?.id))
 
     if(allProfProps?.slideIndex !== allProfProps?.peopleProfiles.length){
       allProfProps?.setSlideIndex(allProfProps?.slideIndex + 1)
@@ -96,7 +97,8 @@ function ProfileCard({...allProfProps}) {
     e.preventDefault()
 
     const newUnlike = { userId: userS.id, profileId: allProfProps.dog?.id }
-    dispatch(sessionActions.createUnlikeThunk(newUnlike))
+    dispatch(sessionActions.createUnlikeThunk(newUnlike)).then(() => dispatch(sessionActions.getMatchesThunk()))
+    dispatch(profileActions.delUserProfileThunk(allProfProps.dog?.id))
 
     if(allProfProps?.slideIndex !== allProfProps?.dogProfiles.length){
       allProfProps?.setSlideIndex(allProfProps?.slideIndex + 1)

@@ -28,6 +28,8 @@ function ProfileCardSlider() {
     const profilesObj = useSelector(state => state.profile)
     const profiles = Object.values(profilesObj)
 
+    console.log(profiles)
+
 
     // const currentProf = profiles[profileIndex]
 

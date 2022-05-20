@@ -15,11 +15,11 @@ def users():
 
     users = User.query.all()
     
-    for user in users:
-        if len(user.likes) > 0:
-            for like in user.likes:
-                if like.liker_id == current_user.id:
-                    users.remove(user)
+    # for user in users:
+    #     if len(user.likes) > 0:
+    #         for like in user.likes:
+    #             if like.liker_id == current_user.id:
+    #                 users.remove(user)
 
     if len(current_user.unlikes) == 0 and len(current_user.likes) == 0:
         return {'users': [user.to_dict() for user in users]}
@@ -27,17 +27,32 @@ def users():
         unwantedUsers = []
         if len(current_user.unlikes) > 0 and len(current_user.likes) == 0:
             for unlike in current_user.unlikes:
-                unwantedUsers.append(unlike.unliked_id)
+                if current_user.id == unlike.unliker_id:
+                    unwantedUsers.append(unlike.unliked_id)
         if len(current_user.unlikes) == 0 and len(current_user.likes) > 0:
             for like in current_user.likes:
-                unwantedUsers.append(like.liked_id)
+                if current_user.id == like.liker_id:
+                    unwantedUsers.append(like.liked_id)
         else:
             for unlike in current_user.unlikes:
-                unwantedUsers.append(unlike.unliked_id)
+                if current_user.id == unlike.unliker_id:
+                    unwantedUsers.append(unlike.unliked_id)
             for like in current_user.likes:
-                unwantedUsers.append(like.liked_id)
+                if current_user.id == like.liker_id:
+                    unwantedUsers.append(like.liked_id)
 
         returnedUsers = []
+
+        # I merely have the intention of this working by a deadline
+
+        for user in users:
+            if len(user.matches) > 0:
+                for eachMatch in user.matches:
+                    for eachUser in eachMatch.matchedUsers:
+                        if eachUser.id != current_user.id:
+                            unwantedUsers.append(eachUser.id)
+
+        
         for user in users:
             if user.id not in unwantedUsers:
                 returnedUsers.append(user)

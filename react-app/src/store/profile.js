@@ -231,7 +231,7 @@ let initialState = {}
               thisState[action.payload.id] = action.payload
               return thisState
           case GET_USERS:
-              newState = {...state};
+              newState = {};
               action.payload.users?.forEach((user) => newState[user.id] = user)
               return newState;
           case REMOVE_USER:

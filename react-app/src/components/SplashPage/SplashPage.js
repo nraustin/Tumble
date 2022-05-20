@@ -14,7 +14,7 @@ const SplashPage = () => {
 
     const dispatch = useDispatch()
 
-    const history = useHistory()
+    // const history = useHistory()
 
     const [loginClick, setLoginClick] = useState(false)
     const [signUpClick, setSignUpClick] = useState(false)
