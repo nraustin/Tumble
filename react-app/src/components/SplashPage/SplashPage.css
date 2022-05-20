@@ -9,7 +9,9 @@
 
 .splashBody{
     height: 100vh;
-    background-image: linear-gradient(rgb(254, 254, 254), rgb(175, 225, 254));
+    /* background-image: url('../../components/SplashPage/tumbleSplashBackground.jpeg'); */
+    /* background-image: -webkit-linear-gradient(rgb(30, 67, 201), rgb(89, 151, 250)); */
+    background-color: rgb(178, 178, 189);
     overflow-y: hidden;
     width: 100vw;
 }
@@ -27,15 +29,16 @@
     grid-row-gap: 40px;
     width: 300px;
     padding: 20px;
-    box-shadow: 0px 10px 20px rgb(194, 194, 194);
-    background-color: rgb(68, 148, 246);
+    /* box-shadow: 0px 10px 20px rgb(194, 194, 194); */
+    background-color: rgb(204, 227, 255);
     border-radius: 4px 4px 4px 4px;
     justify-items: center;
 
 }
 
 .tumbleIntroText{
-    color:rgb(48, 141, 195)
+    color:whitesmoke;
+    font-family: 'Recursive';
 }
     
 .splashButtonLogin,

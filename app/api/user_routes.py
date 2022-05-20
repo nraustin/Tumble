@@ -29,11 +29,11 @@ def users():
             for unlike in current_user.unlikes:
                 if current_user.id == unlike.unliker_id:
                     unwantedUsers.append(unlike.unliked_id)
-        if len(current_user.unlikes) == 0 and len(current_user.likes) > 0:
+        elif len(current_user.unlikes) == 0 and len(current_user.likes) > 0:
             for like in current_user.likes:
                 if current_user.id == like.liker_id:
                     unwantedUsers.append(like.liked_id)
-        else:
+        else: # len(current_user.unlikes) > 0 and len(current_user.likes) > 0:
             for unlike in current_user.unlikes:
                 if current_user.id == unlike.unliker_id:
                     unwantedUsers.append(unlike.unliked_id)
@@ -45,12 +45,12 @@ def users():
 
         # I merely have the intention of this working by a deadline
 
-        for user in users:
-            if len(user.matches) > 0:
-                for eachMatch in user.matches:
-                    for eachUser in eachMatch.matchedUsers:
-                        if eachUser.id != current_user.id:
-                            unwantedUsers.append(eachUser.id)
+        
+        if len(current_user.matches) > 0:
+            for eachMatch in current_user.matches:
+                for eachUser in eachMatch.matchedUsers:
+                    if eachUser.id != current_user.id:
+                        unwantedUsers.append(eachUser.id)
 
         
         for user in users:

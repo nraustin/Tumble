@@ -51,8 +51,8 @@ function ProfileCard({...allProfProps}) {
      
 
     if(allProfProps?.slideIndex !== allProfProps?.peopleProfiles.length){
-      allProfProps?.setSlideIndex(allProfProps?.slideIndex + 1)
-      allProfProps?.setProfileIndex(allProfProps?.profileIndex + 1)
+      allProfProps?.setSlideIndex(allProfProps?.slideIndex)
+      allProfProps?.setProfileIndex(allProfProps?.profileIndex)
     } else if (allProfProps?.slideIndex === allProfProps?.peopleProfiles.length){
       allProfProps?.setSlideIndex(1)
       allProfProps?.setProfileIndex(0)
@@ -68,8 +68,8 @@ function ProfileCard({...allProfProps}) {
     dispatch(profileActions.delUserProfileThunk(allProfProps.dog?.id))
 
       if(allProfProps?.slideIndex !== allProfProps?.dogProfiles.length){
-        allProfProps?.setSlideIndex(allProfProps?.slideIndex + 1)
-        allProfProps?.setProfileIndex(allProfProps?.profileIndex + 1)
+        allProfProps?.setSlideIndex(allProfProps?.slideIndex)
+        allProfProps?.setProfileIndex(allProfProps?.profileIndex)
       } else if (allProfProps?.slideIndex === allProfProps?.dogProfiles.length){
         allProfProps?.setSlideIndex(1)
         allProfProps?.setProfileIndex(0)
@@ -85,8 +85,8 @@ function ProfileCard({...allProfProps}) {
     dispatch(profileActions.delUserProfileThunk(allProfProps.person?.id))
 
     if(allProfProps?.slideIndex !== allProfProps?.peopleProfiles.length){
-      allProfProps?.setSlideIndex(allProfProps?.slideIndex + 1)
-      allProfProps?.setProfileIndex(allProfProps?.profileIndex + 1)
+      allProfProps?.setSlideIndex(allProfProps?.slideIndex)
+      allProfProps?.setProfileIndex(allProfProps?.profileIndex)
     } else if (allProfProps?.slideIndex === allProfProps?.peopleProfiles.length){
       allProfProps?.setSlideIndex(1)
       allProfProps?.setProfileIndex(0)
@@ -101,8 +101,8 @@ function ProfileCard({...allProfProps}) {
     dispatch(profileActions.delUserProfileThunk(allProfProps.dog?.id))
 
     if(allProfProps?.slideIndex !== allProfProps?.dogProfiles.length){
-      allProfProps?.setSlideIndex(allProfProps?.slideIndex + 1)
-      allProfProps?.setProfileIndex(allProfProps?.profileIndex + 1)
+      allProfProps?.setSlideIndex(allProfProps?.slideIndex)
+      allProfProps?.setProfileIndex(allProfProps?.profileIndex)
     } else if (allProfProps?.slideIndex === allProfProps?.dogProfiles.length){
       allProfProps?.setSlideIndex(1)
       allProfProps?.setProfileIndex(0)

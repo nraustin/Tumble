@@ -6,7 +6,7 @@ import LoginForm from '../auth/LoginForm';
 import SignUpForm from '../auth/SignUpForm';
 
 import './SplashPage.css'
-import tumble from './tumble.png'
+import tumble from './tumble-white-smooth.png'
 
 
 
