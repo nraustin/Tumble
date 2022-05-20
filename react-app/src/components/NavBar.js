@@ -5,7 +5,7 @@ import LogoutButton from './auth/LogoutButton';
 import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarFooter, SidebarContent} from "react-pro-sidebar"
 import { FiLogIn, FiLogOut, FiHeart, FiThumbsUp, FiUserPlus, FiUser, FiUsers, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 
-import * as profileActions from '.././store/profile'
+// import * as profileActions from '.././store/profile'
 // import * as matchActions from '.././store/match'
 // import * as sessionActions from '.././store/session'
 
