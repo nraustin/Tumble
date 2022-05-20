@@ -228,9 +228,16 @@ export default function reducer(state = initialState, action) {
         }    
         return likeState
     case CREATE_UNLIKE:
-        let unlikeState = {}
-        unlikeState[action.payload.id] = action.payload
+      console.log(state)
+        let unlikeState = {
+          ...state,
+             user: {
+               ...state.user,
+                  likes: state.user.likes.concat(action.payload) 
+                }
+        }    
         return unlikeState
+        
     case DEL_MATCH:
         let delMatchState = {
           ...state,
