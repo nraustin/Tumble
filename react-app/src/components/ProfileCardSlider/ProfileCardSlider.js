@@ -29,6 +29,7 @@ function ProfileCardSlider() {
     const profiles = Object.values(profilesObj)
 
     console.log(profiles)
+    
 
 
     // const currentProf = profiles[profileIndex]
@@ -51,8 +52,8 @@ function ProfileCardSlider() {
         setProfileIndex,
     }
 
-
-    console.log(currentDogProf)
+    console.log(allProfProps?.profileIndex)
+    console.log(peopleProfiles.length)
 
     // Only way I could get it functioning on a time crunch. Needs to be refactored
 
@@ -113,18 +114,23 @@ function ProfileCardSlider() {
             <div key={currentPeopleProf} className={slideIndex === profileIndex + 1 ? "slide active-anim" : "slide"}>
                 <ProfileCard {...allProfProps}/>   
             </div>
-                    
-            <SlideButton moveSlide={nextPeopleSlide} direction={"next"} />
-            <SlideButton moveSlide={prevPeopleSlide} direction={"prev"}/> 
+            {allProfProps?.person && allProfProps.peopleProfiles.length > 1 ?
+            <>       
+                <SlideButton moveSlide={nextPeopleSlide} direction={"next"} />
+                <SlideButton moveSlide={prevPeopleSlide} direction={"prev"}/>
+            </> : null}
             </> 
             :
             <>
             <div key={currentDogProf} className={slideIndex === profileIndex + 1 ? "slide active-anim" : "slide"}>
             <ProfileCard {...allProfProps}/>   
             </div>
-                    
+            
+            {allProfProps?.dog && dogProfiles?.length > 1 ?
+            <>
             <SlideButton moveSlide={nextDogSlide} direction={"next"} />
             <SlideButton moveSlide={prevDogSlide} direction={"prev"}/>
+            </> : null}
             </> }
   
           </div>

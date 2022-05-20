@@ -24,7 +24,8 @@
     flex-direction: column;
     justify-content: center;
     gap: 10px;
-    background-image:linear-gradient(rgb(85, 102, 179), rgb(105, 179, 208));
+    /* background-image:linear-gradient(rgb(113 159 217), rgb(140 178 225)); */
+    background-color: #cecece;
 }
 
 
@@ -51,46 +52,46 @@
 
 
 .swipeCardLikeButton{
-        position: relative;
-        background-color: #ff585b;
-        border: none;
-        font-size: 28px;
-        color: #FFFFFF;
-        padding: 18px;
-        padding-top: 23px;
-        width: 70px;
-        border-radius: 100%;
-        text-align: center;
-        -webkit-transition-duration: 0.4s;
-        transition-duration: 0.4s;
-        text-decoration: none;
-        overflow: hidden;
-        cursor: pointer;
+    position: relative;
+    background-color: #ff585b;
+    border: none;
+    font-size: 28px;
+    color: #FFFFFF;
+    padding: 18px;
+    padding-top: 23px;
+    width: 73px;
+    border-radius: 100%;
+    text-align: center;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
 }
       
 .swipeCardLikeButton:after{
-        content: "";
-        background: #ff88a2;
-        opacity: 0;
-        transition: all 0.8s
+    content: "";
+    background: #ff88a2;
+    opacity: 0;
+    transition: all 0.8s
 }
 
 .swipeCardUnlikeButton:active:after,
 .swipeCardLikeButton:active:after {
-        padding: 0;
-        margin: 0;
-        opacity: 1;
-        transition: 0s
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
 }
 
 .swipeCardUnlikeButton{
     position: relative;
-    background-color: #40756f;
+    background-color: #474b61;
     border: none;
     font-size: 28px;
     color: #FFFFFF;
     padding: 20px;
-    width: 70px;
+    width: 73px;
     border-radius: 100%;
     text-align: center;
     -webkit-transition-duration: 0.4s;
@@ -105,4 +106,36 @@
     background: #ff88a2;
     opacity: 0;
     transition: all 0.8s
+}
+
+.endOfProfileCardDeckContainer{
+    height: 750px;
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(204, 227, 255)
+}
+
+.endDeckInfo{
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    color: rgb(58, 61, 78)
+}
+
+
+.dogeImgContainer{
+    display: flex;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    justify-content: center;
+}
+
+.slide Img.dogeImg{
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    width: 100px;
+    
 }

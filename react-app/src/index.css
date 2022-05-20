@@ -16,7 +16,8 @@ h1{
     display: flex;
     flex-wrap: nowrap;
     width: 100vw;
-    background-color: #cecece;
+    /* background-color: #cecece; */
+    background-color: #374155;
     
   }
   

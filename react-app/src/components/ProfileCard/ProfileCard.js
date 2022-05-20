@@ -8,6 +8,7 @@ import * as sessionActions from '../../store/session'
 import {FiHeart, FiMeh} from 'react-icons/fi'
 
 import './ProfileCard.css'
+import doge from './endDeckFinalIcon.png'
 
 
 function ProfileCard({...allProfProps}) {
@@ -18,6 +19,10 @@ function ProfileCard({...allProfProps}) {
   const userS = useSelector(state => state.session.user)
 
   console.log(allProfProps?.slideIndex)
+  console.log(allProfProps?.person)
+  console.log(allProfProps?.dog)
+
+  console.log(allProfProps?.dog)
 
   // useEffect(() => {
   //   dispatch(profileActions.getUserThunk(userS?.id))
@@ -38,7 +43,7 @@ function ProfileCard({...allProfProps}) {
   //   return null;
   // }
 
-  console.log(allProfProps.dog)
+  
   
 
   const likePersonUser = async(e) => {
@@ -109,12 +114,15 @@ function ProfileCard({...allProfProps}) {
     }
   }
 
+  console.log(allProfProps?.peopleProfiles)
+
 
   return (
       <>
         {userS && userS.dog === true ?
+            (allProfProps?.person ? 
             <div className='swipeCardContainer'>
-            
+
             <div className='swipeCardProfilePicsContainer'>
               {allProfProps.person?.images.length > 0 ? <img className='swipeCardProfilePics' src={allProfProps.person.images[0]?.userImage} alt={''}/>
                 : <img src={process.env.PUBLIC_URL + '/tumbleDefaultIcon.png'} alt="logo" />} 
@@ -129,9 +137,19 @@ function ProfileCard({...allProfProps}) {
                     <button onClick={likePersonUser} className='swipeCardLikeButton'><FiHeart/></button>
                     <button onClick={noThanksPerson} className='swipeCardUnlikeButton'><FiMeh/></button>
                   </div>
+                </div> 
+              </div> : 
+              <div className='endOfProfileCardDeckContainer'>
+                <div className='endDeckInfo'>
+                  <h2>Looks like you've seen all the aspiring future dog owners there are to see- for now.</h2>
+                  <div className='dogeImgContainer'>
+                    <img className='dogeImg' src={doge} alt=''/>
+                  </div>
+                  <h4>Check back again soon for new users. Once they sign up, you'll see them right here.</h4>
                 </div>
-              </div>
+              </div>)
             :
+            (allProfProps?.dog ? 
             <div className='swipeCardContainer'>
             
             <div className='swipeCardProfilePicsContainer'>
@@ -147,9 +165,17 @@ function ProfileCard({...allProfProps}) {
                 <div className="likeButtons">
                   <button onClick={likeDogUser} className='swipeCardLikeButton'><FiHeart/></button>
                   <button onClick={noThanksDog} className='swipeCardUnlikeButton'><FiMeh/></button>
-                </div>
-            </div>
-          </div> }
+                </div> 
+              </div>
+              </div> :
+                <div className='endOfProfileCardDeckContainer'>
+                  <div className='endDeckInfo'>
+                    <h2>Looks like you've seen all the dogs there are to see- for now.</h2>
+                    <img className='dogeImg' alt=''/>
+                    <h4>Check back again soon for new ones. Once they sign up, you'll see them right here.</h4>
+                  </div>
+                </div> )
+           }
       </>
   );
 }
