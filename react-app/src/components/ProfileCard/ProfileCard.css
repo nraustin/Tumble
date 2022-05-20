@@ -3,6 +3,7 @@
 }
 
 .swipeCardProfilePicsContainer{
+    background-color: #627a97;
 }
 
 .swipeCardProfilePics{
@@ -37,12 +38,12 @@
     padding-bottom: 200px;
     font-size: larger;
     gap: 10px;
-    color:whitesmoke
+    color:rgb(255, 255, 255)
 }
 
 .swipeCardBio{
     padding: 20px;
-    color: whitesmoke
+    color: rgb(255, 255, 255)
 }
 .likeButtons{
     display: flex;
@@ -68,6 +69,11 @@
     overflow: hidden;
     cursor: pointer;
 }
+
+.swipeCardLikeButton:hover{
+    background-color: rgb(227, 41, 41);
+
+}
       
 .swipeCardLikeButton:after{
     content: "";
@@ -86,7 +92,7 @@
 
 .swipeCardUnlikeButton{
     position: relative;
-    background-color: #474b61;
+    background-color:  #7e7f87;
     border: none;
     font-size: 28px;
     color: #FFFFFF;
@@ -100,6 +106,12 @@
     overflow: hidden;
     cursor: pointer;
 }
+
+.swipeCardUnlikeButton:hover{
+    background-color: rgb(87, 87, 103);
+}
+
+
   
 .swipeCardUnlikeButton:after{
     content: "";

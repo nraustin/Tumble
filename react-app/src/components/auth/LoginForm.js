@@ -6,7 +6,7 @@ import SignUpForm from './SignUpForm';
 
 import './LoginForm.css'
 
-const LoginForm = () => {
+const LoginForm = ({signUpState}) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,6 +20,7 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   console.log(user)
+  console.log(signUpState)
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -47,8 +48,9 @@ const LoginForm = () => {
   }
 
   return (
+    (!signUpForm ?
     <div className='loginFormContainer'>
-    {!signUpForm ?
+    
     <>
     <form onSubmit={onLogin} className='loginForm'>
       <div className='loginFormDiv'>
@@ -58,20 +60,18 @@ const LoginForm = () => {
       </div>
       <div className='loginFormDiv'>
         <label htmlFor='email'>Email</label>
-        <input
+        <input id="authInput"
           name='email'
           type='text'
-          placeholder='Email'
           value={email}
           onChange={updateEmail}
         />
       </div>
       <div className='loginFormDiv'>
         <label htmlFor='password'>Password</label>
-        <input
+        <input id="authInput"
           name='password'
           type='password'
-          placeholder='Password'
           value={password}
           onChange={updatePassword}
         />
@@ -85,13 +85,7 @@ const LoginForm = () => {
       Sign up!</button>
     </div>
     </>
-    : <SignUpForm/> }
-    {/* {user !== null && (
-      <>
-      <Redirect to='/users/profile'/>
-      </>
-    )} */}
-    </div>
+    </div> : <SignUpForm/> )
   );
 };
 

@@ -65,8 +65,9 @@ const SignUpForm = () => {
   }
 
   return (
+    (!loginForm ?
     <div className='signUpContainer'>
-    {!loginForm ?
+    
     <form onSubmit={onSignUp} className='signUpForm'>
       <div>
         {errors.map((error, ind) => (
@@ -75,7 +76,7 @@ const SignUpForm = () => {
       </div>
       <div className='signUpFormDiv'>
         <label>Name</label>
-        <input
+        <input id="authInput"
           type='text'
           name='username'
           onChange={updateName}
@@ -85,7 +86,7 @@ const SignUpForm = () => {
       </div>
       <div className='signUpFormDiv'>
         <label>Email</label>
-        <input
+        <input id="authInput"
           type='text'
           name='email'
           onChange={updateEmail}
@@ -95,7 +96,7 @@ const SignUpForm = () => {
       </div>
       <div className='signUpFormDiv'>
         <label>Password</label>
-        <input
+        <input id="authInput"
           type='password'
           name='password'
           onChange={updatePassword}
@@ -105,7 +106,7 @@ const SignUpForm = () => {
       </div>
       <div className='signUpFormDiv'>
         <label>Repeat Password</label>
-        <input
+        <input id="authInput"
           type='password'
           name='repeat_password'
           onChange={updateRepeatPassword}
@@ -116,7 +117,7 @@ const SignUpForm = () => {
       <div className='signUpFormDiv'>
         <label>Are you a dog owner?</label>
         <div className='ageCheckbox'>
-          <input
+          <input id="authInput"
             type='checkbox'
             value={dog}
             onChange={updateDog}
@@ -125,7 +126,7 @@ const SignUpForm = () => {
         </div>
         <div className='signUpFormDiv'>
         <label>Age</label>
-          <input
+          <input id="authInput"
             type='number'
             value={age}
             min='1'
@@ -139,8 +140,8 @@ const SignUpForm = () => {
         <button type='submit' className='signUpFormSignUpButton'>Sign Up</button>
         <button className='signUpFormLogInButton' onClick={login}>Already have an account? Log In</button>
       </div>
-    </form> : <LoginForm/>}
-    </div>
+    </form> 
+    </div> : <LoginForm/>)
   );
 };
 

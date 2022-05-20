@@ -130,9 +130,9 @@ function ProfileCard({...allProfProps}) {
                 <div className='swipeCardInfoContainer'>
                   <strong className='swipeCardGeneralInfo'>
                     <div>{allProfProps.person?.name}, {allProfProps.person?.age}</div>
-                    <div>{allProfProps.person?.location}</div>
+                    {allProfProps.person.location ? <div>{allProfProps.person?.location}</div> : <div>Somewhere anonymous</div>}
                   </strong>
-                  <strong className='swipeCardBio'>{allProfProps.person?.biography}</strong>
+                  {allProfProps.person.biography ? <strong className='swipeCardBio'>{allProfProps.person?.biography}</strong> : <strong className='swipeCardBio'>No biography yet.</strong> }
                   <div className="likeButtons">
                     <button onClick={likePersonUser} className='swipeCardLikeButton'><FiHeart/></button>
                     <button onClick={noThanksPerson} className='swipeCardUnlikeButton'><FiMeh/></button>
@@ -159,9 +159,9 @@ function ProfileCard({...allProfProps}) {
               <div className='swipeCardInfoContainer'>
                 <strong className='swipeCardGeneralInfo'>
                   <div>{allProfProps.dog?.name}, {allProfProps.dog?.age}</div>
-                  <div>{allProfProps.dog?.location}</div>
+                  {allProfProps.dog.location ? <div>{allProfProps.dog?.location}</div> : <div>Somewhere anonymous</div>}
                 </strong>
-                <strong className='swipeCardBio'>{allProfProps.dog?.biography}</strong>
+                {allProfProps.dog.biography ? <strong className='swipeCardBio'>{allProfProps.dog?.biography}</strong> : <strong className='swipeCardBio'>No biography yet.</strong> }
                 <div className="likeButtons">
                   <button onClick={likeDogUser} className='swipeCardLikeButton'><FiHeart/></button>
                   <button onClick={noThanksDog} className='swipeCardUnlikeButton'><FiMeh/></button>

@@ -64,7 +64,7 @@ const SplashPage = () => {
             
             {loginClick && (
             <>
-            <LoginForm/>
+            <LoginForm signUpState={setSignUpClick}/>
             </>)}
             {signUpClick && (
             <>

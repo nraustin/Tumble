@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import LogoutButton from './auth/LogoutButton';
+import { logout } from '../store/session'
 import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarFooter, SidebarContent} from "react-pro-sidebar"
 import { FiLogIn, FiLogOut, FiHeart, FiThumbsUp, FiUserPlus, FiUser, FiUsers, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 
@@ -32,6 +33,13 @@ const NavBar = () => {
     getData()
 
   }, [dispatch, user?.matches?.matched])
+  
+  const history = useHistory()
+
+  const onLogout = async (e) => {
+    await dispatch(logout());
+    history.push('/')
+  }
 
   const menuClick = () => {
     menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true)
@@ -104,7 +112,7 @@ const NavBar = () => {
             </SidebarContent>
             <SidebarFooter>
               <Menu iconShape='square'>
-                <MenuItem icon={<FiLogOut/>}><LogoutButton /></MenuItem>
+                <MenuItem icon={<FiLogOut/>} onClick={onLogout}><LogoutButton /></MenuItem>
               </Menu>
             </SidebarFooter>
           </ProSidebar>

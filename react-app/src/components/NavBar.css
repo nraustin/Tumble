@@ -31,7 +31,7 @@
 
 .pro-sidebar > .pro-sidebar-inner {
   /* background: linear-gradient(rgb(7, 100, 193), silver); */
-  background-color: white;
+  background-color:  #627a97;
   height: 100%;
   position: relative;
   z-index: 101;
@@ -66,14 +66,14 @@
 }
 .sidebar .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item .pro-icon-wrapper {
   background-color: #c0cdd2;
-  color: rgb(203, 231, 249);
+  color: rgb(46 66 79);
   border-radius: 25px;
 }
 #sidebar .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item .pro-icon-wrapper .pro-item-content {
   color: rgb(0, 0, 0);
 }
 .sidebar .pro-sidebar-inner .pro-sidebar-layout .active {
-  color: rgb(49, 145, 255);
+  color:rgb(110 159 217);
 }
 #sidebar.logo {
   padding: 20px;
@@ -95,7 +95,7 @@
 }
 
 .pro-sidebar .pro-menu.shaped .pro-menu-item > .pro-inner-item > .pro-icon-wrapper {
-  background-color: rgb(107, 126, 148);
+  background-color: rgb(206 206 206)
 }
 
 .matchedUserIconContainer .pro-inner-item .pro-icon-wrapper{

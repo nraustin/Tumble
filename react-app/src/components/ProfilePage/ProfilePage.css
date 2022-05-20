@@ -98,8 +98,8 @@
     width: 100px;
     border-radius: 5px 5px 5px 5px;
     padding: 4px;
-    background-color: whitesmoke;
-    box-shadow: 0px 3px 6px rgb(176, 176, 176);
+    background-color:  #cecece
+    /* box-shadow: 0px 3px 6px rgb(176, 176, 176); */
 }
 
 .profileInfo{
@@ -110,8 +110,8 @@
     font-family: 'Chivo', sans-serif;
     width: 400px;
     border-radius: 10px 10px 10px 10px;
-    background-color: rgb(79, 148, 251);
-    color: whitesmoke;
+    background-color: #cecece;
+    color: #525761;
 
 }
 
