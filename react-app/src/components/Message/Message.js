@@ -46,7 +46,7 @@ const Message = ({msg}) => {
           {!editMessage ?
             // (user?.id === msg?.user_id ?
               <div className="userMsgAndEditContainer">
-                    <div className="userMsgContainer">
+                    <div className="userMsgContainer" id={msg?.id}>
                     
                             <div className="messageContentUser">
                                 {msg?.content}

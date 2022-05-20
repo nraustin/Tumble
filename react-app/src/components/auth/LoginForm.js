@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
 import SignUpForm from './SignUpForm';
 
@@ -11,6 +11,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const history = useHistory();
   const [signUpForm, showSignUpForm] = useState(false)
 
   // const history = useHistory()
@@ -40,8 +41,9 @@ const LoginForm = () => {
     showSignUpForm(true)
   }
 
-  if (user !== null) {
-    return <Redirect to='/users/profile'/>;
+  if (user) {
+    // return <Redirect to='/users/profile'/>;
+    history.push('/users/profile')
   }
 
   return (

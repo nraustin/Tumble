@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { List } from "@material-ui/core";
 import Message from "../Message/Message";
 import * as profileActions from '../../store/profile'
+import * as sessionActions from '../../store/session'
 import * as matchActions from '../../store/match'
 
 import './MatchRoom.css'
@@ -78,14 +79,17 @@ const MatchRoom = ({matchUpdate, setMatchUpdate}) => {
     const handleUnmatch = async() => {
 
         console.log(matchId)
-        setMatchUpdate(true) 
+        // setMatchUpdate(true) 
 
         
-        let res = dispatch(matchActions.deleteMatchThunk(matchId))
+        dispatch(sessionActions.deleteMatchThunk(matchId))
+        
+        // .then(dispatch(sessionActions.getMatchesThunk()))
 
-        if(res){
-            dispatch(profileActions.getUserThunk(user?.id))
-        }
+        // if(res){
+        //     dispatch(sessionActions.getMatchesThunk())
+        //     dispatch(profileActions.getUserThunk(user?.id))
+        // }
         
         
         history.push('/users')

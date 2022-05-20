@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector} from 'react-redux'
+import { useHistory } from 'react-router-dom';
 import * as sessionActions from '../../store/session'
 import LoginForm from '../auth/LoginForm';
 import SignUpForm from '../auth/SignUpForm';
@@ -12,6 +13,8 @@ import tumble from './tumble.png'
 const SplashPage = () => {
 
     const dispatch = useDispatch()
+
+    const history = useHistory()
 
     const [loginClick, setLoginClick] = useState(false)
     const [signUpClick, setSignUpClick] = useState(false)
@@ -35,6 +38,7 @@ const SplashPage = () => {
         const email = "spot@aa.io"
         const password = "password" 
         return dispatch(sessionActions.login(email, password))
+        // history.push('/users/profile')
     }
 
     const handlePersonLogin = (e) => {

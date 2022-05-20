@@ -22,16 +22,16 @@ const NavBar = () => {
   console.log(profile?.matches)
  
 
-  const [menuCollapse, setMenuCollapse] = useState(false)
+  const [menuCollapse, setMenuCollapse] = useState(true)
 
   useEffect(() => {
     async function getData() {
-    await dispatch(profileActions.getUserThunk(user.id))
-    // await dispatch(sessionActions.getMatchesThunk())
+    // dispatch(profileActions.getUserThunk(user.id))
+    // // dispatch(sessionActions.getMatchesThunk())
     }
     getData()
 
-  }, [dispatch, user])
+  }, [dispatch, user?.matches?.matched])
 
   const menuClick = () => {
     menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true)

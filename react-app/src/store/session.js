@@ -171,10 +171,16 @@ export const getLikesThunk = () => async(dispatch) => {
 //--------------------------------------------------------------MATCHES
 
 const GET_MATCHES = 'session/GET_MATCHES'
+const DEL_MATCH = 'match/DEL_MATCH'
 
 const getMatches = (matches) => ({
   type: GET_MATCHES,
   payload: matches
+})
+
+const deleteMatch = (match) => ({
+  type: DEL_MATCH,
+  payload: match
 })
 
 export const getMatchesThunk = () => async(dispatch) => {
@@ -188,6 +194,22 @@ export const getMatchesThunk = () => async(dispatch) => {
   }
 }
 
+
+export const deleteMatchThunk = (matchId) => async (dispatch) => {
+
+  const res = await fetch('/api/matches/delete', {
+      method: 'DELETE',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ matchId })
+  })
+
+
+  if (res.ok) {
+      const deleted = await res.json()
+      dispatch(deleteMatch(deleted))
+      return deleted
+  }
+}
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
@@ -209,6 +231,15 @@ export default function reducer(state = initialState, action) {
         let unlikeState = {}
         unlikeState[action.payload.id] = action.payload
         return unlikeState
+    case DEL_MATCH:
+        let delMatchState = {
+          ...state,
+            user: {
+              ...state.user,
+                 matches: state.user.matches.filter(match => match.id !== action.payload?.id)
+            }
+        }
+        return delMatchState;
     case GET_MATCHES:
         console.log(action.payload)
         // let newMatches = action.payload.matched?.forEach((match) => matches)

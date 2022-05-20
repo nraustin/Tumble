@@ -19,24 +19,24 @@ function ProfileCard({...allProfProps}) {
 
   console.log(allProfProps?.slideIndex)
 
-  useEffect(() => {
-    dispatch(profileActions.getUserThunk(userS?.id))
-  }, [dispatch, userS?.id])
+  // useEffect(() => {
+  //   dispatch(profileActions.getUserThunk(userS?.id))
+  // }, [dispatch, userS?.id])
 
-  useEffect(() => {
-    if (!userId) {
-      return;
-    }
-    (async () => {
-      const response = await fetch(`/api/users/${userId}`);
-      const user = await response.json();
-      setUser(user);
-    })();
-  }, [userId]);
+  // useEffect(() => {
+  //   if (!userId) {
+  //     return;
+  //   }
+  //   (async () => {
+  //     const response = await fetch(`/api/users/${userId}`);
+  //     const user = await response.json();
+  //     setUser(user);
+  //   })();
+  // }, [userId]);
 
-  if (!user) {
-    return null;
-  }
+  // if (!user) {
+  //   return null;
+  // }
 
   console.log(allProfProps.dog)
   
