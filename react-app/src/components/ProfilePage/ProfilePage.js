@@ -4,7 +4,7 @@ import * as profileActions from '../../store/profile'
 
 import './ProfilePage.css'
 
-import { FiUpload} from "react-icons/fi";
+import { FiUpload } from "react-icons/fi";
 import cameraIcon from './tumbleUploadPhotoIcon.png'
 
 const ProfilePage = () => {
