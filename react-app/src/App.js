@@ -27,7 +27,7 @@ function App() {
       await dispatch(authenticate());
       setLoaded(true);
     })();
-  }, [dispatch, matchUpdate]);
+  }, [dispatch]);
 
   if (!loaded) {
     return null;

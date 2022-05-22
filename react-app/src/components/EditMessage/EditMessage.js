@@ -7,6 +7,7 @@ import * as matchActions from '../../store/match'
 import './EditMessage.css'
 
 import {HiCheck} from 'react-icons/hi'
+import {FiX} from 'react-icons/fi'
 
 const EditMessage = ({msg, EditMessage, setEditMessage, userMsgClass}) => {
 
@@ -52,7 +53,7 @@ const EditMessage = ({msg, EditMessage, setEditMessage, userMsgClass}) => {
                 >{msg?.content}</textarea>
                 <div className="editMessageButtons">
                     <button type='Submit' className="editMsgSubmitButton"><HiCheck/></button>
-                    <button onClick={handleCancelEdit} className="cancelEditMsgButton">CANCEL</button>
+                    <button onClick={handleCancelEdit} className="cancelEditMsgButton"><FiX/></button>
                 </div>
               </form>
             // </div>

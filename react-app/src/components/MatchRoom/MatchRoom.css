@@ -72,8 +72,7 @@
 
 
 #matchedUserInfoContainer{
-    box-shadow: 0px 4px 8px rgb(158, 158, 158);
-    background-color: whitesmoke;
+    background-color: #cecece;
     padding: 30px;
     padding-left: 60px;
     padding-right: 60px;
