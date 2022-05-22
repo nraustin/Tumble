@@ -63,21 +63,30 @@ const ProfilePage = () => {
           body: formData
         })
 
-        console.log(res)
-        
-        if (res.ok) {
-          
+          if(res){
           setImageLoading(false);
-          dispatch(sessionActions.addImageThunk(formData, res))
+          await dispatch(sessionActions.addImageThunk(formData, res))
           // dispatch(profileActions.getUserThunk(user.id))
           // window.location.reload(false);
           setAddPhoto(false)
+
         }
+
+        console.log(res)
+
+        // if (res.ok) {
+          
+        //   setImageLoading(false);
+        //   dispatch(sessionActions.addImageThunk(formData, res))
+        //   // dispatch(profileActions.getUserThunk(user.id))
+        //   // window.location.reload(false);
+        //   setAddPhoto(false)
+        // }
     
-        else {
-          setImageLoading(false)
-          console.log("error")
-        }
+        // else {
+        //   setImageLoading(false)
+        //   console.log("error")
+        // }
       }
     
         const update = (e) => {
