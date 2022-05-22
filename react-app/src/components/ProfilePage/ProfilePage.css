@@ -90,26 +90,26 @@
 }
 
 .profilePageImgBlank:nth-child(2){
-    -webkit-transform: translate(282px);
+    transform: translate(282px);
     transform: translate(282px);
 }
 
 .profilePageImgBlank:nth-child(3){
-    -webkit-transform: translate(282px,141px);
+    transform: translate(282px,141px);
     transform: translate(282px,141px);
 }
 .profilePageImgBlank:nth-child(4){
-    -webkit-transform: translate(282px,282px);
+    transform: translate(282px,282px);
     transform: translate(282px,282px);
 }
 
 .profilePageImgBlank:nth-child(5){
-    -webkit-transform: translate(141px,282px);
+    transform: translate(141px,282px);
     transform: translate(141px,282px);
 }
 
 .profilePageImgBlank:nth-child(6){
-    -webkit-transform: translateY(282px);
+    transform: translateY(282px);
     transform: translateY(282px);
 }
 
@@ -121,27 +121,27 @@
 }
 
 .profilePageImg:nth-child(2){
-    -webkit-transform: translate(282px);
+    transform: translate(282px);
     transform: translate(282px);
 }
 
 .profilePageImg:nth-child(3){
-    -webkit-transform: translate(282px,141px);
+    transform: translate(282px,141px);
     transform: translate(282px,141px);
 }
 
 .profilePageImg:nth-child(4){
-    -webkit-transform: translate(282px,282px);
+    transform: translate(282px,282px);
     transform: translate(282px,282px);
 }
 
 .profilePageImg:nth-child(5){
-    -webkit-transform: translate(141px,282px);
+    transform: translate(141px,282px);
     transform: translate(141px,282px);
 }
 
 .profilePageImg:nth-child(6){
-    -webkit-transform: translateY(282px);
+    transform: translateY(282px);
     transform: translateY(282px);
 }
 
