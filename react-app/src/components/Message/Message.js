@@ -42,7 +42,7 @@ const Message = ({msg}) => {
 
     return (
         <>
-        {user?.id === msg?.user_id ? <div className="sessionChatContainer"> 
+        {user?.id === msg?.user_id ? <div className="sessionChatContainer" id={msg?.id}> 
           {!editMessage ?
             // (user?.id === msg?.user_id ?
               <div className="userMsgAndEditContainer">
@@ -76,7 +76,7 @@ const Message = ({msg}) => {
                 <EditMessage msg={msg} editMessage={editMessage} setEditMessage={setEditMessage}/>
             </div>} 
             </div> : 
-            <div className="otherChatContainer">
+            <div className="otherChatContainer" id={msg?.id}>
             {/* {!editMessage ?
             (user?.id === msg?.user_id ? 
               <div className="userMsgContainer">

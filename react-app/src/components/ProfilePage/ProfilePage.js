@@ -63,9 +63,9 @@ const ProfilePage = () => {
           body: formData
         })
 
-          if(res){
+          if(res.ok){
           setImageLoading(false);
-          await dispatch(sessionActions.addImageThunk(formData, res))
+          dispatch(sessionActions.addImageThunk(formData, res))
           // dispatch(profileActions.getUserThunk(user.id))
           // window.location.reload(false);
           setAddPhoto(false)
@@ -144,7 +144,7 @@ const ProfilePage = () => {
                       {user?.images?.length < 6 ? 
                    <form onSubmit={handleImageSubmit} className='imageSubmitForm'>
                           <div className='uploadPicContainer'>
-                           <label for='picInput' className='picInputButton'><FiUpload/></label>
+                           <label htmlFor='picInput' className='picInputButton'><FiUpload/></label>
                            <input
                            type="file"
                            id='picInput'
