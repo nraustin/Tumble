@@ -51,7 +51,7 @@ const ProfilePage = () => {
         e.preventDefault();
         const formData = new FormData();
         formData.append("image", image)
-        formData.append("user_id", user.id)
+        formData.append("user_id", user?.id)
 
     
         setImageLoading(true)
