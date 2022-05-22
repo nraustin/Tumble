@@ -56,22 +56,19 @@ const ProfilePage = () => {
     
         setImageLoading(true)
 
-        let res = await dispatch(sessionActions.addImageThunk(formData)).then(() => {
-          setImageLoading(false);
-          // dispatch(profileActions.getUserThunk(user.id))
-          // window.location.reload(false);
-          setAddPhoto(false)
-
-        })
+       
     
-        // const res = await fetch(`/api/users/${user.id}`, {
-        //   method: "POST",
-        //   body: formData
-        // })
+        const res = await fetch(`/api/users/${user.id}`, {
+          method: "POST",
+          body: formData
+        })
+
         console.log(res)
-        if (res) {
+        
+        if (res.ok) {
           
           setImageLoading(false);
+          dispatch(sessionActions.addImageThunk(formData, res))
           // dispatch(profileActions.getUserThunk(user.id))
           // window.location.reload(false);
           setAddPhoto(false)

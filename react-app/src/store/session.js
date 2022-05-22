@@ -180,7 +180,7 @@ const deleteImage = (image) => ({
 })
 
 
-const addImage = (image) => ({
+export const addImage = (image) => ({
   type: ADD_IMAGE,
   payload: image
 })
@@ -201,12 +201,12 @@ if (res.ok) {
 }
 }
 
-export const addImageThunk = (formData) => async(dispatch) => {
+export const addImageThunk = (formData, res) => async(dispatch) => {
 
-  const res = await fetch('/api/users/upload', {
-    method: 'POST',
-    body: formData
-})
+//   const res = await fetch('/api/users/upload', {
+//     method: 'POST',
+//     body: formData
+// })
 
 
 if (res.ok) {
