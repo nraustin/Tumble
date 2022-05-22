@@ -41,6 +41,8 @@ const ProfilePage = () => {
       console.log(deletedPhoto)
 
       dispatch(sessionActions.deleteImageThunk(deletedPhoto))
+      dispatch(profileActions.getUserThunk(user.id))
+      
 
     }
 
@@ -66,7 +68,7 @@ const ProfilePage = () => {
           if(res.ok){
           setImageLoading(false);
           dispatch(sessionActions.addImageThunk(formData, res))
-          // dispatch(profileActions.getUserThunk(user.id))
+          dispatch(profileActions.getUserThunk(user.id))
           // window.location.reload(false);
           setAddPhoto(false)
 
