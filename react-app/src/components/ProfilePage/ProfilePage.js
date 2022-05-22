@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector} from 'react-redux'
 import * as profileActions from '../../store/profile'
+import * as sessionActions from '../../store/session'
 
 import './ProfilePage.css'
 
-import { FiUpload } from "react-icons/fi";
+import { FiUpload, FiXCircle } from "react-icons/fi";
 import cameraIcon from './tumbleUploadPhotoIcon.png'
 
 const ProfilePage = () => {
@@ -30,6 +31,19 @@ const ProfilePage = () => {
        
     }, [dispatch, user?.id])
 
+
+
+    const handleImageDelete = async(e) => {
+      
+      e.preventDefault();
+
+      const deletedPhoto = { imageId: e.currentTarget.id }
+      console.log(deletedPhoto)
+
+      dispatch(sessionActions.deleteImageThunk(deletedPhoto))
+
+    }
+
     
   
 
@@ -39,14 +53,15 @@ const ProfilePage = () => {
         formData.append("image", image)
         formData.append("user_id", user.id)
 
-        
     
         setImageLoading(true)
+
+        const res = dispatch(sessionActions.addImageThunk(formData))
     
-        const res = await fetch(`/api/users/${user.id}`, {
-          method: "POST",
-          body: formData
-        })
+        // const res = await fetch(`/api/users/${user.id}`, {
+        //   method: "POST",
+        //   body: formData
+        // })
     
         if (res.ok) {
           await res.json();
@@ -79,7 +94,16 @@ const ProfilePage = () => {
                        user.images?.map((image) => {
                         return (
                         <>
-                        <img className='profilePageImg' src={image.userImage} alt=''/>
+              
+                        
+                        <div className='profilePageImg'>
+
+                          
+                          <img className='displayedImg' src={image.userImage} alt=''/>
+                          <div className='ImgDeleteContainer' onClick={handleImageDelete} id={image.id}>
+                            <FiXCircle/>
+                          </div>
+                        </div>
                         
                         </>
                         )}) : null }

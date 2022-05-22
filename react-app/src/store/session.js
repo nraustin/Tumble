@@ -168,10 +168,61 @@ export const getLikesThunk = () => async(dispatch) => {
     }
 }
 
+//--------------------------------------------------------------IMAGES
+
+
+const DEL_IMAGE = 'session/DEL_IMAGE'
+const ADD_IMAGE = 'session/ADD_IMAGE'
+
+const deleteImage = (image) => ({
+  type: DEL_IMAGE,
+  payload: image
+})
+
+
+const addImage = (image) => ({
+  type: ADD_IMAGE,
+  payload: image
+})
+
+export const deleteImageThunk = (imageId) => async(dispatch) => {
+
+  const res = await fetch('/api/users/delete', {
+    method: 'DELETE',
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify( imageId )
+})
+
+
+if (res.ok) {
+    const deleted = await res.json()
+    dispatch(deleteImage(deleted))
+    return deleted
+}
+}
+
+export const addImageThunk = (formData) => async(dispatch) => {
+
+  const res = await fetch('/api/users/upload', {
+    method: 'POST',
+    body: formData
+})
+
+
+if (res.ok) {
+    const newImage = await res.json()
+    dispatch(addImage(newImage))
+    return newImage
+}
+}
+
+
+
+
 //--------------------------------------------------------------MATCHES
 
 const GET_MATCHES = 'session/GET_MATCHES'
-const DEL_MATCH = 'match/DEL_MATCH'
+const DEL_MATCH = 'session/DEL_MATCH'
 
 const getMatches = (matches) => ({
   type: GET_MATCHES,
@@ -258,6 +309,24 @@ export default function reducer(state = initialState, action) {
             }
         }
         return matchState
+    case DEL_IMAGE:
+        let profileState = {
+          ...state,
+            user: {
+              ...state.user,
+              images: state.user.images.filter(image => image.id !== action.payload?.id)
+            }
+        }
+        return profileState
+    case ADD_IMAGE:
+      let newProfileState = {
+        ...state,
+          user: {
+            ...state.user,
+              images: state.user.images.concat(action.payload)
+          }
+        }
+        return newProfileState
     default:
       return state;
   }
