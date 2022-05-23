@@ -42,9 +42,8 @@ const LoginForm = ({signUpState}) => {
     showSignUpForm(true)
   }
 
-  if (user) {
-    return <Redirect to='/users/profile'/>;
-    // history.push('/users/profile')
+  if (!user) {
+    return <Redirect to='/'/>;
   }
 
   return (
