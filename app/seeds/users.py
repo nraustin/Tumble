@@ -6,7 +6,7 @@ today = date.today()
 def seed_users():
     demo = User(
         name='Demo',
-        dog=False 
+        dog=False, 
         email='demo@aa.io', 
         password='password', 
         biography=
