@@ -8,6 +8,8 @@ import SlideButton from "../SlideButton/SlideButton";
 
 import './ProfileCardSlider.css'
 
+import likeHeart from './tumbleLikeHeart.png'
+
 
 function ProfileCardSlider() {
 
@@ -161,7 +163,7 @@ function ProfileCardSlider() {
             
             {user && user.dog === true ?
             <>
-            {liked ? <img id="likedMessage" src="https://www.freeiconspng.com/uploads/heart-png-6.png"/> : null}
+            {liked ? <img id="likedMessage" src={likeHeart} alt=''/> : null}
             <div key={currentPeopleProf} className={!active ? "slide active-anim" : "slide"} >
             <ProfileCard {...allProfProps} likeMessage={likeMessageSwitch} nextPerson={nextPeopleSlide} movePrev={prevPeopleSlide}/>   
             </div> 
@@ -175,7 +177,7 @@ function ProfileCardSlider() {
             
             :
             <>
-            {liked ? <img id="likedMessage" src="https://www.freeiconspng.com/uploads/heart-png-6.png"/> : null}
+            {liked ? <img id="likedMessage" src={likeHeart} alt=''/> : null}
             <div key={currentDogProf} className={!active ? "slide active-anim" : "slide"}>
             <ProfileCard {...allProfProps} likeMessage={likeMessageSwitch} nextDog={nextDogSlide}/>   
             </div>

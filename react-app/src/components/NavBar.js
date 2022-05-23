@@ -71,12 +71,12 @@ const NavBar = () => {
 
                 {user ? null :
                 <>
-                    <MenuItem icon={<FiLogIn/>}>
-                      <NavLink to='/login' exact={true} activeClassName='active'>Login</NavLink>
-                    </MenuItem>
-                    <MenuItem icon={<FiUserPlus/>}>
-                      <NavLink to='/sign-up' exact={true} activeClassName='active'>Sign Up</NavLink>
-                    </MenuItem>
+                <MenuItem icon={<FiLogIn/>}>
+                  <NavLink to='/login' exact={true} activeClassName='active'>Login</NavLink>
+                </MenuItem>
+                <MenuItem icon={<FiUserPlus/>}>
+                  <NavLink to='/sign-up' exact={true} activeClassName='active'>Sign Up</NavLink>
+                </MenuItem>
                 </> }
                 <MenuItem icon={<FiUsers/>}>
                   <NavLink to='/users' exact={true} activeClassName='active'>Browse</NavLink>
