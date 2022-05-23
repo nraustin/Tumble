@@ -14,15 +14,21 @@ function ProfileCardSlider() {
     const dispatch = useDispatch()
 
     const user = useSelector(state => state.session.user)
+
     const [slideIndex, setSlideIndex] = useState(1)
     const [profileIndex, setProfileIndex] = useState(0)
+    const [active, setActive] = useState(false)
+
+    
 
     useEffect(() => {
         async function getData() {
         await dispatch(profileActions.getUsersThunk())
         await dispatch(sessionActions.getMatchesThunk())
+        
         }
         getData()
+        
     }, [dispatch])
 
     const profilesObj = useSelector(state => state.profile)
@@ -31,8 +37,6 @@ function ProfileCardSlider() {
     console.log(profiles)
     
 
-
-    // const currentProf = profiles[profileIndex]
 
     const dogProfiles = profiles.filter(profile => profile.dog === true)
     const peopleProfiles = profiles.filter(profile => profile.dog === false)
@@ -53,11 +57,27 @@ function ProfileCardSlider() {
     }
 
     console.log(allProfProps?.profileIndex)
-    console.log(peopleProfiles.length)
 
     // Only way I could get it functioning on a time crunch. Needs to be refactored
 
+    const toggle = () => {
+        setActive(!active)
+    }
+
+    const untoggle = () => {
+        setActive(active)
+    }
+
+    const animationSwitch = () => {
+        toggle()
+    
+        setTimeout(() => {
+          untoggle()
+        }, 50)
+      }
+
     const nextDogSlide = () => {
+        animationSwitch()
         if (slideIndex !== dogProfiles.length){
             setSlideIndex(slideIndex + 1)
             setProfileIndex(profileIndex + 1)
@@ -69,6 +89,7 @@ function ProfileCardSlider() {
     }
 
     const prevDogSlide = () => {
+        animationSwitch()
         if (slideIndex !== 1){
             setSlideIndex(slideIndex - 1)
             setProfileIndex(profileIndex - 1)
@@ -80,6 +101,7 @@ function ProfileCardSlider() {
     }
 
     const nextPeopleSlide = () => {
+        animationSwitch()
         if (slideIndex !== peopleProfiles.length){
             setSlideIndex(slideIndex + 1)
             setProfileIndex(profileIndex + 1)
@@ -91,6 +113,7 @@ function ProfileCardSlider() {
     }
 
     const prevPeopleSlide = () => {
+        animationSwitch()
         if (slideIndex !== 1){
             setSlideIndex(slideIndex - 1)
             setProfileIndex(profileIndex - 1)
@@ -101,9 +124,13 @@ function ProfileCardSlider() {
         }
     }
 
-    // const noThanks = e => {
+   console.log(slideIndex)
+   console.log(profileIndex)
 
-    // }
+    
+    
+    
+   
 
     return (
         
@@ -111,25 +138,27 @@ function ProfileCardSlider() {
         <div className="cardSlider">
             {user && user.dog === true ?
             <>
-            <div key={currentPeopleProf} className={slideIndex === profileIndex + 1 ? "slide active-anim" : "slide"}>
-                <ProfileCard {...allProfProps}/>   
-            </div>
+            <div key={currentPeopleProf} className={!active ? "slide active-anim" : "slide"} >
+            <ProfileCard {...allProfProps} toggle={toggle} retoggle={untoggle} nextPerson={nextPeopleSlide} movePrev={prevPeopleSlide}/>   
+            </div> 
+
             {allProfProps?.person && allProfProps.peopleProfiles.length > 1 ?
             <>       
-                <SlideButton moveSlide={nextPeopleSlide} direction={"next"} />
-                <SlideButton moveSlide={prevPeopleSlide} direction={"prev"}/>
+                <SlideButton moveSlide={nextPeopleSlide} direction={"next"} toggle={toggle} retoggle={untoggle} />
+                <SlideButton moveSlide={prevPeopleSlide} direction={"prev"} toggle={toggle} retoggle={untoggle}/>
             </> : null}
+            
             </> 
             :
             <>
-            <div key={currentDogProf} className={slideIndex === profileIndex + 1 ? "slide active-anim" : "slide"}>
-            <ProfileCard {...allProfProps}/>   
+            <div key={currentDogProf} className={!active ? "slide active-anim" : "slide"}>
+            <ProfileCard {...allProfProps} toggle={toggle} retoggle={untoggle} nextDog={nextDogSlide}/>   
             </div>
             
             {allProfProps?.dog && dogProfiles?.length > 1 ?
             <>
-            <SlideButton moveSlide={nextDogSlide} direction={"next"} />
-            <SlideButton moveSlide={prevDogSlide} direction={"prev"}/>
+            <SlideButton moveSlide={nextDogSlide} direction={"next"} toggle={toggle} retoggle={untoggle}/>
+            <SlideButton moveSlide={prevDogSlide} direction={"prev"} toggle={toggle} retoggle={untoggle}/>
             </> : null}
             </> }
   

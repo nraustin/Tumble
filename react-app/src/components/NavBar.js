@@ -48,7 +48,7 @@ const NavBar = () => {
 
   return (
       <>
-        <div className="sidebar">
+        <div className="sidebar" onMouseEnter={menuClick} onMouseLeave={menuClick}>
           <ProSidebar collapsed={menuCollapse}>
             <SidebarHeader>
             {user ? 
@@ -59,14 +59,14 @@ const NavBar = () => {
               </div>
             </div>
             : null }
-            <div className='closeMenu' onClick={menuClick}>
-              {menuCollapse ? 
+            <div className='closeMenu' >
+              {/* {menuCollapse ? 
               <div className='closeMenuArrows'> 
               <FiArrowRightCircle/>
               </div> : 
               <div className='closeMenuArrows'> 
               <FiArrowLeftCircle/> 
-              </div>}
+              </div>} */}
             </div>
             </SidebarHeader>
             <SidebarContent>

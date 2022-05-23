@@ -21,11 +21,12 @@
     }
   }
   .slide {
-    width: 100%;
-    height: 100%;
+    width: 10%;
+    height: 10%;
     position: absolute;
     opacity: 0;
-    transition: opacity ease-in-out 0.4s;
+    animation: slide .3s forwards;
+    
   }
   .slide img {
     width: 100%;
@@ -34,10 +35,14 @@
   }
   .active-anim {
     opacity: 1;
+    height: 100%;
+    width: 100%;
+    transition: opacity ease-in-out 0.4s;
+    
   }
   
   
-  
+/*   
   .container-dots {
     position: absolute;
     bottom: 10px;
@@ -55,6 +60,6 @@
   }
   .dot.active {
     background: rgb(32, 32, 32);
-  }
+  } */
 
   

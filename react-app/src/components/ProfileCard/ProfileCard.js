@@ -11,49 +11,36 @@ import './ProfileCard.css'
 import doge from './endDeckFinalIcon.png'
 
 
-function ProfileCard({...allProfProps}) {
+function ProfileCard({toggle, untoggle, nextPerson, nextDog, ...allProfProps}) {
   // const [user, setUser] = useState({});
   // const { userId }  = useParams();
   const dispatch = useDispatch()
+  console.log(toggle)
 
   const userS = useSelector(state => state.session.user)
 
-  console.log(allProfProps?.slideIndex)
+  // console.log(allProfProps?.slideIndex)
   console.log(allProfProps?.person)
   console.log(allProfProps?.dog)
 
   console.log(allProfProps?.dog)
 
-  // useEffect(() => {
-  //   dispatch(profileActions.getUserThunk(userS?.id))
-  // }, [dispatch, userS?.id])
-
-  // useEffect(() => {
-  //   if (!userId) {
-  //     return;
-  //   }
-  //   (async () => {
-  //     const response = await fetch(`/api/users/${userId}`);
-  //     const user = await response.json();
-  //     setUser(user);
-  //   })();
-  // }, [userId]);
-
-  // if (!user) {
-  //   return null;
-  // }
+  
 
   
   
 
   const likePersonUser = async(e) => {
     e.preventDefault()
+
+    nextPerson()
+    
    
     const newLike = { userId: userS.id, profileId: allProfProps.person?.id }
     dispatch(sessionActions.createLikeThunk(newLike)).then(() => dispatch(sessionActions.getMatchesThunk()))
     dispatch(profileActions.delUserProfileThunk(allProfProps.person?.id))
 
-     
+    
 
     if(allProfProps?.slideIndex !== allProfProps?.peopleProfiles.length){
       allProfProps?.setSlideIndex(allProfProps?.slideIndex)
@@ -67,6 +54,8 @@ function ProfileCard({...allProfProps}) {
 
   const likeDogUser = e => {
     e.preventDefault()
+
+    nextDog()
    
     const newLike = { userId: userS.id, profileId: allProfProps.dog?.id }
     dispatch(sessionActions.createLikeThunk(newLike)).then(() => dispatch(sessionActions.getMatchesThunk()))
@@ -85,6 +74,8 @@ function ProfileCard({...allProfProps}) {
   const noThanksPerson = e => {
     e.preventDefault()
 
+    nextPerson()
+
     const newUnlike = { userId: userS.id, profileId: allProfProps.person?.id }
     dispatch(sessionActions.createUnlikeThunk(newUnlike)).then(() => dispatch(sessionActions.getMatchesThunk()))
     dispatch(profileActions.delUserProfileThunk(allProfProps.person?.id))
@@ -100,6 +91,8 @@ function ProfileCard({...allProfProps}) {
 
   const noThanksDog = e => {
     e.preventDefault()
+
+    nextDog()
 
     const newUnlike = { userId: userS.id, profileId: allProfProps.dog?.id }
     dispatch(sessionActions.createUnlikeThunk(newUnlike)).then(() => dispatch(sessionActions.getMatchesThunk()))

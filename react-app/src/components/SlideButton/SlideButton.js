@@ -3,10 +3,16 @@ import { FiArrowLeftCircle, FiArrowRightCircle} from 'react-icons/fi'
 
 import './SlideButton.css'
 
-function SlideButton({ direction, moveSlide }) {
+function SlideButton({ direction, moveSlide, toggle, untoggle }) {
+
+  
+
   return (
     <button
       onClick={moveSlide}
+      
+      // onMouseUp={toggle}
+     
       className={direction === "next" ? "btn-slide next" : "btn-slide prev"}
     >
         <div className="iconButton">

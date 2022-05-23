@@ -7,10 +7,13 @@ import './ProfilePage.css'
 
 import { FiUpload, FiXCircle } from "react-icons/fi";
 import cameraIcon from './tumbleUploadPhotoIcon.png'
+import { useHistory } from 'react-router-dom';
 
 const ProfilePage = () => {
 
     const dispatch = useDispatch()
+
+    const history = useHistory()
     
 
     const user = useSelector(state => state.session.user)
@@ -42,6 +45,7 @@ const ProfilePage = () => {
 
       dispatch(sessionActions.deleteImageThunk(deletedPhoto))
       dispatch(profileActions.getUserThunk(user.id))
+      history.push('/users/profile')
       
 
     }
@@ -73,6 +77,7 @@ const ProfilePage = () => {
           setAddPhoto(false)
 
         }
+        history.push('/users/profile')
 
         console.log(res)
 
