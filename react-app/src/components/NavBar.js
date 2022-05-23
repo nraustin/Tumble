@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import LogoutButton from './auth/LogoutButton';
 import { logout } from '../store/session'
 import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarFooter, SidebarContent} from "react-pro-sidebar"
-import { FiLogIn, FiLogOut, FiHeart, FiThumbsUp, FiUserPlus, FiUser, FiUsers, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
+import { FiLogIn, FiLogOut, FiHeart, FiThumbsUp, FiUserPlus, FiUser, FiUsers } from "react-icons/fi";
 
 // import * as profileActions from '.././store/profile'
 // import * as matchActions from '.././store/match'
