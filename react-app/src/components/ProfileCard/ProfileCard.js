@@ -9,7 +9,7 @@ import {FiHeart, FiMeh} from 'react-icons/fi'
 
 import './ProfileCard.css'
 import doge from './endDeckFinalIcon.png'
-import navBarDog from '../defaultNavBarImg.png'
+import navBarDog from '../navbarDogfinal.png'
 
 
 function ProfileCard({ likeMessage, nextPerson, nextDog, ...allProfProps}) {
