@@ -1,6 +1,7 @@
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
+const EDIT_USER = 'session/EDIT_USER'
 
 
 const setUser = (user) => ({
@@ -11,6 +12,11 @@ const setUser = (user) => ({
 
 const removeUser = () => ({
   type: REMOVE_USER,
+})
+
+const editUser = (user) => ({
+  type: EDIT_USER,
+  payload: user
 })
 
 
@@ -102,6 +108,30 @@ export const signUp = (name, email, password, repeatPassword, dog, age) => async
     return ['An error occurred. Please try again.']
   }
 }
+
+
+
+export const editUserThunk = (userId, biography, dog, location) => async(dispatch) => {
+
+  const res = await fetch('/api/users/edit', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({userId, biography, dog, location})
+  });
+
+  if(res.ok){
+    const updatedUser = await res.json();
+    dispatch(editUser(updatedUser))
+    return null
+
+  } else if (res.status < 500) {
+    const data = await res.json();
+    if (data.errors) {
+      return data.errors;
+    }
+}}
 
 // -------------------------------------------------LIKES
 
@@ -268,6 +298,9 @@ export default function reducer(state = initialState, action) {
       return { user: action.payload }
     case REMOVE_USER:
       return { user: null }
+    case EDIT_USER:
+      let editedState ={...state, user: action.payload}
+      return editedState
     case CREATE_LIKE:
         console.log(state)
         let likeState = {

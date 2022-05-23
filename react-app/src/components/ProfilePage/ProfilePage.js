@@ -5,7 +5,9 @@ import * as sessionActions from '../../store/session'
 
 import './ProfilePage.css'
 
-import { FiUpload, FiXCircle } from "react-icons/fi";
+import { FiUpload, FiXCircle, FiX } from "react-icons/fi";
+import { BsFillPencilFill } from 'react-icons/bs'
+import {HiCheck } from 'react-icons/hi'
 import cameraIcon from './tumbleUploadPhotoIcon.png'
 import { useHistory } from 'react-router-dom';
 
@@ -22,11 +24,22 @@ const ProfilePage = () => {
 
     console.log(profile)
 
+    const [errors, setErrors] = useState([]);
+
 
     const [image, setImage] = useState(null)
     const [imageLoading, setImageLoading] = useState(false)
     const [addPhoto, setAddPhoto] = useState(false)
   
+    const [editBio, setEditBio] = useState(false)
+    const [editLocation, setEditLocation] = useState(false)
+    // const [editDog, setEditDog] = useState(false)
+
+    // const [newInfo, setNewInfo] = useState('')
+
+    const [biography, setBio] = useState(user.biography)
+    const [location, setLocation] = useState(user?.location)
+    const [dog] = useState(user?.dog)
 
 
     useEffect(() => {
@@ -50,8 +63,6 @@ const ProfilePage = () => {
       
     }
 
-    
-  
 
     const handleImageSubmit = async(e) => {
         e.preventDefault();
@@ -81,14 +92,7 @@ const ProfilePage = () => {
 
         console.log(res)
 
-        // if (res.ok) {
-          
-        //   setImageLoading(false);
-        //   dispatch(sessionActions.addImageThunk(formData, res))
-        //   // dispatch(profileActions.getUserThunk(user.id))
-        //   // window.location.reload(false);
-        //   setAddPhoto(false)
-        // }
+        
     
         // else {
         //   setImageLoading(false)
@@ -100,6 +104,34 @@ const ProfilePage = () => {
           const file = e.target.files[0];
           setImage(file)
           setAddPhoto(true)
+        }
+
+        
+        const userId = user?.id
+        
+
+        const handleProfileEdit = async(e) => {
+          e.preventDefault()
+
+          // const editedUser = { userId: user?.id, bio: biography, dog: dog, location: location}
+          // const editedUserForm = new FormData();
+          // editedUserForm.append("userId", user?.id)
+          // editedUserForm.append("bio", user?.biography)
+          // editedUserForm.append("dog", user?.dog)
+          // editedUserForm.append("location", user?.location)
+
+          
+
+          const data = await dispatch(sessionActions.editUserThunk(userId, biography, dog, location))
+          if(data){
+            setErrors(data)
+          }
+
+          // dispatch(profileActions.getUserThunk(user?.id))
+
+          setEditBio(false)
+          setEditLocation(false)
+
         }
     
     return (
@@ -169,8 +201,11 @@ const ProfilePage = () => {
                     <>
                       <p className='maxPhotosText'>Replace one of your current photos to add more.</p>
                     </> }
-                   </div> 
+                   </div>
+                   <div className='profileGap'>
+                     </div> 
                   <div className='profileContainer'>
+                  
                   <h2 className='profileText'>My Profile</h2>
                   
                     <div className='profileInfo'>
@@ -181,18 +216,67 @@ const ProfilePage = () => {
                       </div> 
                     <div className='profileInfo'> 
                       I'm looking for: {user.dog? 'a new owner' : 'a new dog'} <div className='editProfileIcon'></div>
-                      </div> 
-                    <div className='profileInfo'>
-                      Biography: {user.biography ? user.biography : 'Tell everyone about yourself'} <div className='editProfileIcon'></div>
                       </div>
-                    <div className='profileInfo'>
-                      Location: {user.location ? user.location : 'Add your location'} <div className='editProfileIcon'></div>
-                      </div> 
+                    <div className='updatableProfileInfoContainer'>
+                    {!editBio ? 
+                        <>
+                        <div className='profileInfoBio'>
+                          Biography: {user.biography ? user.biography : 'Tell everyone about yourself'} 
+                          
+                          </div>
+                          <div className='editProfileIcon' onClick={() => setEditBio(true)}><BsFillPencilFill/></div>
+                          </>
+                          :
+                          <div className='editProfileInfoBio'>
+                              <form onSubmit={handleProfileEdit} className='editBioForm'>
+                              <div>
+                                  {errors.map((error, ind) => (
+                                    <div key={ind}>{error}</div>
+                                  ))}
+                                </div>
+                                <textarea className="editBioTextArea"
+                                value={biography}
+                                onChange={(e) => setBio(e.target.value)}
+                                required
+                                >{user?.biography}</textarea>
+                                <div className="editBioButtons">
+                                    <button type='Submit' className="editMsgSubmitButton"><HiCheck/></button>
+                                    <button className="cancelEditMsgButton" onClick={() => setEditBio(false)}><FiX/></button>
+                                  </div>
+                                </form>
+                            </div> }
+                          </div>
+                      <div className='updatableProfileInfoContainer'>
+                      {!editLocation ? 
+                        <>
+                        <div className='profileInfo'>
+                          Location: {user.location ? user.location : 'Add your location'} <div className='editProfileIcon'></div>
+                          </div> 
+                        
+                          <div className='editProfileIcon' onClick={() => setEditLocation(true)}><BsFillPencilFill/></div>
+                          </> : 
+                          <div className='editProfileInfoBio'>
+                          <form onSubmit={handleProfileEdit} className='editBioForm'>
+                          <div>
+                              {errors.map((error, ind) => (
+                                <div key={ind}>{error}</div>
+                              ))}
+                            </div>
+                            <textarea className="editBioTextArea"
+                            value={location}
+                            onChange={(e) => setLocation(e.target.value)}
+                            required
+                            >{user?.biography}</textarea>
+                            <div className="editBioButtons">
+                                <button type='Submit' className="editMsgSubmitButton"><HiCheck/></button>
+                                <button className="cancelEditMsgButton" onClick={() => setEditLocation(false)}><FiX/></button>
+                              </div>
+                            </form>
+                        </div> }
+                      </div>
+
                     <div className='profileInfo'>
                       Age: {user.age} <div className='editProfileIcon'></div>
-                      </div> 
-                    <div className='profileInfo'>
-                      Likes: {user.likes[0] ? user.likes.length : null}
                       </div> 
                     
                   </div>

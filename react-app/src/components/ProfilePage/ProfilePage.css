@@ -1,5 +1,5 @@
 .profileContainerRoot{
-   padding-top: 100px;
+
    display: flex;
    justify-content: center;
    width: 100vw;
@@ -8,25 +8,19 @@
 .profilePicContainer{
     padding-bottom: 50px;
     width: 520px;
+    padding-top: 100px;
 }
 
 
 .profileImageGrid{  
-    /* --grid-columns: 1;
-    --grid-column-width: 0;
-    --grid-gap: 0; */
-    /* -ms-flex-wrap: wrap; */
+   
     flex-wrap: wrap;
-    /* -webkit-box-flex: 1; */
-    /* -ms-flex: 1; */
     display: flex;
     /* display: -webkit-box; */
     flex: 1;
     min-width: 100%;
     /* height: 100%; */
     min-height: 415px;
-    /* margin-top: calc(var(--grid-gap)*-1);
-    margin-right: calc(var(--grid-gap)*-1); */
 }
 
 
@@ -40,16 +34,9 @@
     border-radius: 5px 5px 5px 5px;
     padding: 3px;
     background-color: #cecece;
-    /* -webkit-box-pack: center;
-    -ms-flex-pack: center; */
     justify-content: center;
-    /* -webkit-box-align: center;
-    -ms-flex-align: center; */
     align-items: center;
-    /* width: var(--grid-column-width); */
-    /* padding: var(--grid-gap) var(--grid-gap) 0 0; */
-    /* -webkit-box-flex: 0;
-    -ms-flex: 0 0 auto; */
+   
     flex: 0 0 auto;
 }
 
@@ -57,6 +44,7 @@
     width: 100%;
     height: 100%;
     z-index: 2;
+    object-fit: cover;
 }
 
 
@@ -135,16 +123,9 @@
     border-radius: 5px 5px 5px 5px;
     padding: 3px;
     background-color: #cecece;
-    /* -webkit-box-pack: center;
-    -ms-flex-pack: center; */
     justify-content: center;
-    /* -webkit-box-align: center;
-    -ms-flex-align: center; */
     align-items: center;
-    /* width: var(--grid-column-width); */
-    /* padding: var(--grid-gap) var(--grid-gap) 0 0; */
-    /* -webkit-box-flex: 0;
-    -ms-flex: 0 0 auto; */
+   
     flex: 0 0 auto;
 
 }
@@ -318,7 +299,7 @@
     align-items: center;
     flex-direction: column;
     gap: 20px;
-    height: 400px;
+    height: 600px;
     padding: 20px;
     padding-left: 100px;
 
@@ -343,6 +324,79 @@
 
 }
 
+.profileInfoBio{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    font-family: 'Chivo', sans-serif;
+    width: 400px;
+    border-radius: 10px 10px 10px 10px;
+    background-color: #cecece;
+    color: #525761;
+}
+
+.profileInfoBio:hover{
+    background-color: #ebedf3;
+}
+
+.updatableProfileInfoContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.editProfileIcon{
+    display: inline;
+    width: 30px;
+    padding-top: 8px;
+    color: whitesmoke;
+    display: none;
+}
+
+.updatableProfileInfoContainer:hover .editProfileIcon{
+    display: inline;
+    width: 30px;
+    padding-top: 8px;
+    color: whitesmoke;
+}
+
+.editProfileInfoBio{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    font-family: 'Chivo', sans-serif;
+    width: 400px;
+    border-radius: 10px 10px 10px 10px;
+    background-color: #cecece;
+    color: #525761;
+}
+
+.editBioForm{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.editBioTextArea{
+    width: 100%;
+    border-radius: 6px 6px;
+    background-color: #e4e1e1;
+    color: #2f3134;
+    font-family: inherit;
+}
+
+
+
+.editBioButtons{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+
 .editProfileIcon:hover{
     cursor: pointer;
     color: blue;
@@ -351,4 +405,8 @@
 
 .profileInfo:hover{
     background-color: #ebedf3;
+}
+
+.profileGap{
+   
 }
