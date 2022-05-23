@@ -3,23 +3,29 @@ from flask_login import login_required, current_user
 from app.models import User, Image, Unlike, Like
 from app.s3_helpers import upload_file_to_s3, get_unique_filename, allowed_file
 from app.models import db
+from app.forms import ProfileForm
 
 user_routes = Blueprint('users', __name__)
+
+
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
 
 
 @user_routes.route('')
 @login_required
 def users():
 
-    print('\n\n\n Just supposed to work, ok \n\n\n')
 
     users = User.query.all()
     
-    # for user in users:
-    #     if len(user.likes) > 0:
-    #         for like in user.likes:
-    #             if like.liker_id == current_user.id:
-    #                 users.remove(user)
 
     if len(current_user.unlikes) == 0 and len(current_user.likes) == 0:
         return {'users': [user.to_dict() for user in users]}
@@ -33,7 +39,7 @@ def users():
             for like in current_user.likes:
                 if current_user.id == like.liker_id:
                     unwantedUsers.append(like.liked_id)
-        else: # len(current_user.unlikes) > 0 and len(current_user.likes) > 0:
+        else: 
             for unlike in current_user.unlikes:
                 if current_user.id == unlike.unliker_id:
                     unwantedUsers.append(unlike.unliked_id)
@@ -108,40 +114,53 @@ def upload_image(id):
         db.session.add(new_image)
         db.session.commit()
 
-        return {"url": url}
+        return new_image.image_to_dict()
         
     
 @user_routes.route('/edit', methods=['PUT'])
 def edit_user():
 
-        id = request.json['user_id']
+        
 
-        user = User.query.get(id)
+        form = ProfileForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
+        if form.validate_on_submit():
+            
+            id = form.data['userId']
 
-        bio=request.json['bio']
-        location=request.json['location']
-        name=request.json['name']
+            print('\n\n\n', id, '\n\n\n')
 
-        user.biography=bio,
-        user.location=location,
-        user.name=name,
+            user = User.query.get(id)
 
-        db.session.add(user)
-        db.session.commit()
+            bio=form.data['biography']
+            location=form.data['location']
+            dog=form.data['dog']
 
-        return user.to_dict()
+            user.biography=bio,
+            user.location=location,
+            user.dog=dog
+
+            db.session.add(user)
+            db.session.commit()
+
+
+            return user.to_dict()
+
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @user_routes.route('/delete', methods=['DELETE'])
 def delete_image():
 
         image_id=request.json['imageId']
 
+        print('\n\n\n', image_id ,'\n\n\n')
+
         image = Image.query.get(image_id)
 
         db.session.delete(image)
         db.session.commit()
 
-        return image.to_dict()
+        return image.image_to_dict()
 
 
         
