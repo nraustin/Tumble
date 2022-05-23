@@ -111,14 +111,14 @@ export const signUp = (name, email, password, repeatPassword, dog, age) => async
 
 
 
-export const editUserThunk = (userId, biography, dog, location) => async(dispatch) => {
+export const editUserThunk = (userId, biography, location) => async(dispatch) => {
 
   const res = await fetch('/api/users/edit', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({userId, biography, dog, location})
+    body: JSON.stringify({userId, biography, location})
   });
 
   if(res.ok){

@@ -123,7 +123,7 @@ function ProfileCard({ likeMessage, nextPerson, nextDog, ...allProfProps}) {
               {allProfProps.person?.images.length > 0 ?
                 allProfProps.person?.images.map((image) => ( 
                 <img className='swipeCardProfilePics' src={image.userImage} alt={''}/>))
-                : <img src={process.env.PUBLIC_URL + '/tumbleDefaultIcon.png'} alt="logo" />} 
+                : <img src='https://tumblebucket.s3.amazonaws.com/8efd08d352b140cdbac760c6386ffb88.png' alt='' />} 
                 </div>
                 <div className='swipeCardInfoContainer'>
                   <strong className='swipeCardGeneralInfo'>
@@ -154,7 +154,7 @@ function ProfileCard({ likeMessage, nextPerson, nextDog, ...allProfProps}) {
               {allProfProps.dog?.images.length > 0 ?
               allProfProps.dog?.images.map((image) => (
               <img className='swipeCardProfilePics' src={image?.userImage} alt={''}/>))
-                : <img src={process.env.PUBLIC_URL + '/tumbleDefaultIcon.png'} alt="logo" />} 
+                : <img src='https://tumblebucket.s3.amazonaws.com/8efd08d352b140cdbac760c6386ffb88.png' alt='' />} 
             </div>
               <div className='swipeCardInfoContainer'>
                 <strong className='swipeCardGeneralInfo'>

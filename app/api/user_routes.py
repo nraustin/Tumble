@@ -134,11 +134,11 @@ def edit_user():
 
             bio=form.data['biography']
             location=form.data['location']
-            dog=form.data['dog']
+            
 
             user.biography=bio,
             user.location=location,
-            user.dog=dog
+            
 
             db.session.add(user)
             db.session.commit()

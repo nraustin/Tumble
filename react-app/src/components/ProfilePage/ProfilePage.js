@@ -39,7 +39,7 @@ const ProfilePage = () => {
 
     const [biography, setBio] = useState(user.biography)
     const [location, setLocation] = useState(user?.location)
-    const [dog] = useState(user?.dog)
+    // const [dog] = useState(user?.dog)
 
 
     useEffect(() => {
@@ -122,7 +122,7 @@ const ProfilePage = () => {
 
           
 
-          const data = await dispatch(sessionActions.editUserThunk(userId, biography, dog, location))
+          const data = await dispatch(sessionActions.editUserThunk(userId, biography, location))
           if(data){
             setErrors(data)
           }
@@ -222,9 +222,9 @@ const ProfilePage = () => {
                         <>
                         <div className='profileInfoBio'>
                           Biography: {user.biography ? user.biography : 'Tell everyone about yourself'} 
-                          
-                          </div>
                           <div className='editProfileIcon' onClick={() => setEditBio(true)}><BsFillPencilFill/></div>
+                          </div>
+                          
                           </>
                           :
                           <div className='editProfileInfoBio'>
@@ -251,9 +251,10 @@ const ProfilePage = () => {
                         <>
                         <div className='profileInfo'>
                           Location: {user.location ? user.location : 'Add your location'} <div className='editProfileIcon'></div>
+                          <div className='editProfileIcon' onClick={() => setEditLocation(true)}><BsFillPencilFill/></div>
                           </div> 
                         
-                          <div className='editProfileIcon' onClick={() => setEditLocation(true)}><BsFillPencilFill/></div>
+                          
                           </> : 
                           <div className='editProfileInfoBio'>
                           <form onSubmit={handleProfileEdit} className='editBioForm'>

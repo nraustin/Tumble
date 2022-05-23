@@ -53,7 +53,7 @@ const NavBar = () => {
             <SidebarHeader>
             {user ? 
             <div className='userBox'>
-              {user.images[0] ? <img className='userIcon' src={user.images[0].userImage} alt='https://cdn-icons-png.flaticon.com/512/616/616408.png'/> : <img className= 'userIcon' src={process.env.PUBLIC_URL + '/tumbleDefaultIcon.png'} alt=''/>}
+              {user.images[0] ? <img className='userIcon' src={user.images[0].userImage} alt='https://tumblebucket.s3.amazonaws.com/8efd08d352b140cdbac760c6386ffb88.png'/> : <img className= 'userIcon' src={process.env.PUBLIC_URL + '/tumbleDefaultIcon.png'} alt='https://tumblebucket.s3.amazonaws.com/8efd08d352b140cdbac760c6386ffb88.png'/>}
               <div className='userText'>
                 <p>{user?.name}</p>
               </div>

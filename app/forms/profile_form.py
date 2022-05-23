@@ -8,4 +8,3 @@ class ProfileForm(FlaskForm):
     userId = StringField('userId', validators=[DataRequired()])
     biography = StringField('biography', validators=[InputRequired()])
     location = StringField('location', validators=[InputRequired()])
-    dog = BooleanField('boolean', validators=[DataRequired()])
