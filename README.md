@@ -5,35 +5,36 @@ Welcome to Tumble, a simplified clone of the popular dating app, Bumble. Tumble 
 
 ### Frontend
 
-React
-Redux
-JavaScript
-HTML
-CSS
+* React
+* Redux
+* JavaScript
+* HTML
+* CSS
 
 ### Backend
 
-Flask
-Python
-PostgreSQL
-SQLAlchemy
+* Flask
+* Python
+* PostgreSQL
+* SQLAlchemy
 
 ## Tumble Installation Guide
 
-* Clone this repository 
+1) Clone this repository 
 
     ```bash
-    (https://github.com/nraustin/Tumble.git)
+    git clone https://github.com/nraustin/Tumble.git
     ```
     
-* Install dependencies - pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-* Create a .env file based on the .env.example with proper settings required for the development environment
-* Setup PostgreSQL user, password and database and to make sure it matches the .env file
-* Get into pipenv, migrate the database, seed the database, and run the flask app using the following commands:
-* pipenv shell
-* flask db upgrade
-* flask seed all
-* flask run
+2) Install dependencies - pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
+3) Create a .env file based on the .env.example with proper settings required for the development environment
+4) Setup PostgreSQL user, password and database and to make sure it matches the .env file
+5) Get into pipenv, migrate the database, seed the database, and run the flask app using the following commands:
+6) pipenv shell
+7) flask db upgrade
+8) flask seed all
+9) flask run
+
 * To run the React App in development, checkout the README inside the react-app directory.
 
 
