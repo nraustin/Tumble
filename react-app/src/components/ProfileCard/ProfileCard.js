@@ -9,6 +9,7 @@ import {FiHeart, FiMeh} from 'react-icons/fi'
 
 import './ProfileCard.css'
 import doge from './endDeckFinalIcon.png'
+import navBarDog from '../navbarDogfinal.png'
 
 
 function ProfileCard({ likeMessage, nextPerson, nextDog, ...allProfProps}) {
@@ -123,7 +124,7 @@ function ProfileCard({ likeMessage, nextPerson, nextDog, ...allProfProps}) {
               {allProfProps.person?.images.length > 0 ?
                 allProfProps.person?.images.map((image) => ( 
                 <img className='swipeCardProfilePics' src={image.userImage} alt={''}/>))
-                : <img src='https://tumblebucket.s3.amazonaws.com/8efd08d352b140cdbac760c6386ffb88.png' alt='' />} 
+                : <img src={navBarDog} alt='' />} 
                 </div>
                 <div className='swipeCardInfoContainer'>
                   <strong className='swipeCardGeneralInfo'>
@@ -154,7 +155,7 @@ function ProfileCard({ likeMessage, nextPerson, nextDog, ...allProfProps}) {
               {allProfProps.dog?.images.length > 0 ?
               allProfProps.dog?.images.map((image) => (
               <img className='swipeCardProfilePics' src={image?.userImage} alt={''}/>))
-                : <img src='https://tumblebucket.s3.amazonaws.com/8efd08d352b140cdbac760c6386ffb88.png' alt='' />} 
+                : <img src={navBarDog} alt='' />} 
             </div>
               <div className='swipeCardInfoContainer'>
                 <strong className='swipeCardGeneralInfo'>

@@ -13,6 +13,7 @@ import { FiLogIn, FiLogOut, FiHeart, FiThumbsUp, FiUserPlus, FiUser, FiUsers } f
 import "react-pro-sidebar/dist/css/styles.css";
 import './NavBar.css'
 import tumbleDefaultUser from './tumbleDefaultUser.png'
+import navBarDog from './navbarDogfinal.png'
 
 const NavBar = () => {
 
@@ -53,7 +54,7 @@ const NavBar = () => {
             <SidebarHeader>
             {user ? 
             <div className='userBox'>
-              {user.images[0] ? <img className='userIcon' src={user.images[0].userImage} alt='https://tumblebucket.s3.amazonaws.com/8efd08d352b140cdbac760c6386ffb88.png'/> : <img className= 'userIcon' src={process.env.PUBLIC_URL + '/tumbleDefaultIcon.png'} alt='https://tumblebucket.s3.amazonaws.com/8efd08d352b140cdbac760c6386ffb88.png'/>}
+              {user.images[0] ? <img className='userIcon' src={user.images[0].userImage} alt=''/> : <img className= 'userIcon' src={navBarDog} alt={navBarDog}/>}
               <div className='userText'>
                 <p>{user?.name}</p>
               </div>
