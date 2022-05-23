@@ -1,5 +1,5 @@
 # Tumble
-Welcome to Tumble, a simplified clone of the popular dating app, Bumble. Tumble connects those with dogs in difficult circumstances of adoption with those in search of a new friend. Create, explore, and meet with other users by signing up for a free account or using a demo account available on the live site.
+Welcome to Tumble, a simplified clone of the popular dating app, Bumble. Tumble connects those with dogs in difficult circumstances of adoption with those in search of a new friend. Create, explore, and meet with other users by signing up for a free account or by using a demo account available on the live site.
 
 ## Technologies used
 
