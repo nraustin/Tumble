@@ -42,7 +42,7 @@ const LoginForm = ({signUpState}) => {
     showSignUpForm(true)
   }
 
-  if (!user) {
+  if (user) {
     return <Redirect to='/'/>;
   }
 
