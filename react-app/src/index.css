@@ -57,7 +57,8 @@ h1{
   }
 
   .logoutText{
-    color: #adadad
+    color: #c1c0c0;
+    font-family: 'Noto Sans';
   }
 
   .logoutText:hover{

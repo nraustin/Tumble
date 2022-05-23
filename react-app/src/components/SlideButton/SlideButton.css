@@ -3,7 +3,7 @@
     height: 45px;
     border-radius: 50%;
     background: none;
-    border: 1px solid rgba(34, 34, 34, 0.287);
+    border: none;
     position: absolute;
     display: flex;
     justify-content: center;

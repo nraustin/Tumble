@@ -11,11 +11,11 @@ import './ProfileCard.css'
 import doge from './endDeckFinalIcon.png'
 
 
-function ProfileCard({toggle, untoggle, nextPerson, nextDog, ...allProfProps}) {
+function ProfileCard({ likeMessage, nextPerson, nextDog, ...allProfProps}) {
   // const [user, setUser] = useState({});
   // const { userId }  = useParams();
   const dispatch = useDispatch()
-  console.log(toggle)
+  
 
   const userS = useSelector(state => state.session.user)
 
@@ -33,7 +33,9 @@ function ProfileCard({toggle, untoggle, nextPerson, nextDog, ...allProfProps}) {
   const likePersonUser = async(e) => {
     e.preventDefault()
 
+    likeMessage()
     nextPerson()
+    
     
    
     const newLike = { userId: userS.id, profileId: allProfProps.person?.id }
@@ -55,6 +57,7 @@ function ProfileCard({toggle, untoggle, nextPerson, nextDog, ...allProfProps}) {
   const likeDogUser = e => {
     e.preventDefault()
 
+    likeMessage()
     nextDog()
    
     const newLike = { userId: userS.id, profileId: allProfProps.dog?.id }
@@ -117,7 +120,9 @@ function ProfileCard({toggle, untoggle, nextPerson, nextDog, ...allProfProps}) {
             <div className='swipeCardContainer'>
 
             <div className='swipeCardProfilePicsContainer'>
-              {allProfProps.person?.images.length > 0 ? <img className='swipeCardProfilePics' src={allProfProps.person.images[0]?.userImage} alt={''}/>
+              {allProfProps.person?.images.length > 0 ?
+                allProfProps.person?.images.map((image) => ( 
+                <img className='swipeCardProfilePics' src={image.userImage} alt={''}/>))
                 : <img src={process.env.PUBLIC_URL + '/tumbleDefaultIcon.png'} alt="logo" />} 
                 </div>
                 <div className='swipeCardInfoContainer'>
@@ -146,7 +151,9 @@ function ProfileCard({toggle, untoggle, nextPerson, nextDog, ...allProfProps}) {
             <div className='swipeCardContainer'>
             
             <div className='swipeCardProfilePicsContainer'>
-              {allProfProps.dog?.images.length > 0 ? <img className='swipeCardProfilePics' src={allProfProps.dog?.images[0]?.userImage} alt={''}/>
+              {allProfProps.dog?.images.length > 0 ?
+              allProfProps.dog?.images.map((image) => (
+              <img className='swipeCardProfilePics' src={image?.userImage} alt={''}/>))
                 : <img src={process.env.PUBLIC_URL + '/tumbleDefaultIcon.png'} alt="logo" />} 
             </div>
               <div className='swipeCardInfoContainer'>

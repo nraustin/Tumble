@@ -45,9 +45,9 @@ const ProfilePage = () => {
 
       dispatch(sessionActions.deleteImageThunk(deletedPhoto))
       dispatch(profileActions.getUserThunk(user.id))
+      window.location.reload(false);
       history.push('/users/profile')
       
-
     }
 
     
@@ -73,7 +73,7 @@ const ProfilePage = () => {
           setImageLoading(false);
           dispatch(sessionActions.addImageThunk(formData, res))
           dispatch(profileActions.getUserThunk(user.id))
-          // window.location.reload(false);
+          window.location.reload(false);
           setAddPhoto(false)
 
         }

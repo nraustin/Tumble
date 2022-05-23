@@ -1,5 +1,5 @@
 import React from "react";
-import { FiArrowLeftCircle, FiArrowRightCircle} from 'react-icons/fi'
+import { FiChevronLeft, FiChevronRight} from 'react-icons/fi'
 
 import './SlideButton.css'
 
@@ -16,7 +16,7 @@ function SlideButton({ direction, moveSlide, toggle, untoggle }) {
       className={direction === "next" ? "btn-slide next" : "btn-slide prev"}
     >
         <div className="iconButton">
-      {direction === "next" ? <FiArrowRightCircle/> : <FiArrowLeftCircle/>}
+      {direction === "next" ? <FiChevronRight/> : <FiChevronLeft/>}
         </div>
     </button>
   );

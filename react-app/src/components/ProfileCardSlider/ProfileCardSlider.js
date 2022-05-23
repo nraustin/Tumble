@@ -18,6 +18,7 @@ function ProfileCardSlider() {
     const [slideIndex, setSlideIndex] = useState(1)
     const [profileIndex, setProfileIndex] = useState(0)
     const [active, setActive] = useState(false)
+    const [liked, setLiked] = useState(false)
 
     
 
@@ -76,6 +77,23 @@ function ProfileCardSlider() {
         }, 50)
       }
 
+
+    const likeToggle = () => {
+        setLiked(!liked)
+    }
+
+    const likeUntoggle = () => {
+        setLiked(liked)
+    }
+
+    const likeMessageSwitch = () => {
+        likeToggle()
+
+        setTimeout(() => {
+            likeUntoggle()
+        }, 500)
+    }
+
     const nextDogSlide = () => {
         animationSwitch()
         if (slideIndex !== dogProfiles.length){
@@ -133,26 +151,33 @@ function ProfileCardSlider() {
    
 
     return (
+
+        
         
         <div className="cardSliderContainer">
+             
+           
         <div className="cardSlider">
+            
             {user && user.dog === true ?
             <>
+            {liked ? <img id="likedMessage" src="https://www.freeiconspng.com/uploads/heart-png-6.png"/> : null}
             <div key={currentPeopleProf} className={!active ? "slide active-anim" : "slide"} >
-            <ProfileCard {...allProfProps} toggle={toggle} retoggle={untoggle} nextPerson={nextPeopleSlide} movePrev={prevPeopleSlide}/>   
+            <ProfileCard {...allProfProps} likeMessage={likeMessageSwitch} nextPerson={nextPeopleSlide} movePrev={prevPeopleSlide}/>   
             </div> 
-
+            
             {allProfProps?.person && allProfProps.peopleProfiles.length > 1 ?
             <>       
                 <SlideButton moveSlide={nextPeopleSlide} direction={"next"} toggle={toggle} retoggle={untoggle} />
                 <SlideButton moveSlide={prevPeopleSlide} direction={"prev"} toggle={toggle} retoggle={untoggle}/>
             </> : null}
+            </>
             
-            </> 
             :
             <>
+            {liked ? <img id="likedMessage" src="https://www.freeiconspng.com/uploads/heart-png-6.png"/> : null}
             <div key={currentDogProf} className={!active ? "slide active-anim" : "slide"}>
-            <ProfileCard {...allProfProps} toggle={toggle} retoggle={untoggle} nextDog={nextDogSlide}/>   
+            <ProfileCard {...allProfProps} likeMessage={likeMessageSwitch} nextDog={nextDogSlide}/>   
             </div>
             
             {allProfProps?.dog && dogProfiles?.length > 1 ?

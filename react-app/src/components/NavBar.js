@@ -60,21 +60,10 @@ const NavBar = () => {
             </div>
             : null }
             <div className='closeMenu' >
-              {/* {menuCollapse ? 
-              <div className='closeMenuArrows'> 
-              <FiArrowRightCircle/>
-              </div> : 
-              <div className='closeMenuArrows'> 
-              <FiArrowLeftCircle/> 
-              </div>} */}
             </div>
             </SidebarHeader>
             <SidebarContent>
               <Menu iconShape='circle'>
-                {/* <MenuItem icon={<FiHome/>}>
-                  <NavLink to='/' exact={true} active={true} activeClassName='active'>Home</NavLink>
-                </MenuItem> */}
-                
                 {user ?
                 <MenuItem icon={<FiUser/>}>
                   <NavLink to={`/users/profile`} exact={true} activeClassName='active'>My Profile</NavLink>
@@ -111,7 +100,7 @@ const NavBar = () => {
               </Menu>
             </SidebarContent>
             <SidebarFooter>
-              <Menu iconShape='square'>
+              <Menu iconShape='circle'>
                 <MenuItem icon={<FiLogOut/>} onClick={onLogout}><LogoutButton /></MenuItem>
               </Menu>
             </SidebarFooter>

@@ -96,12 +96,20 @@ const MatchRoom = ({matchUpdate, setMatchUpdate}) => {
     
       }
 
+    console.log(match?.messages)
+
+    let sortedMessages = match?.messages.sort(function(a, b) {
+           return a.id - b.id 
+    })
+
+    console.log(sortedMessages)
+
 
     return (user && (
         <>
         <div id="chatContainer">
             <div className="messageList">
-                <List >
+                
                     {match?.messages?.map(msg => (
                         <>
                         {user?.id === msg?.user_id ? 
@@ -125,7 +133,7 @@ const MatchRoom = ({matchUpdate, setMatchUpdate}) => {
                         </div>}
                         </>
                         ))}
-                </List>
+                
                 </div>
                 <form onSubmit={handleMessage} className='messageForm'>
                     <div className="sendMsgTextareaContainer">
