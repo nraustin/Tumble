@@ -20,7 +20,7 @@
 
 .matchIndvCardContainer{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     padding-right: 200px;
 }
 
@@ -37,7 +37,7 @@
 .matchCardImg{
     height: 100px;
     width: 100px;
-    
+    border-radius: 100%;
 }
 
 .matchCardLocation{

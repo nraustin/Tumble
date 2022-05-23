@@ -122,18 +122,18 @@ def edit_user():
 
         
 
-        form = ProfileForm()
-        form['csrf_token'].data = request.cookies['csrf_token']
-        if form.validate_on_submit():
+        # form = ProfileForm()
+        # form['csrf_token'].data = request.cookies['csrf_token']
+        # if form.validate_on_submit():
             
-            id = form.data['userId']
+            id = request.json['userId']
 
             print('\n\n\n', id, '\n\n\n')
 
             user = User.query.get(id)
 
-            bio=form.data['biography']
-            location=form.data['location']
+            bio=request.json['biography']
+            location=request.json['location']
             
 
             user.biography=bio,
@@ -146,7 +146,7 @@ def edit_user():
 
             return user.to_dict()
 
-        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+        # return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @user_routes.route('/delete', methods=['DELETE'])
 def delete_image():

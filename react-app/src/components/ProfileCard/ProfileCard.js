@@ -9,7 +9,7 @@ import {FiHeart, FiMeh} from 'react-icons/fi'
 
 import './ProfileCard.css'
 import doge from './endDeckFinalIcon.png'
-import navBarDog from '../navbarDogfinal.png'
+import navBarDog from '../defaultNavBarImg.png'
 
 
 function ProfileCard({ likeMessage, nextPerson, nextDog, ...allProfProps}) {
@@ -133,8 +133,8 @@ function ProfileCard({ likeMessage, nextPerson, nextDog, ...allProfProps}) {
                   </strong>
                   {allProfProps.person.biography ? <strong className='swipeCardBio'>{allProfProps.person?.biography}</strong> : <strong className='swipeCardBio'>No biography yet.</strong> }
                   <div className="likeButtons">
-                    <button onClick={likePersonUser} className='swipeCardLikeButton'><FiHeart/></button>
-                    <button onClick={noThanksPerson} className='swipeCardUnlikeButton'><FiMeh/></button>
+                    <button onClick={likePersonUser} className='swipeCardLikeButton'><FiHeart/></button><h4 className='likeButtonTxt'>Like</h4>
+                    <button onClick={noThanksPerson} className='swipeCardUnlikeButton'><FiMeh/></button><h4 className='noThanksButtonTxt'>No Thanks</h4>
                   </div>
                 </div> 
               </div> : 

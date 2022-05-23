@@ -37,8 +37,13 @@ function App() {
     <>
     <div className='App'>
       <BrowserRouter>
-         {loaded && user ? 
-        <NavBar/> :
+         {loaded && user ?
+        <> 
+        <NavBar/>
+        <Route path='/' exact={true}>
+          <UserLikes/>
+        </Route>
+        </> :
         <Route path='/' exact={true} >
           <SplashPage/>
         </Route>}

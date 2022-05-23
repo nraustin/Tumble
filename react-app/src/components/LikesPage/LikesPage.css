@@ -30,3 +30,22 @@
     margin: 0;
     padding-top: 20px;
 }
+
+.welcomeGuideIntro{
+    font-family: 'Noto Sans';
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    padding-top: 30px;
+    color: whitesmoke;
+}
+
+.tutorial1{
+    height: 350px;
+    width: 600px;
+    
+}
+.tutorial2{
+    height: 100px;
+    width: 400px;
+}

@@ -3,7 +3,7 @@
 }
 
 .swipeCardProfilePicsContainer{
-    background-color: whitesmoke;
+    background-color: #7ea1cb;
     overflow-y:scroll;
 }
 
@@ -163,4 +163,18 @@
     height: 100px;
     width: 100px;
     
+}
+
+
+.likeButtonTxt{
+    font-family: 'Noto Sans';
+    color: whitesmoke;
+    transform: translate(-131px, 70px);
+}
+
+.noThanksButtonTxt{
+    font-family: 'Noto Sans';
+    color: whitesmoke;
+    transform: translate(130px, 70px);
+    position: absolute;
 }

@@ -24,7 +24,7 @@ const ProfilePage = () => {
 
     console.log(profile)
 
-    const [errors, setErrors] = useState([]);
+    // const [errors, setErrors] = useState([]);
 
 
     const [image, setImage] = useState(null)
@@ -122,10 +122,10 @@ const ProfilePage = () => {
 
           
 
-          const data = await dispatch(sessionActions.editUserThunk(userId, biography, location))
-          if(data){
-            setErrors(data)
-          }
+          await dispatch(sessionActions.editUserThunk(userId, biography, location))
+          // if(data){
+          //   setErrors(data)
+          // }
 
           // dispatch(profileActions.getUserThunk(user?.id))
 
@@ -230,9 +230,9 @@ const ProfilePage = () => {
                           <div className='editProfileInfoBio'>
                               <form onSubmit={handleProfileEdit} className='editBioForm'>
                               <div>
-                                  {errors.map((error, ind) => (
+                                  {/* {errors.map((error, ind) => (
                                     <div key={ind}>{error}</div>
-                                  ))}
+                                  ))} */}
                                 </div>
                                 <textarea className="editBioTextArea"
                                 value={biography}
@@ -259,9 +259,9 @@ const ProfilePage = () => {
                           <div className='editProfileInfoBio'>
                           <form onSubmit={handleProfileEdit} className='editBioForm'>
                           <div>
-                              {errors.map((error, ind) => (
+                              {/* {errors.map((error, ind) => (
                                 <div key={ind}>{error}</div>
-                              ))}
+                              ))} */}
                             </div>
                             <textarea className="editBioTextArea"
                             value={location}

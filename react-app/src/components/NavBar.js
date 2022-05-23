@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import LogoutButton from './auth/LogoutButton';
 import { logout } from '../store/session'
 import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarFooter, SidebarContent} from "react-pro-sidebar"
-import { FiLogIn, FiLogOut, FiHeart, FiThumbsUp, FiUserPlus, FiUser, FiUsers } from "react-icons/fi";
+import { FiLogIn, FiLogOut, FiHeart, FiUserPlus, FiUser, FiUsers, FiHelpCircle } from "react-icons/fi";
 
 // import * as profileActions from '.././store/profile'
 // import * as matchActions from '.././store/match'
@@ -13,7 +13,7 @@ import { FiLogIn, FiLogOut, FiHeart, FiThumbsUp, FiUserPlus, FiUser, FiUsers } f
 import "react-pro-sidebar/dist/css/styles.css";
 import './NavBar.css'
 import tumbleDefaultUser from './tumbleDefaultUser.png'
-import navBarDog from './navbarDogfinal.png'
+import navBarDog from './defaultNavBarImg.png'
 
 const NavBar = () => {
 
@@ -54,7 +54,7 @@ const NavBar = () => {
             <SidebarHeader>
             {user ? 
             <div className='userBox'>
-              {user.images[0] ? <img className='userIcon' src={user.images[0].userImage} alt=''/> : <img className= 'userIcon' src={navBarDog} alt={navBarDog}/>}
+              {user.images[0] ? <img className='userIcon' src={user.images[0].userImage} alt=''/> : <img className= 'userIcon2' src={navBarDog} alt={navBarDog}/>}
               <div className='userText'>
                 <p>{user?.name}</p>
               </div>
@@ -85,8 +85,8 @@ const NavBar = () => {
                 <MenuItem icon={<FiHeart/>}>
                   <NavLink to='/matches' exact={true} activeClassName='active'>Matches</NavLink>
                 </MenuItem>
-                <MenuItem icon={<FiThumbsUp/>}>
-                  <NavLink to='/likes' exact={true} activeClassName='active'>Likes</NavLink>
+                <MenuItem icon={<FiHelpCircle/>}>
+                  <NavLink to='/' exact={true} activeClassName='active'>Guide</NavLink>
                 </MenuItem>
                 {user?.matches?.length > 0 ?
                   user.matches?.map((match) => (
