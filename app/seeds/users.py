@@ -5,7 +5,8 @@ today = date.today()
 
 def seed_users():
     demo = User(
-        name='Demo', 
+        name='Demo',
+        dog=False 
         email='demo@aa.io', 
         password='password', 
         biography=
@@ -83,7 +84,7 @@ def seed_users():
     Curabitur est ex, porta quis lorem pharetra, ullamcorper efficitur elit.
     ''',
         age=19,
-        dog=True,
+        dog=False,
         location='Portland, OR',
         created_at=today.strftime("%B %d, %Y"),
         updated_at=today.strftime("%B %d, %Y")
@@ -111,7 +112,7 @@ def seed_users():
     Fusce ante lorem, laoreet quis lorem sit amet, facilisis gravida risus. Nullam eleifend, lacus tristique finibus bibendum, nunc ligula vulputate nisl, a fermentum lacus massa vel nulla.
     ''',
         age=22,
-        dog=True,
+        dog=False,
         location='Compton, CA',
         created_at=today.strftime("%B %d, %Y"),
         updated_at=today.strftime("%B %d, %Y")
@@ -139,7 +140,7 @@ def seed_users():
     Fusce ante lorem, laoreet quis lorem sit amet, facilisis gravida risus. Nullam eleifend, lacus tristique finibus bibendum, nunc ligula vulputate nisl, a fermentum lacus massa vel nulla.
     ''',
         age=22,
-        dog=True,
+        dog=False,
         location='NYC, NY',
         created_at=today.strftime("%B %d, %Y"),
         updated_at=today.strftime("%B %d, %Y")
