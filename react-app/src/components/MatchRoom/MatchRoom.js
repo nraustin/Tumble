@@ -26,8 +26,8 @@ const MatchRoom = ({matchUpdate, setMatchUpdate}) => {
     
     const matchObj = useSelector(state => state.match)
     const match = Object.values(matchObj)[0]
-    console.log(match?.messages)
-    console.log(match?.matched)
+    // console.log(match?.messages)
+    // console.log(match?.matched)
 
     const userImgCheck = match?.matched?.filter(matchUser => (((matchUser?.id === user?.id && matchUser?.images?.length > 0))))
 

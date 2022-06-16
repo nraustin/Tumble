@@ -47,6 +47,42 @@ const SplashPage = () => {
         const password = "password" 
         return dispatch(sessionActions.login(email, password))
     }
+
+   
+
+    function reverseArr(arr) {
+        
+        
+        for (let i = 0; i < arr.length; i++){
+            arr[i].reverse()
+        }
+        
+        return arr
+    }
+
+    function reverseArr2(arr){
+        
+        let newArr = [];
+        for (let i = 0; i < arr.length; i++){
+            let innerArr = []
+            innerArr.push(arr[i][1])
+            innerArr.push(arr[i][0])
+            newArr.push(innerArr)
+
+                
+            
+        }
+
+            return newArr
+}
+
+    let array = [[1,2],[3,4],[5,6]]
+    let array2 = [[1,2],[3,4],[5,6]]
+
+    console.log(reverseArr(array))
+    console.log(reverseArr2(array2))
+
+
     return(
         <>
         {!user && (

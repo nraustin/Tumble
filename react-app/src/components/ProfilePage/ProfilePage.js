@@ -19,10 +19,10 @@ const ProfilePage = () => {
     
 
     const user = useSelector(state => state.session.user)
-    const profileObj = useSelector(state => state.profile)
-    const profile = Object.values(profileObj)[0]
+    // const profileObj = useSelector(state => state.profile)
+    // const profile = Object.values(profileObj)[0]
 
-    console.log(profile)
+    // console.log(profile)
 
     // const [errors, setErrors] = useState([]);
 

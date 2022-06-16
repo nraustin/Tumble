@@ -21,10 +21,10 @@ function ProfileCard({ likeMessage, nextPerson, nextDog, ...allProfProps}) {
   const userS = useSelector(state => state.session.user)
 
   // console.log(allProfProps?.slideIndex)
-  console.log(allProfProps?.person)
-  console.log(allProfProps?.dog)
+  // console.log(allProfProps?.person)
+  // console.log(allProfProps?.dog)
 
-  console.log(allProfProps?.dog)
+  // console.log(allProfProps?.dog)
 
   
 
@@ -111,7 +111,7 @@ function ProfileCard({ likeMessage, nextPerson, nextDog, ...allProfProps}) {
     }
   }
 
-  console.log(allProfProps?.peopleProfiles)
+  // console.log(allProfProps?.peopleProfiles)
 
 
   return (

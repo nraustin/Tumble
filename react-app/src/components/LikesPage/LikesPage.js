@@ -11,18 +11,18 @@ import tutorial2 from './tutorial2.png'
 const UserLikes = () => {
 
     const user = useSelector(state => state.session.user)
-    const profileObj = useSelector(state => state.profile)
-    const matches = useSelector(state => state.match)
+    // const profileObj = useSelector(state => state.profile)
+    // const matches = useSelector(state => state.match)
 
 
-    console.log(profileObj)
-    console.log(matches)
-    const profiles = Object.values(profileObj)
+    // console.log(profileObj)
+    // console.log(matches)
+    // const profiles = Object.values(profileObj)
 
 
-    const likingUsers = user?.likes.map((like) => (profiles.filter((profile) => (profile.id === like.liker_id))))
+    // const likingUsers = user?.likes.map((like) => (profiles.filter((profile) => (profile.id === like.liker_id))))
 
-    console.log(likingUsers)
+    // console.log(likingUsers)
 
 
 
@@ -38,7 +38,7 @@ const UserLikes = () => {
         
     }, [dispatch, user?.id])
 
-    console.log(user?.likes)
+    // console.log(user?.likes)
 
     // const handleLikeMatch = (e) => {
     //     e.preventDefault()

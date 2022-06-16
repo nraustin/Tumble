@@ -17,9 +17,9 @@ const UserMatches = () => {
     console.log(profile?.id)
 
     const match = Object.values(matches)
-    console.log(match)
+    // console.log(match)
 
-    console.log(matches)
+    // console.log(matches)
 
     const dispatch = useDispatch()
 

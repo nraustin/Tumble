@@ -18,10 +18,10 @@ import navBarDog from './defaultNavBarImg.png'
 const NavBar = () => {
 
   const user = useSelector(state => state.session.user)
-  const profile = useSelector(state => state.profile)
+  // const profile = useSelector(state => state.profile)
   const dispatch = useDispatch()
 
-  console.log(profile?.matches)
+  // console.log(profile?.matches)
  
 
   const [menuCollapse, setMenuCollapse] = useState(true)
