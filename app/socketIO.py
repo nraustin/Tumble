@@ -3,8 +3,8 @@ import os
 
 if os.environ.get("FLASK_ENV") == "production":
     origins = [
-        "http://tumble-app.herokuapp.com",
-        "https://tumble-app.herokuapp.com"
+        "http://tumble-app.onrender.com",
+        "https://tumble-app.onrender.com"
     ]
 else:
     origins = "*"
