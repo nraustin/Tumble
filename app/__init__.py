@@ -6,7 +6,7 @@ from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
 # from .socketIO import socketio 
 
-from .models import db, User, environment, SCHEMA
+from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.like_routes import like_routes
