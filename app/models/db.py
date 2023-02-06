@@ -1,13 +1,25 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+
 db = SQLAlchemy()
+
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get('SCHEMA')
+
+def add_prefix_for_prod(attr):
+    if environment == "production":
+        return f"{SCHEMA}.{attr}"
+    else:
+        return attr
+
 
 
 class Image(db.Model):
     __tablename__ = "images"
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     userImage = db.Column(db.String, nullable=False)
 
     def image_to_dict(self):
@@ -41,9 +53,9 @@ class Message(db.Model):
     __tablename__ = "messages"
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     content = db.Column(db.Text, nullable=False)
-    match_id = db.Column(db.Integer, db.ForeignKey("matchedRooms.id"), nullable=False)
+    match_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("matchedRooms.id")), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now(), nullable=False)
 
     match = db.relationship('matchedRoom', back_populates='messages')
@@ -63,8 +75,8 @@ class Like(db.Model):
     __tablename__ = "likes"
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
-    liker_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    liked_id = db.Column(db. Integer, db.ForeignKey("users.id"))
+    liker_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
+    liked_id = db.Column(db. Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
 
     # liker = db.relationship("User", foreign_keys=[liker_id])
     # liked = db.relationship("User", foreign_keys=[liked_id])
@@ -80,8 +92,8 @@ class Unlike(db.Model):
     __tablename__ = "unlikes"
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
-    unliker_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    unliked_id = db.Column(db. Integer, db.ForeignKey("users.id"))
+    unliker_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
+    unliked_id = db.Column(db. Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
 
     def unlike_to_dict(self):
         return{

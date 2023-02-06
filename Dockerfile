@@ -3,7 +3,7 @@ FROM python:3.9
 
 # Set the following enviroment variables
 #
-ENV REACT_APP_BASE_URL=https://tumble-app.herokuapp.com/
+ENV REACT_APP_BASE_URL=https://tumble-app.onrender.com
 ENV FLASK_APP=app
 ENV FLASK_ENV=production
 ENV SQLALCHEMY_ECHO=true
@@ -21,8 +21,7 @@ COPY /react-app/build/* app/static/
 # Run the next two python install commands with PIP
 # install -r requirements.txt
 # install psycopg2
-RUN pip install -r requirements.txt
-RUN pip install psycopg2
+RUN npm install --prefix react-app && npm run build --prefix react-app && pip install -r requirements.txt && pip install psycopg2 && flask db upgrade && flask seed all
 
 # Start the flask environment by setting our
 # closing command to gunicorn app:app
