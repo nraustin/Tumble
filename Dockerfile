@@ -6,6 +6,9 @@ FROM python:3.9
 ENV REACT_APP_BASE_URL=https://tumble-app.onrender.com
 ENV FLASK_APP=app
 ENV FLASK_ENV=production
+ENV SECRET_KEY=b12a14789e1949dae579bc24ba08df42
+ENV DATABASE_URL=postgres://personal_projects_75sb_user:LMH7P40Ocy7omP8Byg3y49SRCkv4nPDD@dpg-cfgum3hgp3jqehook9rg-a/personal_projects_75sb
+ENV SCHEMA=tumble_schema
 ENV SQLALCHEMY_ECHO=true
 
 # Set the directory for upcoming commands to /var/www
