@@ -26,8 +26,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE <table_name> SET SCHEMA {SCHEMA};")
+    
         
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -43,8 +42,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE <table_name> SET SCHEMA {SCHEMA};")
+    
 
     op.create_table('images',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -53,8 +51,7 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE <table_name> SET SCHEMA {SCHEMA};")
+   
 
     op.create_table('likes',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -64,8 +61,7 @@ def upgrade():
     sa.ForeignKeyConstraint(['liker_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE <table_name> SET SCHEMA {SCHEMA};")
+   
 
     op.create_table('matched_Users',
     sa.Column('matchedRoom_id', sa.Integer(), nullable=False),
@@ -74,9 +70,7 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('matchedRoom_id', 'user_id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE <table_name> SET SCHEMA {SCHEMA};")
-
+    
     op.create_table('messages',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -87,8 +81,7 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE <table_name> SET SCHEMA {SCHEMA};")
+   
 
     op.create_table('unlikes',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -98,9 +91,16 @@ def upgrade():
     sa.ForeignKeyConstraint(['unliker_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    
     if environment == "production":
-        op.execute(f"ALTER TABLE <table_name> SET SCHEMA {SCHEMA};")
-        
+        op.execute(f"ALTER TABLE matchedRooms SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE images SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE likes SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE matched_Users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE messages SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE unlikes SET SCHEMA {SCHEMA};")
+
     # ### end Alembic commands ###
 
 

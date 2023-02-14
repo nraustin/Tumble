@@ -9,3 +9,6 @@ matched_Users = db.Table('matched_Users',
                             db.Integer,
                             db.ForeignKey(add_prefix_for_prod("users.id")),
                             primary_key=True))
+
+if environment == "production":
+        matched_Users.schema = SCHEMA

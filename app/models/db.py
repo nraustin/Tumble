@@ -18,6 +18,9 @@ def add_prefix_for_prod(attr):
 class Image(db.Model):
     __tablename__ = "images"
 
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     userImage = db.Column(db.String, nullable=False)
@@ -29,8 +32,13 @@ class Image(db.Model):
             'userImage': self.userImage
         }
 
+    
+
 class matchedRoom(db.Model):
     __tablename__ = "matchedRooms"
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     # firstUser = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
@@ -51,6 +59,9 @@ class matchedRoom(db.Model):
 
 class Message(db.Model):
     __tablename__ = "messages"
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
@@ -74,6 +85,9 @@ class Message(db.Model):
 class Like(db.Model):
     __tablename__ = "likes"
 
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     liker_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
     liked_id = db.Column(db. Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
@@ -90,6 +104,9 @@ class Like(db.Model):
 
 class Unlike(db.Model):
     __tablename__ = "unlikes"
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     unliker_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
