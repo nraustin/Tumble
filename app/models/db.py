@@ -35,7 +35,7 @@ class Image(db.Model):
     
 
 class matchedRoom(db.Model):
-    __tablename__ = "matchedRooms"
+    __tablename__ = "matched_rooms"
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
@@ -66,7 +66,7 @@ class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     content = db.Column(db.Text, nullable=False)
-    match_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("matchedRooms.id")), nullable=False)
+    match_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("matched_rooms.id")), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now(), nullable=False)
 
     match = db.relationship('matchedRoom', back_populates='messages')
