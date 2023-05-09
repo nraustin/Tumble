@@ -13,4 +13,3 @@ class Config:
     SQLALCHEMY_ECHO = True
 
 
-postgres://personalprojects_rqq3_user:abc123@dpg-chcivsqk728tp9ac6ceg-a/personalprojects_rqq3
