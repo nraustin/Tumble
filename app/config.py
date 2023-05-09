@@ -11,3 +11,6 @@ class Config:
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         'DATABASE_URL').replace('postgres://', 'postgresql://')
     SQLALCHEMY_ECHO = True
+
+
+postgres://personalprojects_rqq3_user:abc123@dpg-chcivsqk728tp9ac6ceg-a/personalprojects_rqq3
