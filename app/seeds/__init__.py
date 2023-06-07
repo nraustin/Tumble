@@ -2,7 +2,7 @@ from app.models.db import db, environment, SCHEMA
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .messages import seed_messages, undo_messages
-from .matches import seed_matchedRooms, undo_matchedRooms
+from .matches import seed_matchedrooms, undo_matchedrooms
 from .images import seed_images, undo_images
 from .likes import seed_likes, undo_likes
 
@@ -19,14 +19,14 @@ def seed():
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.images RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.likes RESTART IDENTITY CASCADE;")
-        db.session.execute(f"TRUNCATE table {SCHEMA}.matchedRooms RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.matchedrooms RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.messages RESTART IDENTITY CASCADE;")
         # Add a truncate command here for every table that will be seeded.
         db.session.commit()
     seed_users()
     seed_images()
     seed_likes()
-    seed_matchedRooms()
+    seed_matchedrooms()
     seed_messages()
     # Add other seed functions here
 
@@ -37,7 +37,7 @@ def undo():
     undo_users()
     undo_images()
     undo_likes()
-    undo_matchedRooms()
+    undo_matchedrooms()
     undo_messages()
     
 

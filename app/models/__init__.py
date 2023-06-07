@@ -1,3 +1,3 @@
-from .db import db, Image, Message, matchedRoom, Like, Unlike
+from .db import db, Image, Message, matchedroom, Like, Unlike
 from .user import User
 from .matchedUsers import matched_Users

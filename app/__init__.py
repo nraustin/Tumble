@@ -11,7 +11,7 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.like_routes import like_routes
 from .api.unlike_routes import unlike_routes
-from .api.matchedRoom_routes import matchedRoom_routes
+from .api.matchedRoom_routes import matchedroom_routes
 from .api.message_routes import message_routes
 
 from .seeds import seed_commands
@@ -38,7 +38,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(like_routes, url_prefix='/api/likes')
 app.register_blueprint(unlike_routes, url_prefix='/api/unlikes')
-app.register_blueprint(matchedRoom_routes, url_prefix='/api/matches')
+app.register_blueprint(matchedroom_routes, url_prefix='/api/matches')
 app.register_blueprint(message_routes, url_prefix='/api/messages')
 
 db.init_app(app)

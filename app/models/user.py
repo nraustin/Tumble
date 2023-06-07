@@ -27,7 +27,7 @@ class User(db.Model, UserMixin):
     likes = db.relationship("Like", primaryjoin="User.id==Like.liker_id", backref="users", cascade="all, delete")
     unlikes = db.relationship("Unlike", primaryjoin="User.id==Unlike.unliker_id", backref="users", cascade="all, delete")
 
-    matches = db.relationship("matchedRoom", secondary="matched_Users", back_populates="matchedUsers")
+    matches = db.relationship("matchedroom", secondary="matched_Users", back_populates="matchedUsers")
 
 
     @property
@@ -64,7 +64,7 @@ class User(db.Model, UserMixin):
             'dog': self.dog,
             'location': self.location,
             'messages': [me.message_to_dict() for me in self.messages],
-            'matches': [ma.matchedRoom_to_dict() for ma in self.matches],
+            'matches': [ma.matchedroom_to_dict() for ma in self.matches],
             'images': [i.image_to_dict() for i in self.images],
             'likes': [l.like_to_dict() for l in self.likes],
             'unlikes': [ul.unlike_to_dict() for ul in self.unlikes]

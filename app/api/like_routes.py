@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from app.models import Like, matchedRoom, User
+from app.models import Like, matchedroom, User
 from flask_login import login_required, current_user
 from app.models import db
 
@@ -23,7 +23,7 @@ def create_like():
 
     for like in likes:
         if like.liked_id == liker_id and like.liker_id == liked_id:
-            new_match = matchedRoom()
+            new_match = matchedroom()
 
             db.session.add(new_match)
 

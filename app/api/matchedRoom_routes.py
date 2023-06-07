@@ -1,11 +1,11 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import db, matchedRoom, User, matched_Users, Unlike
+from app.models import db, matchedroom, User, matched_Users, Unlike
 
 
-matchedRoom_routes = Blueprint('matches', __name__)
+matchedroom_routes = Blueprint('matches', __name__)
 
-@matchedRoom_routes.route('')
+@matchedroom_routes.route('')
 def all_matches():
 
 
@@ -14,28 +14,28 @@ def all_matches():
         for match in current_user.matches:
             userMatches.append(match)
             print('\n\n\n', match.matchedUsers, '\n\n\n')
-        return {'matched':[match.matchedRoom_to_dict() for match in userMatches]}
+        return {'matched':[match.matchedroom_to_dict() for match in userMatches]}
     
     return None
 
 
 
 
-@matchedRoom_routes.route('/<int:id>')
+@matchedroom_routes.route('/<int:id>')
 def one_room(id): 
 
-    match = matchedRoom.query.get(id)
+    match = matchedroom.query.get(id)
 
-    return match.matchedRoom_to_dict()
+    return match.matchedroom_to_dict()
 
 
-@matchedRoom_routes.route('/delete', methods=['DELETE'])
+@matchedroom_routes.route('/delete', methods=['DELETE'])
 def delete_room(): 
 
     print('\n\n\n', request.json['matchId'], '\n\n\n')
     match_id=request.json['matchId']
 
-    match = matchedRoom.query.get(match_id)
+    match = matchedroom.query.get(match_id)
 
     print('\n\n\n', match, '\n\n\n')
     
@@ -49,7 +49,7 @@ def delete_room():
             
             db.session.add(unliked)
 
-    deleted_match = match.matchedRoom_to_dict()
+    deleted_match = match.matchedroom_to_dict()
 
     db.session.delete(match)
     db.session.commit()
