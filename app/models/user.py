@@ -27,7 +27,7 @@ class User(db.Model, UserMixin):
     likes = db.relationship("Like", primaryjoin="User.id==Like.liker_id", backref="users", cascade="all, delete")
     unlikes = db.relationship("Unlike", primaryjoin="User.id==Unlike.unliker_id", backref="users", cascade="all, delete")
 
-    matches = db.relationship("matchedroom", secondary="matched_Users", back_populates="matchedUsers")
+    matches = db.relationship("matchedroom", secondary="matched_users", back_populates="matchedusers")
 
 
     @property
