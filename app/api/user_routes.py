@@ -54,7 +54,7 @@ def users():
         
         if len(current_user.matches) > 0:
             for eachMatch in current_user.matches:
-                for eachUser in eachMatch.matchedUsers:
+                for eachUser in eachMatch.matchedusers:
                     if eachUser.id != current_user.id:
                         unwantedUsers.append(eachUser.id)
 
